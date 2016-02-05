@@ -1,0 +1,3 @@
+[submodule "chrome-lib/end-to-end"]
+	path = chrome-lib/end-to-end
+	url = https://github.com/google/end-to-end
