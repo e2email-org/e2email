@@ -1,0 +1,502 @@
+{
+  "appName": {
+    "message": "E2EMail",
+    "description": "Name of the app."
+  },
+  "appDescription": {
+    "message": "Provides end-to-end protection for your email using OpenPGP.",
+    "description": "Description of the app."
+  },
+  "welcomeTitle": {
+    "message": "Get started",
+    "description": "Title for a screen that's shown to a first-time user of E2EMail."
+  },
+  "appinfoTitle": {
+    "message": "About E2EMail",
+    "description": "Title for information about the app itself."
+  },
+  "inviteTitle": {
+    "message": "Invite",
+    "description": "Title for a button that's shown to invite a friend of the user to install E2EMail."
+  },
+  "requestApprovalStatus": {
+    "message": "Requesting access, in a few seconds an approval dialog should appear...",
+    "description": "Status shown when the app wants to request OAuth approvals."
+  },
+  "approvalUnavailableStatus": {
+    "message": "Could not obtain approval to access your Gmail account.",
+    "description": "Status shown when the app is unable to obtain OAuth approvals."
+  },
+  "inviteInProgressStatus": {
+    "message": "Inviting...",
+    "description": "Status message while an unencrypted mail is being sent to a friend to invite them to install E2EMail."
+  },
+  "welcomeHelp": {
+    "message": "In a few steps, you can send email securely with your GMail account.",
+    "description": "Informational text for a user giving them a reason to use E2EMail."
+  },
+  "signIn": {
+    "message": "Sign in to Gmail",
+    "description": "Button text to let the user know they are about to logged into Gmail."
+  },
+  "setupInfo": {
+    "message": "Initializing a secure environment for $EMAIL$.",
+    "description": "Help text describing what's going on when the user's account is being checked or set up.",
+    "placeholders": {
+      "email": {
+        "content": "$1",
+        "example": "email@example.com"
+      }
+    }
+  },
+  "me": {
+    "message": "me",
+    "description": "Noun to describe myself."
+  },
+  "settings": {
+    "message": "Account",
+    "description": "Noun to describe a screen that lets the user check and alter application settings."
+  },
+  "faq": {
+    "message": "FAQ...",
+    "description": "Noun to describe a screen that shows frequently asked questions."
+  },
+  "issues": {
+    "message": "Issues...",
+    "description": "Noun to describe a screen that shows an issues form."
+  },
+  "recover": {
+    "message": "Recover",
+    "description": "Verb to describe how to recover access to the account."
+  },
+  "recoverScreenTitle": {
+    "message": "Recover Access",
+    "description": "Title for a screen where the user can recover access to their account."
+  },
+  "recoverHelp": {
+    "message": "You have previously installed E2EMail. Please enter your recovery code to access your mail.",
+    "description": "Help text to help the user understand why they need to recover their account, and what they need to do to recover it."
+  },
+  "refresh": {
+    "message": "Refresh",
+    "description": "Verb to describe how to refresh the mailbox."
+  },
+  "more": {
+    "message": "More",
+    "description": "Verb to describe additional information."
+  },
+  "recoveryCode": {
+    "message": "Recovery code",
+    "description": "Noun to describe the private key backup code."
+  },
+  "resetLink": {
+    "message": "I forgot my code, reset E2EMail.",
+    "description": "Short link text to give the user an option to reset their account."
+  },
+  "initializeStatus": {
+    "message": "Initializing E2EMail...",
+    "description": "Status message when the app is being initialized."
+  },
+  "checkAuthorizedStatus": {
+    "message": "Checking authorizations...",
+    "description": "Status message when the app checks for Gmail API authorizations."
+  },
+  "checkPrivateKeyStatus": {
+    "message": "Checking local information...",
+    "description": "Status message when the app checks for a local private key."
+  },
+  "checkRegisteredKeyStatus": {
+    "message": "Checking E2EMail account...",
+    "description": "Status message when the app checks for a remote public key."
+  },
+  "createKeyStatus": {
+    "message": "Setting up your E2EMail account...",
+    "description": "Status message when the app is creating a keypair."
+  },
+  "updateKeyStatus": {
+    "message": "Updating your E2EMail account...",
+    "description": "Status message when the app is registering a public key."
+  },
+  "sendWelcomeMailStatus": {
+    "message": "Initializing your mailbox...",
+    "description": "Status message when the app is sending a welcome email."
+  },
+  "incorrectCodeStatus": {
+    "message": "This code is not correct, please check for typos.",
+    "description": "Status displayed when characters not corresponding to a recovery code is entered."
+  },
+  "resetTitle": {
+    "message": "Reset E2EMail",
+    "description": "Title for a view that is shown when the user is about to reset their private key."
+  },
+  "resetHelp": {
+    "message": "You are here because you want to reset your E2EMail data.",
+    "description": "Help text shown to confirm to the user why they are in this view."
+  },
+  "resetAnywayLink": {
+    "message": "I understand, reset anyway",
+    "description": "Link text the user must press to create a new private key."
+  },
+  "resetWarning": {
+    "message": "If you reset your data, any email you sent or received with your previous E2EMail recovery code will no longer be readable.",
+    "description": "Help text that warns the user about the consequences of creating a new private key for their account."
+  },
+  "resetKeyStatus": {
+    "message": "Resetting your account...",
+    "description": "Status message when a new private key is being generated because the user requested it."
+  },
+  "sendMailStatus": {
+    "message": "Sending mail...",
+    "description": "Status message when a new mail is being sent."
+  },
+  "resetMailSubject": {
+    "message": "Your E2EMail account was reset",
+    "description": "(Unencrypted) subject line in an email sent when a new private key was generated by the user resetting their account."
+  },
+  "resetMailContent": {
+    "message": "Your E2EMail account was reset by a device connected to your account.",
+    "description": "(Encrypted) content in an email sent when a new private key was generated by the user resetting their account."
+  },
+  "welcomeMailSubject": {
+    "message": "Welcome to E2EMail!",
+    "description": "(Unencrypted) subject line in an email sent to a user who has installed E2EMail for the first time."
+  },
+  "welcomeMailContent": {
+    "message": "You can now send and receive encrypted mail. Just hit reply to reply to an existing email thread, or new to start a new one.\n\nThe E2E team.",
+    "description": "(Encrypted) content mailed to a user who has installed E2EMail for the first time."
+  },
+  "inviteMailSubject": {
+    "message": "Invitation to E2EMail",
+    "description": "(Unencrypted) subject line in an email sent to a user who is being invited to install E2EMail."
+  },
+  "inviteMailContent": {
+    "message": "Here's an invite to preview a Chrome app that lets us exchange private (OpenPGP encrypted) mail over Gmail.\n\nYou can find the E2EMail app here, send me a private email if you install it.\n$LOCATION$\n",
+    "description": "(Unencrypted) content mailed to a user who is being invited to install E2EMail.",
+    "placeholders": {
+      "location": {
+        "content": "$1",
+        "example": "https://example.com/path/to/location"
+      }
+    }
+  },
+  "newDeviceMailSubject": {
+    "message": "A new device was added to E2EMail",
+    "description": "(Unencrypted) subject line in an email sent to a user who has installed E2EMail in a new device."
+  },
+  "newDeviceMailContent": {
+    "message": "A new device was added to your E2EMail account by entering your recovery code.",
+    "description": "(Encrypted) content mailed to a user who has installed E2EMail in a new device."
+  },
+  "missingCodeStatus": {
+    "message": "Please enter a code.",
+    "description": "Text when a user has not entered a recovery code."
+  },
+  "checkingCodeStatus": {
+    "message": "Checking code...",
+    "description": "Text while the application verifies a recovery code."
+  },
+  "sendNotificationStatus": {
+    "message": "Emailing a notification...",
+    "description": "Text while the application sends a notification email."
+  },
+  "showsecretTitle": {
+    "message": "Your recovery code",
+    "description": "Title for a screen that shows the user's recovery code."
+  },
+  "showsecretHelpIntro": {
+    "message": "Without this code, any E2EMail messages will be lost forever if you lose this device. So please:",
+    "description": "Introductory message for a screen that shows the user's recovery code."
+  },
+  "showsecretHelpStep1": {
+    "message": "Write your code on a piece of paper",
+    "description": "First step in securing recovery code within a screen that shows the user's recovery code."
+  },
+  "showsecretHelpStep2": {
+    "message": "Store it somewhere safe",
+    "description": "Second step in securing recovery code within a screen that shows the user's recovery code."
+  },
+  "settingsSecretHelp": {
+    "message": "This is a secret code which can unlock your E2EMail on a different device, or if you lose this device. Without this code, any E2EMail messages will be lost forever, so please write this code on paper and store it securely.",
+    "description": "Help for a settings screen that shows the user's recovery code."
+  },
+  "continue": {
+    "message": "Continue",
+    "description": "Verb to use on a button to indicate the next thing."
+  },
+  "generateCodeStatus": {
+    "message": "Generating code...",
+    "description": "Status when generating a recovery code from a key."
+  },
+  "noSubjectTitle": {
+    "message": "(no subject)",
+    "description": "Title to use when the message has no subject."
+  },
+
+  "fetchMessageStatus": {
+    "message": "Fetching messages...",
+    "description": "Status when fetching a message via the Gmail API"
+  },
+  "decryptMessageStatus": {
+    "message": "Decrypting message...",
+    "description": "Status when decrypting a message"
+  },
+  "emptyFieldsError": {
+    "message": "Please enter all required fields.",
+    "description": "Message to display when there are missing entries in a form."
+  },
+  "noKeysForMessageError": {
+    "message": "This message was protected under another recovery code and can no longer be read.",
+    "description": "Message to display when the private key for a message is missing."
+  },
+  "recoveryCodeTooShortError": {
+    "message": "This recovery code is too short.",
+    "description": "Message to display when the recovery code is too short."
+  },
+  "invalidSignatureError": {
+    "message": "Could not verify $EMAIL$ sent this message.",
+    "description": "Error when signature verification fails for a message",
+    "placeholders": {
+      "email": {
+        "content": "$1",
+        "example": "email@example.com"
+      }
+    }
+  },
+  "noThreadsMessage": {
+    "message": "No private messages in your mailbox.",
+    "description": "Status shown when the user has no threads in their inbox"
+  },
+  "noThreadsTitle": {
+    "message": "E2EMail - Empty inbox.",
+    "description": "Title shown when the user has no threads in their inbox"
+  },
+  "inboxCountTitle": {
+    "message": "E2EMail - Inbox ($UNREAD$/$TOTAL$)",
+    "description": "Title showing count of unread and total threads in inbox",
+    "placeholders": {
+      "unread": {
+        "content": "$1",
+        "example": "0"
+      },
+      "total": {
+        "content": "$2",
+        "example": "10"
+      }
+    }
+  },
+  "invalidDecryptionContentError": {
+    "message": "Invalid content in this message.",
+    "description": "Error when the contents of a message have something wrong with it."
+  },
+  "fingerprintChangedStatus": {
+    "message": "$EMAIL$ has recently altered their E2EMail identity code.",
+    "description": "Status text shown when the code detects a recipients public key has changed.",
+    "placeholders": {
+      "email": {
+        "content": "$1",
+        "example": "email@example.com"
+      }
+    }
+  },
+  "fingerprintSettingsHelp": {
+    "message": "This sequence of letters and numbers can be used as an identity check when you send people emails. To verify that they are really receiving an email from you, they can give you a call and confirm your ID, which should match the ID they see when they click on your name in an email you've sent them. E2Email will warn them if your ID changes across emails they receive.",
+    "description": "Help text to display within the settings screen underneath the user's fingerprint"
+  },
+  "fingerprintHelp1": {
+    "message": "This sequence of numbers and digits can be used as an identity check for $EMAIL$.",
+    "description": "First paragraph of help text to help user understand what a fingerprint is, and how to use it.",
+    "placeholders": {
+      "email": {
+        "content": "$1",
+        "example": "email@example.com"
+      }
+    }
+  },
+  "fingerprintChangedHelp1": {
+    "message": "However, E2EMail has noticed this code has changed since you first started talking with $EMAIL$. Most often, this happens if they have reset their account, but you should confirm this by talking directly to them and verifying their latest identity code.",
+    "description": "Help text shown when the code detects a recipients public key has changed.",
+    "placeholders": {
+      "email": {
+        "content": "$1",
+        "example": "email@example.com"
+      }
+    }
+  },
+  "fingerprintHelp2": {
+    "message": "To verify if you are really receiving an email from them, give them a call and confirm their ID, which they can find in the Account menu of the E2EMail app.",
+    "description": "Second paragraph of help text to help user understand what a fingerprint is, and how to use it."
+  },
+  "whatsThis": {
+    "message": "What's this?",
+    "description": "Informal phrase for a link that provides more explanation about a topic."
+  },
+  "gotIt": {
+    "message": "Got it!",
+    "description": "Informal phrase for a link that acknowledges the user has understood some information."
+  },
+  "idCheck": {
+    "message": "ID Check",
+    "description": "Title to describe an identity check code (fingerprint.)"
+  },
+  "fetchMessageMissingError": {
+    "message": "E2EMail was unable to find the encrypted content within this email. This can happen if the email was sent by a different application. (dogfood debug: $ID$)",
+    "description": "Error with missing data when fetching a message via the Gmail API",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "messageMissingThreadError": {
+    "message": "Unexpected missing thread for message $ID$.",
+    "description": "An application error that is unable to find the thread for a message.",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "fetchMessageError": {
+    "message": "Unable to get message $ID$.",
+    "description": "Error when Gmail API rejects fetching information about a particular message",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "serverKeyNotAvailableError": {
+    "message": "Unable to find E2EMail information for $EMAIL.",
+    "description": "Error when the email is sent from someone without a key on the key server.",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "messageEncodingError": {
+    "message": "Invalid attachment content in message $ID$.",
+    "description": "Error when the attachment doesn't contain a valid encoding.",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "missingRecipientAlert": {
+    "message": "$EMAIL$ has not installed E2EMail, so you cannot send private email to them. Do you want to invite them to install E2EMail instead?",
+    "description": "Alert message when the user selects a recipient who hasn't installed E2EMail.",
+    "placeholders": {
+      "email": {
+        "content": "$1"
+      }
+    }
+  },
+  "verifyRecipientStatus": {
+    "message": "Verifying recipient...",
+    "description": "Status message when E2EMail is checking the public key for a recipient."
+  },
+  "invalidRecipientAlert": {
+    "message": "$EMAIL$ is not a proper email address. Please enter a complete address (eg: example@gmail.com)",
+    "description": "Alert message when the user enters an invalid email address.",
+    "placeholders": {
+      "email": {
+        "content": "$1"
+      }
+    }
+  },
+  "fetchBatchStatus": {
+    "message": "Fetching messages...",
+    "description": "Status when fetching a batch of messages from Gmail"
+  },
+  "fetchContactsStatus": {
+    "message": "Fetching contacts ($COUNT$)...",
+    "description": "Status when fetching a batch of contacts from Gmail",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "typeReplyPlaceholder": {
+    "message": "Type your reply...",
+    "description": "Placeholder text for a textbox where the user types in a reply to a message."
+  },
+  "typeMessagePlaceholder": {
+    "message": "Anything typed under here is sent privately.",
+    "description": "Placeholder text for a textbox where the user types in a new message."
+  },
+  "invalidRecipientPlaceholder": {
+    "message": "Please enter a valid To address first.",
+    "description": "Placeholder text for a textbox where the user hasn't yet typed in an email address."
+  },
+  "reply": {
+    "message": "Reply",
+    "description": "Verb to use on a button to reply to a message."
+  },
+  "cancel": {
+    "message": "Cancel",
+    "description": "Verb to use on a button to cancel an action."
+  },
+  "send": {
+    "message": "Send",
+    "description": "Verb to use on a button to send a message."
+  },
+  "compose": {
+    "message": "Compose",
+    "description": "Verb to use on a button to compose a new message."
+  },
+  "inbox": {
+    "message": "Inbox",
+    "description": "Noun to describe the primary user inbox."
+  },
+  "trashHelp": {
+    "message": " delete selected threads ",
+    "description": "Text to display when hovering over the trash icon."
+  },
+  "primaryEmailTitle": {
+    "message": "Email address",
+    "description": "Title for a settings screen to describe the user's email address."
+  },
+  "selectThreadTitle": {
+    "message": "Select thread",
+    "description": "Title for a checkbox to select an email thread."
+  },
+  "messagesTitle": {
+    "message": "E2EMail - Message",
+    "description": "Title for a screen that shows the messages within a thread."
+  },
+  "setupTitle": {
+    "message": "E2EMail - Setup",
+    "description": "Title for a setup screen."
+  },
+  "settingsTitle": {
+    "message": "E2EMail - Account",
+    "description": "Title for a settings screen."
+  },
+  "recoverTitle": {
+    "message": "E2EMail - Recover Access",
+    "description": "Title for a recovery screen."
+  },
+  "showsecretDocumentTitle": {
+    "message": "E2EMail - Recovery Code",
+    "description": "Document title for the user's secret code."
+  },
+  "unsupportedMimeContent": {
+    "message": "Could not display this attachment\n$DATA$",
+    "description": "Message shown for mime content that cannot be displayed.",
+    "placeholders": {
+      "data": {
+        "content": "$1"
+      }
+    }
+  },
+  "mimePreamble": {
+    "message": "This is an OpenPGP/MIME encrypted message. Please open it from the E2EMail app.",
+    "description": "A notification appearing before the actual MIME content. MIME compliant parsers will not display this message to the user."
+  },
+  "errorInParsingMime": {
+    "message": "Parsing error: This message has not been formatted correctly and cannot be displayed.",
+    "description": "A notification that is displayed when an email contains MIME content that has not been formatted correctly"
+  }
+}

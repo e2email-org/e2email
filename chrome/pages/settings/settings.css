@@ -1,0 +1,10 @@
+.settings-fingerprint {
+  font-family: monospace;
+}
+
+.settings-title {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+  margin-top: 1.4em;
+}

@@ -1,0 +1,21 @@
+<div style="display: inline-block" outerclick="maybeClose()">
+  <b class="clickable" ng-class="{'text-danger': info.fingerprintChanged}">{{uiUser}}</b>
+  <div style="position: relative">
+    <div class="popover bottom fade" style="width:276px">
+      <div class="arrow" style="left:10%"></div>
+      <div class="popover-content">
+        <h4>ID Check</h4>
+        <p class="user-fingerprint selectable">{{info.fingerprintHex}}</p>
+        <p class="text-danger" ng-show="info.fingerprintChanged">{{['fingerprintChangedStatus', uiUser] | translate}}</p>
+        <p ng-show="help"><img src="/assets/img/idcheck.svg" style="width:100%"/></p>
+        <p ng-show="help">{{['fingerprintHelp1', uiUser] | translate}}</p>
+        <p ng-show="help && info.fingerprintChanged" class="text-danger">{{['fingerprintChangedHelp1', uiUser] | translate}}</p>
+        <p ng-show="help">{{'fingerprintHelp2' | translate}}</p>
+        <p><button class="btn btn-link btn-focus pull-right" ng-click="toggleHelp($event)">
+            <span ng-hide="help">{{'whatsThis' | translate}}</span>
+            <span ng-show="help">{{'gotIt' | translate}}</span></button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

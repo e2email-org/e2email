@@ -1,0 +1,36 @@
+{
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDescription__",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "minimum_chrome_version": "37",
+  "oauth2": {
+    "client_id": "442418751519-e81shoqhvd0oraabfkq141mbura3ceo3.apps.googleusercontent.com",
+    "scopes": [
+      "email",
+      "https://www.googleapis.com/auth/gmail.modify",
+      "https://www.googleapis.com/auth/contacts.readonly"
+    ]
+  },
+  "default_locale": "en",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy56O73gcL0+tu3FyR/SWAGFcRElilDlEhwT0hxhWrKG+z55JHNfDbj74pFu1xxLvM+YJOZv0+2NEPSQhMbDdjyvVom61UcCryG1vd6jP9PaXNwWHh41lbGeezfKeRQbHy22rFPyUSoQIIKMA/VNolZikoPKHr8HtK6V9f5eMIfgMdxFa9n+QT0eUj93nqpdQOOktGI5Rcp0OaA+i9YlrRkVrF7oSvxAT1TM+W3H5Nf79ieO1qjKRZMhhC0/GF0st5OpCZGYii/zYalMGlBIXJ/vCTgN7R3XC5FfNX+FA+aH7KOTYorlkWnTkKHaiPKAhWHt2rliCPuUwGbNWujVqwQIDAQAB",
+  "icons": {
+    "128": "assets/img/icon_128.png"
+  },
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "permissions": [
+    "identity",
+    "identity.email",
+    "storage",
+    "unlimitedStorage",
+    "https://www.googleapis.com/",
+    "https://www.google.com/",
+    "https://accounts.google.com/",
+    "https://hkpserverext.appspot.com/",
+    "https://www.google-analytics.com/"
+  ]
+}

@@ -1,0 +1,20 @@
+sudo: false
+
+env:
+  global:
+    - NODEJS_VERSION=0.10
+    - NODEJS_CMD=node
+
+install:
+  - export PATH=$HOME/.local/bin:$PATH
+  - pip install --user $USER git+https://github.com/google/closure-linter.git
+  - nvm install ${NODEJS_VERSION} && nvm alias default ${NODEJS_VERSION}
+  - ./do.sh setup
+
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
+script:
+  - ./do.sh lint
+  - ./do.sh test_app

@@ -1,0 +1,144 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak,
+.ng-hide:not(.ng-hide-animate) {
+  display: none !important;
+}
+
+ng\:form {
+  display: block;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'), url('../fonts/roboto/Roboto-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url('../fonts/roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/roboto/Roboto-Medium.ttf') format('truetype');
+}
+
+.maincontent {
+  position: relative;
+}
+
+.viewcontent.ng-enter, .viewcontent.ng-leave {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: all 0.15s ease-in-out;
+}
+
+.viewcontent.ng-enter {
+  opacity: 0;
+}
+
+.viewcontent.ng-enter-active {
+  opacity: 1;
+}
+
+.viewcontent.ng-leave {
+  opacity: 1;
+}
+
+.viewcontent.ng-leave-active {
+  opacity: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow-y: auto;
+}
+
+.oneline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.btn-focus {
+  border-color: transparent;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.btn-focus:focus {
+  border-color: #66afe9;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 5px rgba(102, 175, 233, 0.6);
+  outline: none;
+}
+
+.fade-show {
+  opacity: 1;
+}
+
+.fade-show.ng-hide-add.ng-hide-add-active,
+.fade-show.ng-hide-remove.ng-hide-remove-active {
+  transition: opacity linear 0.2s;
+}
+
+.fade-show.ng-hide {
+  opacity: 0;
+}
+
+h1.wizard-title {
+  font-family: inherit;
+  font-weight: 300;
+  padding-top: 40%;
+  text-color: #777;
+}
+
+.selectable {
+  -webkit-user-select: initial;
+  cursor: text;
+  user-select: initial;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.just-hide {
+  visibility: hidden;
+}
+
+.e2email-header {
+  background-color: #eee;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.e2email-content-start {
+  margin-top: 80px;
+}
+
+.top-row-buffer {
+  margin-top: 1.4em;
+}
+
+.btn-blank {
+  background-color: transparent;
+  color: #808080;
+}
+
+.btn-blank:hover {
+  color: #428bca;
+}

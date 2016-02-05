@@ -1,0 +1,35 @@
+<h1 class="wizard-title">{{'recoverScreenTitle' | translate}}</h1>
+
+<div class="row">
+  <div class="col-xs-12 lead">{{'recoverHelp' | translate}}</div>
+</div>
+
+<form name="theform">
+  <input type="text" name="thecode" class="form-control sm-disable-animation"
+         placeholder="{{'recoveryCode' | translate}}"
+         ng-model="recoverCtrl.recoveryCode" required="true"
+         ng-pattern="recoverCtrl.REGEX_BASE58"
+         style="font-family: monospace"/>
+  <span class="text-warning"
+        ng-class="{'just-hide': !theform.thecode.$error.pattern}">{{'incorrectCodeStatus' | translate}}</span>
+  <div class="row">
+    <div class="col-xs-12">
+      <button ng-disabled="theform.thecode.$error.pattern || theform.thecode.$error.required || recoverCtrl.status" class="btn btn-primary btn-focus col-xs-4 pull-right" data-ng-click="recoverCtrl.unlock()">{{'recover' | translate}}</button>
+      <button class="btn btn-link btn-focus pull-right" data-ng-click="recoverCtrl.reset()">{{'resetLink' | translate}}</button>
+    </div>
+  </div>
+</form>
+
+<div class="row">
+  <div class="col-xs-12">
+    <span class="text-info fade-show"
+          ng-show="recoverCtrl.status">{{recoverCtrl.status}}</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <span class="text-danger fade-show"
+          ng-show="recoverCtrl.errors">{{recoverCtrl.errors}}</span>
+  </div>
+</div>

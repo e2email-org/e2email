@@ -1,0 +1,77 @@
+<nav class="navbar navbar-default navbar-fixed-top e2email-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <button ng-click="settingsCtrl.showThreads()" class="btn btn-primary btn-focus col-xs-3">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          {{ 'inbox' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="e2email-content-start">
+  <div class="row">
+    <div class="col-xs-12 settings-title"><b>{{'settings' | translate}}</b></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 text-muted settings-title">{{'primaryEmailTitle' | translate}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 selectable">{{settingsCtrl.info.email}}</div>
+  </div>
+
+  <div class="row fade-show" ng-show="settingsCtrl.recoveryCode">
+    <div class="col-xs-12 text-muted settings-title">{{'recoveryCode' | translate}}</div>
+  </div>
+  <div class="row fade-show" ng-show="settingsCtrl.recoveryCode">
+    <div class="col-xs-12">
+      <button class="btn btn-link btn-focus" ng-click="settingsCtrl.showCode=!settingsCtrl.showCode">
+        <span ng-hide="settingsCtrl.showCode">Show Recovery Code</span>
+        <span ng-show="settingsCtrl.showCode">Hide Recovery Code</span>
+      </button>
+    </div>
+    <div ng-show="settingsCtrl.showCode" class="fade-show col-xs-12 selectable settings-fingerprint">{{settingsCtrl.recoveryCode}}</div>
+  </div>
+  <div class="row fade-show" ng-show="settingsCtrl.recoveryCode">
+    <div class="col-xs-12 text-muted settings-help">{{'settingsSecretHelp' | translate}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 text-muted settings-title">{{'idCheck' | translate}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 selectable settings-fingerprint">{{settingsCtrl.info.fingerprintHex}}</div>
+  </div>
+  <div class="row fade-show" ng-show="settingsCtrl.showIDCheckHelp">
+    <img src="/assets/img/idcheck.svg" class="col-xs-12"/>
+  </div>
+  <div class="row fade-show" ng-show="settingsCtrl.showIDCheckHelp">
+    <div class="col-xs-12 text-muted settings-help">{{'fingerprintSettingsHelp' | translate}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-link btn-focus" ng-click="settingsCtrl.toggleIDCheckHelp($event)">
+        <span ng-hide="settingsCtrl.showIDCheckHelp">{{'whatsThis' | translate}}</span>
+        <span ng-show="settingsCtrl.showIDCheckHelp">{{'gotIt' | translate}}</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 text-muted settings-title">{{'appinfoTitle' | translate}}</div>
+  </div>
+  <div class="row selectable text-muted">
+    <div class="col-xs-2">Version</div>
+    <div class="col-xs-10">{{settingsCtrl.appVersion}}</div>
+  </div>
+  <div class="row selectable text-muted">
+    <div class="col-xs-2">Platform</div>
+    <div class="col-xs-10">{{settingsCtrl.appPlatform}}</div>
+  </div>
+
+  <!-- bottom spacer -->
+  <div class="row top-row-buffer"></div>
+
+</div>

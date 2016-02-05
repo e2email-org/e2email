@@ -1,0 +1,51 @@
+.email-detail-entry {
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  margin-bottom: 1em;
+}
+
+.email-detail-from {
+
+}
+
+.email-detail-from .glyphicon {
+  font-size: 10px;
+  padding-left: 0.25em;
+}
+
+.email-detail-reply-form {
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+.email-detail-reply-form button {
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+.email-subject {
+  font-family: Roboto;
+  color: #505050;
+}
+
+.email-mime-entry {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.email-text-content {
+  white-space: pre-line;
+}
+
+.email-image-content {
+  width: 100%;
+}
+
+.email-unsupported-content {
+  border: 1px solid rgba(0,0,0,0.25);
+  white-space: pre-line;
+}
+
+.email-error-content {
+  border: 1px solid rgba(0,0,0,0.25);
+  white-space: pre-line;
+}

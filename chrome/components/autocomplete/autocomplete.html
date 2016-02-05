@@ -1,0 +1,8 @@
+<div class="email-autocomplete-area form-control dropdown"
+     ng-class="{open: suggestions.length > 0}">
+  <input tabindex="1" type="text" class="form-control email-autocomplete-main email-main-recipient-input" placeholder="{{acHint}}" required="required" ng-blur="onBlur()" ng-model="ngModel"/>
+  <input type="text" class="email-autocomplete-typeahead" value="{{primarySuggestion}}" disabled/>
+  <ul class="dropdown-menu" role="menu">
+    <li ng-repeat="suggestion in suggestions" role="presentation"><a role="menuitem" ng-click="clickSelectSuggestion(suggestions[$index])" ng-class="{selected : $index === selectSuggestion}">{{suggestion}}</a></li>
+  </ul>
+</div>

@@ -1,0 +1,15 @@
+<h1 class="wizard-title">{{'welcomeTitle' | translate}}</h1>
+
+<div class="row">
+  <div class="col-xs-12 lead">{{'welcomeHelp' | translate}}</div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <button ng-disabled="welcomeCtrl.inProgress" class="btn btn-primary btn-focus col-xs-4 pull-right" data-ng-click="welcomeCtrl.signIn()">{{'signIn' | translate}}</button>
+  </div>
+</div>
+
+<div class="row top-row-buffer">
+  <div class="col-xs-12 text-info fade-show">{{welcomeCtrl.status}}</div>
+</div>

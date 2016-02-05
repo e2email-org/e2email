@@ -1,0 +1,15 @@
+{
+  "name": "e2email",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/e2email-org/e2email"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.19",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-html2js-preprocessor": "^0.1.0",
+    "karma-jasmine": "^0.3.7",
+    "karma-ng-html2js-preprocessor": "^0.2.0"
+  }
+}

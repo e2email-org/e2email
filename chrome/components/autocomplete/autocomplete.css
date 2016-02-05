@@ -1,0 +1,30 @@
+.email-autocomplete-area {
+  position: relative;
+  border: none;
+}
+
+.email-autocomplete-typeahead,.email-autocomplete-main {
+  background-color: transparent;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  position: absolute;
+  width: 100%;
+}
+
+.email-autocomplete-typeahead {
+  color: #ccc;
+  z-index: 0;
+  padding: inherit;
+  height: inherit;
+  border: 1px solid transparent;
+}
+
+.email-autocomplete-main {
+  z-index: 10;
+}
+
+.selected{
+  background-color: #e0e0e0 !important;
+}

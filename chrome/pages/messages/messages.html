@@ -1,0 +1,60 @@
+<nav class="navbar navbar-default navbar-fixed-top e2email-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <button ng-click="messagesCtrl.showThreads()" class="btn btn-primary btn-focus col-xs-3">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          {{'inbox' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="e2email-content-start">
+  <div class="row">
+    <h4 class="col-xs-12 page-header email-subject selectable">{{messagesCtrl.thread.subject}}</h4>
+  </div>
+  <ul class="list-unstyled">
+    <li class="email-detail-entry selectable" ng-repeat="mail in messagesCtrl.thread.mails|orderBy:'created'">
+      <div class="row email-detail-from">
+        <div class="col-xs-9"><userinfo ui-user="mail.from"/></div>
+        <div class="col-xs-3 text-right text-muted">{{mail.created | relativedate}}</div>
+      </div>
+      <div class="row email-detail-from">
+        <div class="col-xs-12 text-muted">to
+          <userlist ul-members="mail.to"></userlist>
+        </div>
+      </div>
+
+      <div class="row email-mime-entry fade-show col-xs-12 text-danger" ng-show="mail.warning">
+        {{[mail.warning, mail.from] | translate}}
+      </div>
+      <div class="row email-mime-entry col-xs-12 text-danger" ng-show="mail.hasErrors">
+        {{mail.hasErrors}}
+      </div>
+      <div class="row email-mime-entry col-xs-12 text-info" ng-hide="mail.mimeContent">
+      {{mail.status}}
+      </div>
+      <div class="row email-mime-entry" ng-repeat="mime in mail.mimeContent" ng-show="mail.mimeContent">
+        <img class="fade-show email-image-content" ng-src="{{mime.content}}" ng-if="mime.type=='image'">
+        <div class="email-text-content col-xs-12" ng-if="mime.type=='text'">{{mime.content}}
+        </div>
+        <div class="col-xs-12" ng-if="mime.type=='unsupported'">
+          <div class="col-xs-12 email-unsupported-content text-warning">{{mime.content}}</div>
+        </div>
+        <div class="email-error-content text-danger col-xs-12" ng-if="mime.type=='error'">{{mime.content}}</div>
+      </div>
+    </li>
+  </ul>
+
+  <form class="email-detail-reply-form fade-show" ng-show="messagesCtrl.thread.mails[messagesCtrl.thread.mails.length-1].mimeContent && !messagesCtrl.thread.mails[messagesCtrl.thread.mails.length-1].hasErrors" ng-submit="messagesCtrl.onReply()">
+    <textarea ng-show="messagesCtrl.reply.showText" class="form-control fade-show" placeholder="{{'typeReplyPlaceholder' | translate}}" ng-model="messagesCtrl.reply.content" rows="10"></textarea>
+    <div class="row email-detail-reply-form-button-row">
+      <div class="col-xs-12">
+        <button id="replyButton" type="submit" class="col-xs-3 btn btn-primary btn-focus pull-right">{{messagesCtrl.reply.baseTitle | translate}}</button>
+        <button style="margin-top: 1em;" ng-click="messagesCtrl.cancelReply($event)" ng-show="messagesCtrl.reply.showText" class="btn btn-link btn-focus pull-right fade-show">{{'cancel' | translate}}</button>
+      </div>
+    </div>
+  </form>
+</div>
