@@ -74,7 +74,7 @@
     "description": "Title for a screen where the user can recover access to their account."
   },
   "recoverHelp": {
-    "message": "You have previously installed E2EMail. Please enter your recovery code to access your mail.",
+    "message": "You have previously installed E2EMail. Please enter your recovery code to access your encrypted mail.",
     "description": "Help text to help the user understand why they need to recover their account, and what they need to do to recover it."
   },
   "refresh": {
@@ -204,16 +204,12 @@
     "description": "Title for a screen that shows the user's recovery code."
   },
   "showsecretHelpIntro": {
-    "message": "Without this code, any E2EMail messages will be lost forever if you lose this device. So please:",
+    "message": "Without this code, any E2EMail messages will be lost forever if you lose this device.",
     "description": "Introductory message for a screen that shows the user's recovery code."
   },
-  "showsecretHelpStep1": {
-    "message": "Write your code on a piece of paper",
-    "description": "First step in securing recovery code within a screen that shows the user's recovery code."
-  },
-  "showsecretHelpStep2": {
-    "message": "Store it somewhere safe",
-    "description": "Second step in securing recovery code within a screen that shows the user's recovery code."
+  "showsecretHelpSteps": {
+    "message": "Write your code on a piece of paper and store it somewhere safe:",
+    "description": "Steps in securing recovery code within a screen that shows the user's recovery code."
   },
   "settingsSecretHelp": {
     "message": "This is a secret code which can unlock your E2EMail on a different device, or if you lose this device. Without this code, any E2EMail messages will be lost forever, so please write this code on paper and store it securely.",
@@ -222,6 +218,10 @@
   "continue": {
     "message": "Continue",
     "description": "Verb to use on a button to indicate the next thing."
+  },
+  "completeSetup": {
+    "message": "Complete Setup",
+    "description": "Verb to use on a button to complete the Setup of the account."
   },
   "generateCodeStatus": {
     "message": "Generating code...",
