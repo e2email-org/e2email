@@ -20,7 +20,7 @@ cd ${0%/*}
 readonly PYTHON_CMD="${PYTHON_CMD:-python}"
 readonly JAVA_CMD="${JAVA_CMD:-java}"
 readonly NPM_CMD="${NPM_CMD:-npm}"
-readonly NODEJS_CMD="${NODEJS_CMD:-nodejs}"
+readonly NODEJS_CMD="${NODEJS_CMD:-node}"
 readonly LINT_CMD="${LINT_CMD:-gjslint}"
 readonly JSCOMPILE="${JAVA_CMD} -jar chrome-lib/end-to-end/lib/closure-compiler/build/compiler.jar --flagfile=chrome/compiler.flags"
 readonly BUILD="build"
@@ -157,7 +157,7 @@ e2email_prepare_karma() {
   e2email_check
   e2email_assert_node_modules
   echo Building debug version of app...
-  e2email_build "debug"
+  e2email_build
 }
 
 e2email_karma() {
