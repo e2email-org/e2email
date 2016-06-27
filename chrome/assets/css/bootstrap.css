@@ -309,7 +309,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #EEEEEE;
 }
 
 input,
@@ -808,6 +808,7 @@ pre code {
 }
 
 .row {
+  text-align: center;
   margin-right: -15px;
   margin-left: -15px;
 }
@@ -2237,6 +2238,7 @@ textarea.input-lg {
 .btn {
   display: inline-block;
   padding: 6px 12px;
+  margin: auto;
   margin-bottom: 0;
   font-size: 14px;
   font-weight: normal;
@@ -2328,6 +2330,8 @@ fieldset[disabled] .btn-default.active {
 }
 
 .btn-primary {
+  font-size: 20px;
+  padding-left: 12px 45px 12px 45px;
   color: #ffffff;
   background-color: #428bca;
   border-color: #357ebd;
