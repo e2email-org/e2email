@@ -1,0 +1,18 @@
+div.mainIcon {
+  margin: auto;
+  padding-top: 100px;
+  padding-bottom: 70px;
+  height: 50px;
+}
+
+div.context {
+	height: 550px;
+}
+
+h1.maintext {
+	color: white;
+}
+
+div.intro-text {
+	color: #F79D81;
+}
