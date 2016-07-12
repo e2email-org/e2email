@@ -39,6 +39,8 @@ goog.require('e2email.pages.messages.MessagesCtrl');
 goog.require('e2email.pages.recover.RecoverCtrl');
 goog.require('e2email.pages.reset.ResetCtrl');
 goog.require('e2email.pages.settings.SettingsCtrl');
+goog.require('e2email.pages.introduction.IntroductionCtrl');
+goog.require('e2email.pages.getstarted.GetStartedCtrl');
 goog.require('e2email.pages.setup.SetupCtrl');
 goog.require('e2email.pages.showsecret.ShowSecretCtrl');
 goog.require('e2email.pages.threads.ThreadsCtrl');
@@ -88,6 +90,16 @@ e2email.application.routeProvider = function($routeProvider) {
         templateUrl: 'pages/showsecret/showsecret.html',
         controller: 'ShowSecretCtrl',
         controllerAs: 'showSecretCtrl'
+      }).when(e2email.constants.Location.INTRODUCTION, {
+        pageTitle: 'E2EMail - Introduction',
+        templateUrl: 'pages/introduction/introduction.html',
+        controller: 'IntroductionCtrl',
+        controllerAs: 'introductionCtrl'
+      }).when(e2email.constants.Location.GETSTARTED, {
+        pageTitle: 'E2EMail - Get Started',
+        templateUrl: 'pages/getstarted/getstarted.html',
+        controller: 'GetStartedCtrl',
+        controllerAs: 'getStartedCtrl'
       }).when(e2email.constants.Location.THREADS, {
         pageTitle: 'E2EMail',
         templateUrl: 'pages/threads/threads.html',
@@ -151,6 +163,10 @@ e2email.application.module.controller(
     'ThreadsCtrl', e2email.pages.threads.ThreadsCtrl);
 e2email.application.module.controller(
     'WelcomeCtrl', e2email.pages.welcome.WelcomeCtrl);
+e2email.application.module.controller(
+    'IntroductionCtrl', e2email.pages.introduction.IntroductionCtrl);
+e2email.application.module.controller(
+    'GetStartedCtrl', e2email.pages.getstarted.GetStartedCtrl);
 
 // Change page title based on route
 // TODO(kbsriram) use translationService

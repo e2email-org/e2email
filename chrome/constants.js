@@ -33,5 +33,7 @@ e2email.constants.Location = {
   SETUP: '/setup',
   SHOWSECRET: '/showsecret',
   THREADS: '/threads',
-  WELCOME: '/welcome'
+  WELCOME: '/welcome',
+  INTRODUCTION: '/introduction',
+  GETSTARTED: '/getstarted'
 };

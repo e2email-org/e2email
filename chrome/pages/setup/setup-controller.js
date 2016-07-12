@@ -211,7 +211,7 @@ SetupCtrl.prototype.checkAuthorized_ = function(state) {
           this.email = this.gmailService_.mailbox.email;
         } else {
           // Not authorized, so redirects the user to the welcome view.
-          state.location = e2email.constants.Location.WELCOME;
+          state.location = e2email.constants.Location.INTRODUCTION;
         }
         return state;
       }, this));
