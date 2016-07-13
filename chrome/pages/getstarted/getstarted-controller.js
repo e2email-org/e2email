@@ -22,12 +22,15 @@ goog.provide('e2email.pages.getstarted.GetStartedCtrl');
 goog.scope(function() {
 
 /**
+ * Getstarted page controller
+ * Redirects the user to the Sign in page after describing the app.
  * @param {!angular.$location} $location the angular $location service.
  * @param {!e2email.components.translate.TranslateService} translateService
  * @constructor
  * @ngInject
  * @export
  */
+
 e2email.pages.getstarted.GetStartedCtrl = function(
     $location, translateService) {
   /**

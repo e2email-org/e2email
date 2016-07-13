@@ -22,6 +22,9 @@ goog.provide('e2email.pages.introduction.IntroductionCtrl');
 goog.scope(function() {
 
 /**
+ *Introduction Controller
+ * Is shown when the user does not have permissions and/or is not logged in.
+ * The "proceed" button leads the user to the next introductiory page "Get Started"
  * @param {!angular.$location} $location the angular $location service.
  * @param {!e2email.components.translate.TranslateService} translateService
  * @constructor

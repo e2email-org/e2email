@@ -93,7 +93,7 @@ describe('SetupCtrl', function() {
     };
   }));
 
-  it('should send to welcome when unauthorized', function() {
+  it('should send to introduction when unauthorized', function() {
     gmailAuthorized = false;
     setupController = controller(
         'SetupCtrl as setupCtrl', {
@@ -109,7 +109,7 @@ describe('SetupCtrl', function() {
     // Resolve promises.
     scope.$digest();
     // Verify we landed at the right end-point.
-    expect(location.path()).toBe('/welcome');
+    expect(location.path()).toBe('/introduction');
   });
 
   it('should redirect to recover when user only has a public key', function() {
