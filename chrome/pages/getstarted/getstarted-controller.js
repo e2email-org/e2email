@@ -44,6 +44,8 @@ e2email.pages.getstarted.GetStartedCtrl = function(
 };
 
 var GetStartedCtrl = e2email.pages.getstarted.GetStartedCtrl;
+
+
 /**
  * Redirects to the welcome view.
  * @export

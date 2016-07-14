@@ -142,3 +142,15 @@ h1.wizard-title {
 .btn-blank:hover {
   color: #428bca;
 }
+
+.btn {
+  padding: 8px 16px;
+  font-size: 18px;
+}
+
+.btn-primary {
+  width: 240px;
+  height: 60px;
+  font-size: 18px;
+  padding: 10px 30px;
+}
