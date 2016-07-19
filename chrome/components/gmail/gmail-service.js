@@ -1703,13 +1703,13 @@ GmailService.prototype.mimeSanitize_ = function(input) {
 /**
  * Get the email address of the user, and returns a
  * true (in the promise) if the user has a registered email address.
- * 
  * @return {!angular.$q.Promise<boolean>} A promise returning true if
  *     the user has an email adress registered.
  */
-GmailService.prototype.getEmailAddress_= function() {
+GmailService.prototype.getEmailAddress_ = function() {
   return this.getEmailInfo_();
 };
+
 
 /**
  * Fetch a logged-in user's email address, if available.
@@ -1722,7 +1722,7 @@ GmailService.prototype.getEmailInfo_ = function() {
 
   this.chrome_.identity.getProfileUserInfo(function(info) {
     if (goog.isDefAndNotNull(info) &&
-        goog.isDefAndNotNull(info['email']) && 
+        goog.isDefAndNotNull(info['email']) &&
         info['email'] !== '') {
       deferred.resolve(info['email']);
     } else {
