@@ -26,17 +26,23 @@ goog.scope(function() {
  * Redirects the user to the Sign in page after describing the app.
  * @param {!angular.$location} $location the angular $location service.
  * @param {!e2email.components.translate.TranslateService} translateService
+ * @param {!e2email.components.gmail.GmailService} gmailService
+ *     the gmail service.
  * @constructor
  * @ngInject
  * @export
  */
 
 e2email.pages.getstarted.GetStartedCtrl = function(
-    $location, translateService) {
+    $location, translateService, gmailService) {
   /**
    * @private {!angular.$location}
    */
   this.location_ = $location;
+  /**
+   * @private {!e2email.components.gmail.GmailService}
+   */
+  this.gmailService_ = gmailService;
   /**
    * @private {!e2email.components.translate.TranslateService}
    */
@@ -45,13 +51,18 @@ e2email.pages.getstarted.GetStartedCtrl = function(
 
 var GetStartedCtrl = e2email.pages.getstarted.GetStartedCtrl;
 
-
 /**
  * Redirects to the welcome view.
  * @export
  */
-GetStartedCtrl.prototype.proceed = function() {
+GetStartedCtrl.prototype.getEmailAddress_=function() {
+  this.gmailService_.getEmailAddress_().then(goog.bind(function(email) {
+    if(email==null) {
   this.location_.path(e2email.constants.Location.WELCOME);
+} else {
+  this.location_.path(e2email.constants.Location.AUTHORIZATION);
+}
+}, this));
 };
 
 });  // goog.scope

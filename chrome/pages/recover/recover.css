@@ -1,0 +1,35 @@
+div.resetbtn{
+  float: left;
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+div.recover-box {
+  height: 120px;
+  width: 400px;
+  padding: 10px;
+  border: 2px solid #ECC67B;
+  background-color: #F9EDBE; 
+  margin: auto;
+}
+
+div.recover-help {
+  margin-bottom: 39px;
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+input.input-box {
+  font-family: monospace;
+  border-radius: 0px;
+  border: none;
+  height: 50px;
+  width: 70px;
+  float: left;
+  margin-right: 5px;
+}
+div.info-format {
+  margin-bottom: 12px;
+  color: #313339;
+  font-weight: bold;
+}

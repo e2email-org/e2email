@@ -34,7 +34,7 @@
         {{mail.hasErrors}}
       </div>
       <div class="row email-mime-entry col-xs-12 text-info" ng-hide="mail.mimeContent">
-      {{mail.status}}
+        {{mail.status}}
       </div>
       <div class="row email-mime-entry" ng-repeat="mime in mail.mimeContent" ng-show="mail.mimeContent">
         <img class="fade-show email-image-content" ng-src="{{mime.content}}" ng-if="mime.type=='image'">

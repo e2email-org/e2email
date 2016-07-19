@@ -1,0 +1,25 @@
+div.welcomeIcon {
+  margin: auto;
+  padding-top: 60px;
+  padding-bottom: 50px;
+  height: 50px;
+}
+
+h1.welcome-title {
+  padding-top: 22% !important;
+  font-weight: bold;
+}
+
+div.welcome-format {
+  text-align: left;
+  line-height: 1.0 !important;
+  padding-left: 40px;
+  padding-right: 40px;
+  color: #5D5E5E !important;
+  font-size: 18px !important;
+}
+
+main-title {
+  padding-top: 25% !important;
+  color: black;
+}

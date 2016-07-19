@@ -15,6 +15,42 @@
     "message": "Sign in",
     "description": "Title for a screen that's shown to a not logged in user of E2EMail."
   },
+  "placeHolderLatin": {
+    "message": "This allows E2Email to lorem ipsum lorem ipsum lorem ipsum",
+    "description": "to be changed once we get the text."
+  },
+  "signInAndPermissions": {
+    "message": "Sign in & permissions",
+    "description": "Title for a screen that's shown to a not logged in user of E2EMail."
+  },
+  "permissions": {
+    "message": "Gmail permissions",
+    "description": "Title for a screen that's shown to a logged in user of E2EMail who has not authorized the app."
+  },
+  "accessEmail": {
+    "message": "1. Access your email",
+    "description": "Title for a screen that's shown to a not logged in user of E2EMail."
+  },
+  "deleteEmail": {
+    "message": "2. Delete email in your Gmail inbox",
+    "description": "Title for giving access to delete mail in your Gmail inbox permission."
+  },
+  "logInEmailAccess": {
+    "message": "2. Give E2Email access to your email",
+    "description": "Title for a giving access to Gmail permission."
+  },
+  "logInDeleteAccess": {
+    "message": "3. Give E2Email access to delete mail your Gmail inbox",
+    "description": "Title for giving access to delete mail in your Gmail inbox permission."
+  },
+  "signInChrome": {
+    "message": "1. Sign in to Chrome",
+    "description": "Title for a screen that's shown to a not logged in user of E2EMail."
+  },
+  "openGmailSettings": {
+    "message": "Open Gmail Settings",
+    "description": "Title for a button that's shown to a not authorized user of E2EMail."
+  },
   "appinfoTitle": {
     "message": "About E2EMail",
     "description": "Title for information about the app itself."
@@ -36,7 +72,11 @@
     "description": "Status message while an unencrypted mail is being sent to a friend to invite them to install E2EMail."
   },
   "welcomeHelp": {
-    "message": "In order to encrypt messages using Gmail, E2Email needs you to sign in to Chrome.",
+    "message": "In order to encrypt messages using Gmail, E2Email needs you to:",
+    "description": "Informational text for a user giving them a reason to use E2EMail."
+  },
+  "authorizationHelp": {
+    "message": "In order to encrypt messages using Gmail, E2Email needs permissions to:",
     "description": "Informational text for a user giving them a reason to use E2EMail."
   },
   "signIn": {
@@ -76,6 +116,10 @@
   "recoverScreenTitle": {
     "message": "Recover Access",
     "description": "Title for a screen where the user can recover access to their account."
+  },
+  "recoveryCodeInput": {
+    "message": "Recovery code:",
+    "description": "Title for the instruction prior to the recovery code input box."
   },
   "recoverHelp": {
     "message": "You have previously installed E2EMail. Please enter your recovery code to access your encrypted mail.",
@@ -232,7 +276,7 @@
     "description": "Verb to use on a button to indicate the start setting up a new account."
   },
   "endtoendProtection": {
-    "message": "End to end protection",
+    "message": "End-to-end protection",
     "description": "Describes the type of protection for the email service."
   },
    "recipientInfo": {
