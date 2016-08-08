@@ -121,12 +121,12 @@ RecoverCtrl.prototype.unlock = function() {
   this.status = this.translateService_.getMessage('checkingCodeStatus');
   this.errors = null;
   // Removes all spaces
-  var code = this.recoveryCode1.replace(/\s+/g, '') +
+  this.recoveryCode = this.recoveryCode1.replace(/\s+/g, '') +
       this.recoveryCode2.replace(/\s+/g, '') +
       this.recoveryCode3.replace(/\s+/g, '') +
       this.recoveryCode4.replace(/\s+/g, '') +
       this.recoveryCode5.replace(/\s+/g, '');
-
+  var code = this.recoveryCode;
   this.authService_.getIdentityToken().then(goog.bind(function(idtoken) {
     return this.openpgpService_.restoreFromSecretBackupCode(
         code, this.gmailService_.mailbox.email, idtoken, this);

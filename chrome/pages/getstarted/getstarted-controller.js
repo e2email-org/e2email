@@ -56,7 +56,7 @@ var GetStartedCtrl = e2email.pages.getstarted.GetStartedCtrl;
  * Redirects to the welcome view.
  * @export
  */
-GetStartedCtrl.prototype.getEmailAddress_ = function() {
+GetStartedCtrl.prototype.getEmailAddress = function() {
   this.gmailService_.getEmailAddress_().then(goog.bind(function(email) {
     if (email == null) {
       this.location_.path(e2email.constants.Location.WELCOME);
