@@ -26,6 +26,8 @@ describe('RecoverCtrl', function() {
       mockAuthService, mockAuthService;
   var TEST_TOKEN = 'idtoken';
   var TEST_CODE = 'test-code';
+  var TEST_CODE_COMPLETE = TEST_CODE + TEST_CODE + 
+  TEST_CODE + TEST_CODE + TEST_CODE;
   var TEST_EMAIL = 'mail@example.com';
   var TEST_KEY = 'test-key';
 
@@ -45,7 +47,7 @@ describe('RecoverCtrl', function() {
     };
     mockOpenpgpService = {
       restoreFromSecretBackupCode: function(code, email, idtoken) {
-        if ((code === TEST_CODE) && (email === TEST_EMAIL) &&
+        if ((code === TEST_CODE_COMPLETE) && (email === TEST_EMAIL) &&
             (idtoken === TEST_TOKEN)) {
           return q.when(TEST_KEY);
         } else {
@@ -81,7 +83,11 @@ describe('RecoverCtrl', function() {
           openpgpService: mockOpenpgpService,
           authService: mockAuthService
         });
-    recoverController.recoveryCode = TEST_CODE;
+    recoverController.recoveryCode1 = TEST_CODE;
+    recoverController.recoveryCode2 = TEST_CODE;
+    recoverController.recoveryCode3 = TEST_CODE;
+    recoverController.recoveryCode4 = TEST_CODE;
+    recoverController.recoveryCode5 = TEST_CODE;
     // Unlock using code.
     recoverController.unlock();
     scope.$digest();
