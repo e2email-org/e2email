@@ -26,8 +26,8 @@ describe('RecoverCtrl', function() {
       mockAuthService, mockAuthService;
   var TEST_TOKEN = 'idtoken';
   var TEST_CODE = 'test-code';
-  var TEST_CODE_COMPLETE = TEST_CODE + TEST_CODE + 
-  TEST_CODE + TEST_CODE + TEST_CODE;
+  var TEST_CODE_COMPLETE = TEST_CODE + TEST_CODE +
+      TEST_CODE + TEST_CODE + TEST_CODE;
   var TEST_EMAIL = 'mail@example.com';
   var TEST_KEY = 'test-key';
 
