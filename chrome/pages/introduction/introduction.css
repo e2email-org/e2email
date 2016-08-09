@@ -6,13 +6,16 @@ div.mainIcon {
 }
 
 div.context {
-	height: 550px;
+  height: 550px;
 }
 
 h1.maintext {
-	color: white;
+  color: white;
+  font-weight: bold;
+  padding-top: 55% !important;
 }
 
 div.intro-text {
-	color: #F79D81;
+  color: #F79D81;
+  font-size: 18px;
 }

@@ -1704,14 +1704,14 @@ GmailService.prototype.mimeSanitize_ = function(input) {
  * Fetch a logged-in user's email address, if available.
  * @return {!angular.$q.Promise<string>} A promise with the
  *     email address, or null if it wasn't found.
- * @private
- */
-GmailService.prototype.getEmailInfo_ = function() {
+  */
+GmailService.prototype.getEmailAddress = function() {
   var deferred = this.q_.defer();
 
   this.chrome_.identity.getProfileUserInfo(function(info) {
     if (goog.isDefAndNotNull(info) &&
-        goog.isDefAndNotNull(info['email'])) {
+        goog.isDefAndNotNull(info['email']) &&
+        info['email'] !== '') {
       deferred.resolve(info['email']);
     } else {
       deferred.resolve(null);
@@ -1767,7 +1767,7 @@ GmailService.prototype.getAllAuthorizations_ = function(interactive) {
           access_token = token;
           // We have a token for the main scope; now chain a promise that
           // gets the user's email.
-          return this.getEmailInfo_();
+          return this.getEmailAddress();
         } else {
           // access token not available, continue to pass on a null.
           return null;

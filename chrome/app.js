@@ -35,6 +35,7 @@ goog.require('e2email.components.translatefilter.module');
 goog.require('e2email.components.userinfo.module');
 goog.require('e2email.components.userlist.module');
 goog.require('e2email.constants.Location');
+goog.require('e2email.pages.authorization.AuthorizationCtrl');
 goog.require('e2email.pages.getstarted.GetStartedCtrl');
 goog.require('e2email.pages.introduction.IntroductionCtrl');
 goog.require('e2email.pages.messages.MessagesCtrl');
@@ -75,6 +76,11 @@ e2email.application.routeProvider = function($routeProvider) {
         templateUrl: 'pages/welcome/welcome.html',
         controller: 'WelcomeCtrl',
         controllerAs: 'welcomeCtrl'
+      }).when(e2email.constants.Location.AUTHORIZATION, {
+        pageTitle: 'E2EMail - Authorization',
+        templateUrl: 'pages/authorization/authorization.html',
+        controller: 'AuthorizationCtrl',
+        controllerAs: 'authorizationCtrl'
       }).when(e2email.constants.Location.RESET, {
         pageTitle: 'E2EMail - Reset',
         templateUrl: 'pages/reset/reset.html',
@@ -163,6 +169,8 @@ e2email.application.module.controller(
     'ThreadsCtrl', e2email.pages.threads.ThreadsCtrl);
 e2email.application.module.controller(
     'WelcomeCtrl', e2email.pages.welcome.WelcomeCtrl);
+e2email.application.module.controller(
+    'AuthorizationCtrl', e2email.pages.authorization.AuthorizationCtrl);
 e2email.application.module.controller(
     'IntroductionCtrl', e2email.pages.introduction.IntroductionCtrl);
 e2email.application.module.controller(
