@@ -1639,7 +1639,7 @@ GmailService.prototype.sendRFC2822Message_ = function(threadId, content) {
  * @param {string} content The email content.
  * @param {?string} subject The email subject.
  * @param {Array<string>} recipients An array of email addresses.
- * @param {Array<Object>=} opt_attachments attachment files
+ * @param {Array<Object>=} opt_attachments Attachment files.
  * @return {string} The wrapped content suitable for POSTing to the API.
  * @private
  */

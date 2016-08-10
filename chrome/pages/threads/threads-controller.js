@@ -457,6 +457,9 @@ ThreadsCtrl.prototype.isInviteInProgress = function() {
 
 
 /**
+ * Get the file details and push it as an object,
+ * in the attachments array, everytime a new file is
+ * uploaded.
  * @param {string} name of the file
  * @param {string} type of the file
  * @param {string} contents of the file in a string format
@@ -480,6 +483,8 @@ ThreadsCtrl.prototype.onFileUpload = function(name, type, contents, size) {
  * @export
  */
 ThreadsCtrl.prototype.sendCompose = function() {
+  //TODO (Kamila): Remove the example object once the file reader directive
+  //is uploaded.
   // Example to show the working files encryption
   var obj = {
     'filename': 'filename',
