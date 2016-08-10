@@ -25,6 +25,8 @@ describe('ThreadsCtrl', function() {
   var mockTranslateService, mockOpenpgpService, mockGmailService;
   var mockWindowService;
   var TEST_EMAIL = 'mail@example.com';
+  var TEST_ATTACHMENTS = [{'filename': 'dull', 'type': 'dull',
+    'encoding': 'base64', 'content': 'dull', 'size': 42}];
   var TEST_SUBJECT = 'test subject';
   var TEST_CONTENT = 'test content';
   var TEST_KEY = { key: 'test-key'};
@@ -171,6 +173,7 @@ describe('ThreadsCtrl', function() {
     threadsController.compose['recipient'] = TEST_EMAIL;
     threadsController.compose['subject'] = TEST_SUBJECT;
     threadsController.compose['message'] = TEST_CONTENT;
+    threadsController.compose['attachments'] = TEST_ATTACHMENTS;
 
     threadsController.sendCompose();
     // Resolve promises.

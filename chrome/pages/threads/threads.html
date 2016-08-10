@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top e2email-header">
   <div class="container">
-    <button ng-click="threadsCtrl.showCompose(true)" ng-hide="threadsCtrl.compose.show" class="col-xs-4 btn btn-primary btn-focus fade-show">{{'compose'| translate}}</button>
+    <button ng-click="threadsCtrl.showCompose(true)" ng-hide="threadsCtrl.compose.show" class="col-xs-4 btn btn-primary btn-focus fade-show composebtn">{{'compose'| translate}}</button>
 
     <div class="dropdown pull-right" ng-class="{open: threadsCtrl.showDropdown}" outerclick="threadsCtrl.showDropdown=false">
       <button tabindex="-1" ng-click="threadsCtrl.showDropdown=!threadsCtrl.showDropdown" class="btn btn-blank btn-focus dropdown-toggle" aria-label="{{'more' | translate}}" aria-haspopup="true" style="font-size: 2.2em; line-height: 1em; font-weight: bold; padding: 0px">&#8942;</button>
@@ -14,33 +14,32 @@
     <div class="header-icon-container btn-focus pull-right col-xs-2" title="{{'refresh' | translate}}" ng-click="threadsCtrl.refresh()">
       <div>
         <svg
-           ng-class="{spinning: threadsCtrl.inRefresh, 'header-icon clickable': !threadsCtrl.inRefresh}"
-           xmlns:dc="http://purl.org/dc/elements/1.1/"
-           xmlns:svg="http://www.w3.org/2000/svg"
-           width="24"
-           height="24"
-           viewBox="1 1 22 22"
-           style="margin-top: 6px">
-          <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
-        </svg>
-      </div>
-    </div>
-
-    <div class="header-icon-container btn-focus pull-right col-xs-2 fade-show" title="{{'trashHelp' | translate}}" ng-show="threadsCtrl.showTrash" ng-click="threadsCtrl.trashMarkedThreads()">
-      <svg class="header-icon"
-           xmlns:dc="http://purl.org/dc/elements/1.1/"
-           xmlns:svg="http://www.w3.org/2000/svg"
-           xmlns="http://www.w3.org/2000/svg"
-           width="24"
-           height="24"
-           viewBox="1 1 22 22"
-           style="margin-top: 6px">
-        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+        ng-class="{spinning: threadsCtrl.inRefresh, 'header-icon clickable': !threadsCtrl.inRefresh}"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="1 1 22 22"
+        style="margin-top: 6px">
+        <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
       </svg>
     </div>
-
-
   </div>
+
+  <div class="header-icon-container btn-focus pull-right col-xs-2 fade-show" title="{{'trashHelp' | translate}}" ng-show="threadsCtrl.showTrash" ng-click="threadsCtrl.trashMarkedThreads()">
+    <svg class="header-icon"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="1 1 22 22"
+    style="margin-top: 6px">
+    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+  </svg>
+</div>
+
+</div>
 </nav>
 
 <div class="e2email-content-start">
@@ -57,47 +56,54 @@
     </div>
 
     <input tabindex="2" type="text" class="form-control ac-tabbable email-main-subject-input" placeholder="Subject" required="required" ng-hide="threadsCtrl.compose.missingRecipient" ng-model="threadsCtrl.compose.subject" ng-keypress="threadsCtrl.onSubjectKeyPress($event)"/>
-    <textarea tabindex="3" class="form-control email-main-compose-textarea" placeholder="{{threadsCtrl.compose.validRecipient ? 'typeMessagePlaceholder' : 'invalidRecipientPlaceholder' | translate}}" rows="10" ng-disabled="!threadsCtrl.compose.validRecipient" ng-model="threadsCtrl.compose.message" ng-hide="threadsCtrl.compose.missingRecipient" required="required"></textarea>
-    <div class="row email-main-compose-form-button-row" ng-hide="threadsCtrl.compose.missingRecipient">
-      <div class="col-xs-12">
-        <button tabindex="4" type="submit" class="col-xs-3 btn btn-primary btn-focus pull-right">{{'send' | translate}}</button>
-        <button tabindex="5" ng-click="threadsCtrl.showCompose(false)" class="btn btn-link btn-focus pull-right">{{'cancel' | translate}}</button>
+    <div id="textareaSpace">
+      <textarea id="textareaElement" class="form-control email-main-compose-textarea" placeholder="{{threadsCtrl.compose.validRecipient ? 'typeMessagePlaceholder' : 'invalidRecipientPlaceholder' | translate}}" rows="10" ng-disabled="!threadsCtrl.compose.validRecipient" ng-model="threadsCtrl.compose.message" ng-hide="threadsCtrl.compose.missingRecipient" required="required">
+      </textarea>
+      <div id="attachmentRepeat">
+        <div ng-repeat="x in threadsCtrl.compose.attachments" class="single-attachment">{{x.filename + ' (' + x.size + 'K)'}}</div>
+         </div>
       </div>
+  <div class="row email-main-compose-form-button-row" ng-hide="threadsCtrl.compose.missingRecipient">
+    <div class="col-xs-12">
+      <button tabindex="4" type="submit" class="col-xs-3 btn btn-primary btn-focus sidebtn">{{'send' | translate}}</button>
+      <button tabindex="5" ng-click="threadsCtrl.showCompose(false)" class="btn btn-link btn-focus sidebtn">{{'cancel' | translate}}</button>
+      <img src="assets/img/attach2.png" class="attach-img" as-upload="threadsCtrl.onFileUpload(name, type, contents, size)"/>
     </div>
-  </form>
+  </div>
+</form>
 
-  <ul class="list-unstyled">
-    <li class="email-subject-entry btn-focus" ng-repeat="thread in threadsCtrl.threads|orderBy:'-updated'"  ng-click="threadsCtrl.showMessages(thread.id)">
-      <div class="row">
-        <label class="thread-select-label col-xs-1" ng-click="threadsCtrl.toggleMarkedThread($event, thread)"><input aria-label="{{'selectThreadTitle' | translate}}" type="checkbox" ng-model="thread.isMarked"/></label>
-        <div class="col-xs-11">
-          <div class="row">
-            <div class="col-xs-9 email-subject-from text-muted">
-              <userlist ul-members="thread.participants"></userlist>
-              <span ng-bind="thread.mails.length > 1 ? '(' + thread.mails.length + ')' : ''"></span>
-            </div>
-            <div class="col-xs-3 text-right email-subject-date text-muted">{{thread.updated | relativedate}}</div>
+<ul class="list-unstyled">
+  <li class="email-subject-entry btn-focus" ng-repeat="thread in threadsCtrl.threads|orderBy:'-updated'"  ng-click="threadsCtrl.showMessages(thread.id)">
+    <div class="row">
+      <label class="thread-select-label col-xs-1" ng-click="threadsCtrl.toggleMarkedThread($event, thread)"><input aria-label="{{'selectThreadTitle' | translate}}" type="checkbox" ng-model="thread.isMarked"/></label>
+      <div class="col-xs-11">
+        <div class="row">
+          <div class="col-xs-9 email-subject-from text-muted">
+            <userlist ul-members="thread.participants"></userlist>
+            <span ng-bind="thread.mails.length > 1 ? '(' + thread.mails.length + ')' : ''"></span>
           </div>
-          <div class="row">
-            <div class="col-xs-11 email-subject-title" ng-class="{bold: thread.unread}">{{thread.subject}}</div>
-          </div class="row">
-          <div class="row">
-            <div class="col-xs-11 email-subject-tease text-muted"><span class="glyphicon glyphicon-lock" ng-show="thread.snippet==='...'"></span>{{thread.snippet}}</div>
-          </div>
+          <div class="col-xs-3 text-right email-subject-date text-muted">{{thread.updated | relativedate}}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-11 email-subject-title" ng-class="{bold: thread.unread}">{{thread.subject}}</div>
+        </div class="row">
+        <div class="row">
+          <div class="col-xs-11 email-subject-tease text-muted"><span class="glyphicon glyphicon-lock" ng-show="thread.snippet==='...'"></span>{{thread.snippet}}</div>
         </div>
       </div>
-      <hr class="email-hr"/>
-    </li>
-  </ul>
-
-  <div class="row">
-    <div class="col-xs-12" style="padding-top: 1em">
-      <span class="text-info">{{threadsCtrl.status}}</span>
     </div>
-  </div>
+    <hr class="email-hr"/>
+  </li>
+</ul>
 
-  <div class="fade-show email-no-threads text-muted" ng-show="!threadsCtrl.threads.length && !threadsCtrl.status">
-    {{'noThreadsMessage' | translate}}
+<div class="row">
+  <div class="col-xs-12" style="padding-top: 1em">
+    <span class="text-info">{{threadsCtrl.status}}</span>
   </div>
+</div>
+
+<div class="fade-show email-no-threads text-muted" ng-show="!threadsCtrl.threads.length && !threadsCtrl.status">
+  {{'noThreadsMessage' | translate}}
+</div>
 
 </div>

@@ -572,11 +572,12 @@ GmailService.prototype.sendInvite = function(recipients) {
  *     another message.
  * @param {string} subject The subject for the email.
  * @param {string} content The content for the email.
+ * @param {Array.<Object>=} opt_attachments
  * @return {!angular.$q.Promise} A promise that returns when the email
  *     is sent.
  */
 GmailService.prototype.encryptAndSendMail = function(
-    recipients, threadId, messageId, subject, content) {
+    recipients, threadId, messageId, subject, content, opt_attachments) {
   var keys = [];
   var privateKey = null;
   // Always include myself as one of the recipients, and remove
@@ -585,7 +586,8 @@ GmailService.prototype.encryptAndSendMail = function(
   goog.array.removeDuplicates(recipients);
 
   // TODO add support for content other than plaintext
-  var mimeWrappedContent = this.plaintextWrap_(content, subject, recipients);
+  var mimeWrappedContent = this.plaintextWrap_(content, subject, recipients,
+      opt_attachments);
   return this.withMyKey_()
       .then(goog.bind(function(myKey) {
         // Save my private key, and continue to get public keys for
@@ -1637,10 +1639,12 @@ GmailService.prototype.sendRFC2822Message_ = function(threadId, content) {
  * @param {string} content The email content.
  * @param {?string} subject The email subject.
  * @param {Array<string>} recipients An array of email addresses.
+ * @param {Array<Object>=} opt_attachments
  * @return {string} The wrapped content suitable for POSTing to the API.
  * @private
  */
-GmailService.prototype.plaintextWrap_ = function(content, subject, recipients) {
+GmailService.prototype.plaintextWrap_ = function(content, subject, recipients,
+    opt_attachments) {
   var finalSubject = null;
   var finalRecipients = null;
   var finalFrom = null;
@@ -1657,7 +1661,7 @@ GmailService.prototype.plaintextWrap_ = function(content, subject, recipients) {
   var mimeMsg = new e2e.openpgp.pgpmime.PgpMail(
       /**@type{e2e.openpgp.pgpmime.types.ContentAndHeaders}*/(
           {body: content, subject: finalSubject, to: finalRecipients,
-            from: finalFrom}));
+            from: finalFrom, attachments: opt_attachments}));
   return mimeMsg.buildMimeTree();
 };
 
@@ -1910,7 +1914,6 @@ GmailService.prototype.mimeTreeWalker_ = function(rootNode) {
   // Case 4: Unidentifiable / unsupported MIME content.
   // TODO present attachments as files.
   // Currently we are simply displaying an "unsupported" notification.
-
   var attachmentInfo = '(' + ct + ')';
   var unsupportedMsg = this.translateService_.getMessage(
       MIME_NOT_SUPPORTED_, attachmentInfo);
