@@ -486,7 +486,7 @@ ThreadsCtrl.prototype.sendCompose = function() {
     'type': '',
     'encoding': 'base64',
     'content': 'contents of the file',
-    'size': 42
+    'size': 41
   };
   this.compose.attachments.push(obj);
   //end of example
