@@ -1,19 +1,19 @@
-<div class="reset-icon">
-  <img src="/assets/img/logo_password_catcher_color_2x_web_96dp.png" style="width:45%"/>
+<div class="big-icon">
+  <img src="/assets/img/logo_password_catcher_color_2x_web_96dp.png" />
 </div>
-<h1 class="wizard-title" style="font-weight:bold">{{'resetTitle' | translate}}</h1>
+<h1 class="wizard-title text-center"><b>{{'resetTitle' | translate}}</b></h1>
 
 <div class="row">
-
-  <div class="col-xs-12 lead">{{'resetHelp' | translate}}</div>
-  <div class="col-xs-12 lead text-danger">{{'resetWarning' | translate}}</div>
+  <div class="col-xs-12 lead text-center">{{'resetHelp' | translate}}</div>
+  <div class="col-xs-12 lead text-danger text-center">{{'resetWarning' | translate}}</div>
 </div>
-
-<div class="row">
-  <div class="col-xs-12">
+<div class="reset-row row">
+  <div class="col-xs-6">
     <button class="btn btn-primary btn-focus reset-btn" ng-disabled="resetCtrl.inProgress" data-ng-click="resetCtrl.cancel()">{{'cancel' | translate}}</button>
-    <div classes="explain">
+  </div>
+  <div class="col-xs-6">
       <button class="btn btn-link btn-focus" ng-disabled="resetCtrl.inProgress" data-ng-click="resetCtrl.goAhead()"><span class="text-danger">{{'resetAnywayLink' | translate}}</span></button>
   </div>
+</div>
 </div>
 </div>

@@ -2,15 +2,15 @@
 position: fixed;">
 <div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
   <div class="context">
-    <div class="mainIcon">
+    <div class="main-icon big-icon">
       <img src="/assets/img/icon_128.png" style="width: 58%"/>
   </div>
-  <h1 class="wizard-title maintext">{{'appName' | translate}}</h1>
+  <h1 class="wizard-title maintext text-center"><b>{{'appName' | translate}}</b></h1>
 
-  <div class="row lead  intro-text">{{'usageDescription' | translate}}</div>
+  <div class="row lead intro-text text-center">{{'usageDescription' | translate}}</div>
 </div>
 
-<div class="row">
+<div class="row text-center">
   <button class="btn btn-primary btn-focus" data-ng-click="introductionCtrl.proceed()" style="background: #F79D81;">{{'getStarted' | translate}}</button>
 </div>
 </div>

@@ -1,12 +1,15 @@
-div.mainIcon {
-  margin: auto;
+div.main-icon {
   padding-top: 100px;
   padding-bottom: 70px;
-  height: 50px;
+  min-height: 50px;
 }
 
 div.context {
+<<<<<<< HEAD
   height: 550px;
+=======
+  min-height: 550px;
+>>>>>>> e19e0e39deca66683b8a066fcc91e272cdf60a8e
 }
 
 h1.maintext {
