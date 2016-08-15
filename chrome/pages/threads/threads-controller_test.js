@@ -191,6 +191,7 @@ describe('ThreadsCtrl', function() {
     expect(threadsController.compose['recipient']).toBe(null);
     expect(threadsController.compose['subject']).toBe(null);
     expect(threadsController.compose['message']).toBe(null);
+    expect(threadsController.compose['attachments']).toEqual([]);
   });
 
 
