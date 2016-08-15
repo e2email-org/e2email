@@ -14,15 +14,18 @@
  * limitations under the License.
  */
 
+
 /**
  * @fileoverview Controller for the mailbox threads view.
  */
 goog.provide('e2email.pages.threads.ThreadsCtrl');
 goog.provide('e2email.pages.threads.ThreadsCtrl.Compose');
 
+
 goog.require('e2email.constants.Location');
 goog.require('e2email.util.Email');
 goog.require('goog.array');
+
 
 goog.scope(function() {
 
@@ -100,8 +103,10 @@ e2email.pages.threads.ThreadsCtrl = function(
   /** @private */
   this.openpgpService_ = openpgpService;
 
+
   /** @type {?string} */
   this.status = null;
+
 
   /** @type {!e2email.pages.threads.ThreadsCtrl.Compose} */
   this.compose = {
@@ -111,14 +116,17 @@ e2email.pages.threads.ThreadsCtrl = function(
     'missingRecipient': null,
     'invalidRecipient': null,
     'subject': null,
-    'message': null
+    'message': null,
+    'attachments': []
   };
+
 
   /**
    * Holds the state of the menu dropdown.
    * @type {boolean}
    */
   this.showDropdown = false;
+
 
   /**
    * This is set to true whenever the controller
@@ -127,11 +135,13 @@ e2email.pages.threads.ThreadsCtrl = function(
    */
   this.inRefresh = false;
 
+
   /**
    * Holds the state of any trash-thread requests.
    * @type {boolean}
    */
   this.showTrash = false;
+
 
   /**
    * Holds the state of any in-progress invites.
@@ -139,11 +149,13 @@ e2email.pages.threads.ThreadsCtrl = function(
    */
   this.inviteInProgress = false;
 
+
   /**
    * Title for button to invite someone to install the app.
    * @type {string}
    */
   this.inviteMissingRecipientTitle = 'inviteTitle';
+
 
   this.threads = gmailService.mailbox.threads;
   $scope.$on('$viewContentLoaded', goog.bind(function() {
@@ -163,11 +175,11 @@ e2email.pages.threads.ThreadsCtrl = function(
  *   missingRecipient: ?string,
  *   invalidRecipient: ?string,
  *   subject: ?string,
- *   message: ?string
- * }}
+ *   message: ?string,
+ *   attachments: Array<Object>
+* }}
  */
 e2email.pages.threads.ThreadsCtrl.Compose;
-
 
 var ThreadsCtrl = e2email.pages.threads.ThreadsCtrl;
 
@@ -292,6 +304,7 @@ ThreadsCtrl.prototype.showCompose = function(show) {
     this.compose['invalidRecipient'] = null;
     this.compose['subject'] = null;
     this.compose['message'] = null;
+    this.compose['attachments'] = [];
   } else {
     this.window_.document.querySelector('div.maincontent').scrollIntoView(true);
   }
@@ -308,6 +321,7 @@ ThreadsCtrl.prototype.cancelRecipient = function() {
   this.compose.validRecipient = false;
   this.compose.recipient = null;
   this.inviteInProgress = false;
+  this.compose.attachments = [];
   this.inviteMissingRecipientTitle = 'inviteTitle';
 };
 
@@ -360,6 +374,7 @@ ThreadsCtrl.prototype.validateRecipient = function() {
   }
   this.compose['missingRecipient'] = null;
 
+
   // Check that we have a properly formatted email address first.
   var parsed = e2email.util.Email.parseEmail(recipient);
   if (!goog.isDefAndNotNull(parsed)) {
@@ -370,6 +385,7 @@ ThreadsCtrl.prototype.validateRecipient = function() {
   recipient = parsed;
   this.compose['recipient'] = recipient;
   this.compose['invalidRecipient'] = null;
+
 
   // Check whether the recipient has an acceptable public key.
   this.compose.status = this.translateService_.getMessage(
@@ -441,11 +457,32 @@ ThreadsCtrl.prototype.isInviteInProgress = function() {
 
 
 /**
+ * Get the file details and push it as an object,
+ * in the attachments array, everytime a new file is
+ * uploaded.
+ * @param {string} name of the file
+ * @param {string} type of the file
+ * @param {string} contents of the file in a string format
+ * @param {number} size of the file
+ * @export
+ */
+ThreadsCtrl.prototype.onFileUpload = function(name, type, contents, size) {
+  var obj = {
+    'filename': name,
+    'type': type,
+    'encoding': 'base64',
+    'content': contents,
+    'size': size
+  };
+  this.compose.attachments.push(obj);
+};
+
+
+/**
  * Requests the contents of the compose model to be delivered.
  * @export
  */
 ThreadsCtrl.prototype.sendCompose = function() {
-  // Confirm we have the required fields in our model.
   if (!goog.isDefAndNotNull(this.compose.recipient) ||
       !goog.isDefAndNotNull(this.compose.subject) ||
       !goog.isDefAndNotNull(this.compose.message)) {
@@ -455,19 +492,19 @@ ThreadsCtrl.prototype.sendCompose = function() {
   var messageLength = this.compose.message.length;
   this.gmailService_.encryptAndSendMail(
       [this.compose.recipient], null, null, this.compose.subject,
-      this.compose.message)
-          .then(goog.bind(function() {
-            // On successful completion, hide the compose window and
-            // update our screen.
-            this.showCompose(false);
-            this.updateScreen_();
-          }, this)).catch(goog.bind(function(err) {
-            if (goog.isDefAndNotNull(err.message)) {
-              this.status = err.message;
-            } else {
-              this.status = err.toString();
-            }
-          }, this));
+      this.compose.message, this.compose.attachments)
+      .then(goog.bind(function() {
+        // On successful completion, hide the compose window and
+        // update our screen.
+        this.showCompose(false);
+        this.updateScreen_();
+      }, this)).catch(goog.bind(function(err) {
+        if (goog.isDefAndNotNull(err.message)) {
+          this.status = err.message;
+        } else {
+          this.status = err.toString();
+        }
+      }, this));
 };
 
 
@@ -487,5 +524,6 @@ ThreadsCtrl.prototype.refresh = function() {
     this.inRefresh = false;
   }, this));
 };
+
 
 });  // goog.scope

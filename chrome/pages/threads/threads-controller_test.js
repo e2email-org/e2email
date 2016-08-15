@@ -25,8 +25,14 @@ describe('ThreadsCtrl', function() {
   var mockTranslateService, mockOpenpgpService, mockGmailService;
   var mockWindowService;
   var TEST_EMAIL = 'mail@example.com';
+  var TEST_FILENAME = 'dull';
+  var TEST_TYPE = 'dull';
+  var TEST_ENCODING = 'base64';
+  var TEST_CONTENT = 'dull';
+  var TEST_SIZE = 12;
+  var TEST_ATTACHMENTS = [{'filename': TEST_FILENAME, 'type': TEST_TYPE,
+    'encoding': TEST_ENCODING, 'content': TEST_CONTENT, 'size': TEST_SIZE}];
   var TEST_SUBJECT = 'test subject';
-  var TEST_CONTENT = 'test content';
   var TEST_KEY = { key: 'test-key'};
 
   beforeEach(module(function($controllerProvider) {
@@ -66,9 +72,10 @@ describe('ThreadsCtrl', function() {
         return q.when(undefined);
       },
       encryptAndSendMail: function(
-          recipients, threadId, messageID, subject, content) {
+          recipients, threadId, messageID, subject, content, attachments) {
         if ((recipients.length === 1) && (recipients[0] === TEST_EMAIL) &&
-            (subject === TEST_SUBJECT) && (content === TEST_CONTENT)) {
+            (subject === TEST_SUBJECT) && (content === TEST_CONTENT) &&
+            (attachments === TEST_ATTACHMENTS)) {
           this.mailbox.threads.push({
             subject: TEST_SUBJECT,
             from: TEST_EMAIL,
@@ -171,6 +178,7 @@ describe('ThreadsCtrl', function() {
     threadsController.compose['recipient'] = TEST_EMAIL;
     threadsController.compose['subject'] = TEST_SUBJECT;
     threadsController.compose['message'] = TEST_CONTENT;
+    threadsController.compose['attachments'] = TEST_ATTACHMENTS;
 
     threadsController.sendCompose();
     // Resolve promises.
@@ -183,7 +191,28 @@ describe('ThreadsCtrl', function() {
     expect(threadsController.compose['recipient']).toBe(null);
     expect(threadsController.compose['subject']).toBe(null);
     expect(threadsController.compose['message']).toBe(null);
+    expect(threadsController.compose['attachments']).toEqual([]);
   });
+
+
+  it('should create an object with the properties and aff it to attachments',
+     function() {
+       threadsController = controller(
+        'ThreadsCtrl as threadsCtrl', {
+          $scope: scope,
+          $location: location,
+          $window: mockWindowService,
+          translateService: mockTranslateService,
+          gmailService: mockGmailService,
+          openpgpService: mockOpenpgpService
+        });
+       threadsController.onFileUpload(TEST_FILENAME, TEST_TYPE,
+        TEST_CONTENT, TEST_SIZE);
+
+       // Verify attachments to have been updated.
+       expect(threadsController.compose['attachments']).
+       toEqual(TEST_ATTACHMENTS);
+     });
 
 
 });
