@@ -304,7 +304,7 @@ ThreadsCtrl.prototype.showCompose = function(show) {
     this.compose['invalidRecipient'] = null;
     this.compose['subject'] = null;
     this.compose['message'] = null;
-    this.compose['attachments'] = null;
+    this.compose['attachments'] = [];
   } else {
     this.window_.document.querySelector('div.maincontent').scrollIntoView(true);
   }
@@ -321,7 +321,7 @@ ThreadsCtrl.prototype.cancelRecipient = function() {
   this.compose.validRecipient = false;
   this.compose.recipient = null;
   this.inviteInProgress = false;
-  this.compose.attachments = null;
+  this.compose.attachments = [];
   this.inviteMissingRecipientTitle = 'inviteTitle';
 };
 
@@ -483,18 +483,6 @@ ThreadsCtrl.prototype.onFileUpload = function(name, type, contents, size) {
  * @export
  */
 ThreadsCtrl.prototype.sendCompose = function() {
-  //TODO (Kamila): Remove the example object once the file reader directive
-  //is uploaded.
-  // Example to show the working files encryption
-  var obj = {
-    'filename': 'filename',
-    'type': '',
-    'encoding': 'base64',
-    'content': 'contents of the file',
-    'size': 41
-  };
-  this.compose.attachments.push(obj);
-  //end of example
   if (!goog.isDefAndNotNull(this.compose.recipient) ||
       !goog.isDefAndNotNull(this.compose.subject) ||
       !goog.isDefAndNotNull(this.compose.message)) {
