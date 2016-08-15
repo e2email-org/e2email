@@ -102,7 +102,6 @@ body {
 h1.wizard-title {
   font-family: inherit;
   font-weight: 300;
-  padding-top: 30%;
   text-color: #777;
 }
 
@@ -143,14 +142,13 @@ h1.wizard-title {
   color: #428bca;
 }
 
-.btn {
-  padding: 8px 16px;
-  font-size: 18px;
+div.big-icon {
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 20px;
 }
 
-.btn-primary {
-  width: 240px;
-  height: 55px;
-  font-size: 18px;
-  padding: 10px 30px;
+div.big-icon > img {
+  display: block;
+  margin: auto;
 }

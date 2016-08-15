@@ -1,16 +1,12 @@
-div.resetbtn{
-  float: left;
-  font-size: 14px;
+div.resetbtn {
   margin-bottom: 28px;
 }
 
 div.recover-box {
-  height: 120px;
-  width: 400px;
+  min-height: 120px;
   padding: 10px;
   border: 2px solid #ECC67B;
-  background-color: #F9EDBE; 
-  margin: auto;
+  background-color: #F9EDBE;
 }
 
 div.recover-help {
@@ -24,10 +20,12 @@ input.input-box {
   border-radius: 0px;
   border: none;
   height: 50px;
-  width: 70px;
-  float: left;
-  margin-right: 5px;
+  width: 5em;
+  margin-left: 2px;
+  margin-left: 2px;
+  display: inline-block;
 }
+
 div.info-format {
   margin-bottom: 12px;
   color: #313339;
