@@ -22,12 +22,21 @@ goog.require('e2email.pages.messages.MessagesCtrl');
 
 describe('MessagesCtrl', function() {
   var q, controller, messagesController, scope, location;
-  var mockGmailService;
+  var mockGmailService, mockWindowService, mockTranslateService;
   var TEST_EMAIL = 'mail@example.com';
   var TEST_SUBJECT = 'test subject';
   var TEST_THREAD_ID = 'test-thread-id';
   var TEST_MESSAGE_ID = 'test-message-id';
   var TEST_CONTENT = 'test content';
+  var TEST_FILENAME = 'dull';
+  var TEST_TYPE = 'dull';
+  var TEST_ENCODING = 'base64';
+  var TEST_CONTENT_ATTACHMENT = 'dull';
+  var TEST_SIZE = 12;
+  var TEST_ATTACHMENTS = [{'filename': TEST_FILENAME, 'type': TEST_TYPE,
+    'encoding': TEST_ENCODING, 'content': TEST_CONTENT_ATTACHMENT,
+    'size': TEST_SIZE}];
+
   var TEST_THREAD = {
     'to': [TEST_EMAIL],
     'messageId': TEST_MESSAGE_ID,
@@ -45,6 +54,14 @@ describe('MessagesCtrl', function() {
     controller = $controller;
     location = $location;
 
+    mockWindowService = {
+      open: function(url, name, options) {
+      },
+      document: {
+        title: 'not set'
+      }
+    };
+
     mockGmailService = {
       refresh: function(force, progress) {
         return q.when(undefined);
@@ -57,10 +74,11 @@ describe('MessagesCtrl', function() {
         }
       },
       encryptAndSendMail: function(
-          recipients, threadId, messageId, subject, content) {
+          recipients, threadId, messageId, subject, content, attachments) {
         if ((recipients.length === 1) && (recipients[0] === TEST_EMAIL) &&
             (threadId == TEST_THREAD_ID) && (messageId === TEST_MESSAGE_ID) &&
-            (subject === TEST_SUBJECT) && (content === TEST_CONTENT)) {
+            (subject === TEST_SUBJECT) && (content === TEST_CONTENT) &&
+            (attachments === TEST_ATTACHMENTS)) {
           return q.when(undefined);
         } else {
           return q.reject('bad parameters');
@@ -113,6 +131,7 @@ describe('MessagesCtrl', function() {
 
     messagesController.reply['showText'] = true;
     messagesController.reply['content'] = TEST_CONTENT;
+    messagesController.reply['attachments'] = TEST_ATTACHMENTS;
     messagesController.onReply();
     // Resolve promises.
     scope.$digest();
@@ -124,5 +143,21 @@ describe('MessagesCtrl', function() {
     expect(messagesController.reply['showText']).toBe(false);
   });
 
+  it('should create an object with the properties and add it to attachments',
+     function() {
+       messagesController = controller(
+       'MessagesCtrl as messagesCtrl', {
+         $scope: scope,
+         $location: location,
+         $window: mockWindowService,
+         gmailService: mockGmailService,
+         $routeParams: { 'threadId': TEST_THREAD_ID }
+       });
+       messagesController.onFileUpload(TEST_FILENAME, TEST_TYPE,
+       TEST_CONTENT_ATTACHMENT, TEST_SIZE);
 
+       // Verify attachments to have been updated.
+       expect(messagesController.reply['attachments']).
+       toEqual(TEST_ATTACHMENTS);
+     });
 });

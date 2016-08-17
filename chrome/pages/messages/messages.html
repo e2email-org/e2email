@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <button ng-click="messagesCtrl.showThreads()" class="btn btn-primary btn-focus col-xs-3">
+        <button ng-click="messagesCtrl.showThreads()" class="btn btn-primary btn-focus col-xs-3 sidebtnlarge">
           <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
           {{'inbox' | translate}}
         </button>
@@ -38,22 +38,27 @@
       </div>
       <div class="row email-mime-entry" ng-repeat="mime in mail.mimeContent" ng-show="mail.mimeContent">
         <img class="fade-show email-image-content" ng-src="{{mime.content}}" ng-if="mime.type=='image'">
-        <div class="email-text-content col-xs-12" ng-if="mime.type=='text'">{{mime.content}}
-        </div>
-        <div class="col-xs-12" ng-if="mime.type=='unsupported'">
-          <div class="col-xs-12 email-unsupported-content text-warning">{{mime.content}}</div>
-        </div>
+        <div class="email-text-content col-xs-12" ng-if="mime.type=='text'">{{mime.content}}</div>
+        <div class="col-xs-12 single-attachment-received" ng-if="mime.url"> <a href="{{mime.url}}" download>{{mime.filename}}</div>
         <div class="email-error-content text-danger col-xs-12" ng-if="mime.type=='error'">{{mime.content}}</div>
       </div>
     </li>
   </ul>
 
   <form class="email-detail-reply-form fade-show" ng-show="messagesCtrl.thread.mails[messagesCtrl.thread.mails.length-1].mimeContent && !messagesCtrl.thread.mails[messagesCtrl.thread.mails.length-1].hasErrors" ng-submit="messagesCtrl.onReply()">
-    <textarea ng-show="messagesCtrl.reply.showText" class="form-control fade-show" placeholder="{{'typeReplyPlaceholder' | translate}}" ng-model="messagesCtrl.reply.content" rows="10"></textarea>
+    <div id="textareaSpace"  ng-show="messagesCtrl.reply.showText">
+      <textarea id="textareaElement" class="form-control fade-show" placeholder="{{'typeReplyPlaceholder' | translate}}" ng-model="messagesCtrl.reply.content" rows="10"></textarea>
+    <div id="attachmentRepeat">
+        <div ng-repeat="x in messagesCtrl.reply.attachments" class="single-attachment"><span style="margin: 0px; padding:0px;overflow-y: hidden; width:60%;">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span style="width:30%; overflow-y:hidden;"> {{' (' + x.size/1000 +
+        ' K)'}}</span> <span style="width:10%;">
+        <button ng-click="threadsCtrl.removeObj()" class="removeAttachment"> x </button> </span></div>
+      </div>
+    </div>
     <div class="row email-detail-reply-form-button-row">
       <div class="col-xs-12">
-        <button id="replyButton" type="submit" class="col-xs-3 btn btn-primary btn-focus pull-right">{{messagesCtrl.reply.baseTitle | translate}}</button>
-        <button style="margin-top: 1em;" ng-click="messagesCtrl.cancelReply($event)" ng-show="messagesCtrl.reply.showText" class="btn btn-link btn-focus pull-right fade-show">{{'cancel' | translate}}</button>
+        <button id="replyButton" type="submit" class="col-xs-3 btn btn-primary btn-focus pull-right sidebtn">{{messagesCtrl.reply.baseTitle | translate}}</button>
+        <button style="margin-top: 1em;" ng-click="messagesCtrl.cancelReply($event)" ng-show="messagesCtrl.reply.showText" class="btn btn-link btn-focus pull-right fade-show sidebtn">{{'cancel' | translate}}</button>
+        <img src="assets/img/attach2.png" class="attach-img" ng-show="messagesCtrl.reply.showText" as-upload="messagesCtrl.onFileUpload(name, type, contents, size)"/>
       </div>
     </div>
   </form>
