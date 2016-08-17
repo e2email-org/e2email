@@ -49,8 +49,7 @@
     <div id="textareaSpace"  ng-show="messagesCtrl.reply.showText">
       <textarea id="textareaElement" class="form-control fade-show" placeholder="{{'typeReplyPlaceholder' | translate}}" ng-model="messagesCtrl.reply.content" rows="10"></textarea>
     <div id="attachmentRepeat">
-        <div ng-repeat="x in messagesCtrl.reply.attachments" class="single-attachment"><span style="margin: 0px; padding:0px;overflow-y: hidden; width:60%;">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span style="width:30%; overflow-y:hidden;"> {{' (' + x.size/1000 +
-        ' K)'}}</span> <span style="width:10%;">
+        <div ng-repeat="x in messagesCtrl.reply.attachments" class="single-attachment"><span id="file-description">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span id="file-size"> {{' (' + x.size/1000 + ' K)'}}</span> <span style="width:10%;">
         <button ng-click="threadsCtrl.removeObj()" class="removeAttachment"> x </button> </span></div>
       </div>
     </div>

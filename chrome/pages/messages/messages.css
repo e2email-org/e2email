@@ -25,7 +25,6 @@
 .email-subject {
   font-family: Roboto;
   color: #505050;
-  text-align: left !important;
 }
 
 .email-mime-entry {
@@ -35,7 +34,6 @@
 
 .email-text-content {
   white-space: pre-line;
-  text-align: left !important;
 }
 
 .email-image-content {
@@ -66,4 +64,16 @@
   width: 80%;
   height: 23px;
   margin-bottom: -5px;
+}
+
+#file-description {
+  margin: 0px;
+  padding:0px;
+  overflow-y: hidden;
+  width:60%;
+}
+
+#file-size {
+  width:30%;
+  overflow-y:hidden;
 }
