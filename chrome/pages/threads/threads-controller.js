@@ -304,7 +304,7 @@ ThreadsCtrl.prototype.showCompose = function(show) {
     this.compose['invalidRecipient'] = null;
     this.compose['subject'] = null;
     this.compose['message'] = null;
-    this.compose['attachments'] = null;
+    this.compose['attachments'] = [];
   } else {
     this.window_.document.querySelector('div.maincontent').scrollIntoView(true);
   }
@@ -321,7 +321,7 @@ ThreadsCtrl.prototype.cancelRecipient = function() {
   this.compose.validRecipient = false;
   this.compose.recipient = null;
   this.inviteInProgress = false;
-  this.compose.attachments = null;
+  this.compose.attachments = [];
   this.inviteMissingRecipientTitle = 'inviteTitle';
 };
 
@@ -457,6 +457,12 @@ ThreadsCtrl.prototype.isInviteInProgress = function() {
 
 
 /**
+<<<<<<< HEAD
+=======
+ * Get the file details and push it as an object,
+ * in the attachments array, everytime a new file is
+ * uploaded.
+>>>>>>> 7e34bcd50f11f2ce152d45417e1809c0b92e7029
  * @param {string} name of the file
  * @param {string} type of the file
  * @param {string} contents of the file in a string format
@@ -480,16 +486,6 @@ ThreadsCtrl.prototype.onFileUpload = function(name, type, contents, size) {
  * @export
  */
 ThreadsCtrl.prototype.sendCompose = function() {
-  // Example to show the working files encryption
-  var obj = {
-    'filename': 'filename',
-    'type': '',
-    'encoding': 'base64',
-    'content': 'contents of the file',
-    'size': 42
-  };
-  this.compose.attachments.push(obj);
-  //end of example
   if (!goog.isDefAndNotNull(this.compose.recipient) ||
       !goog.isDefAndNotNull(this.compose.subject) ||
       !goog.isDefAndNotNull(this.compose.message)) {

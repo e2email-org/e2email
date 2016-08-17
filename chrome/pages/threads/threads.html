@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top e2email-header">
   <div class="container">
-    <button ng-click="threadsCtrl.showCompose(true)" ng-hide="threadsCtrl.compose.show" class="col-xs-4 btn btn-primary btn-focus fade-show">{{'compose'| translate}}</button>
+    <button ng-click="threadsCtrl.showCompose(true)" ng-hide="threadsCtrl.compose.show" class="col-xs-4 btn btn-primary btn-focus fade-show composebtn">{{'compose'| translate}}</button>
 
     <div class="dropdown pull-right" ng-class="{open: threadsCtrl.showDropdown}" outerclick="threadsCtrl.showDropdown=false">
       <button tabindex="-1" ng-click="threadsCtrl.showDropdown=!threadsCtrl.showDropdown" class="btn btn-blank btn-focus dropdown-toggle" aria-label="{{'more' | translate}}" aria-haspopup="true" style="font-size: 2.2em; line-height: 1em; font-weight: bold; padding: 0px">&#8942;</button>
@@ -56,7 +56,7 @@
     </div>
 
     <input tabindex="2" type="text" class="form-control ac-tabbable email-main-subject-input" placeholder="Subject" required="required" ng-hide="threadsCtrl.compose.missingRecipient" ng-model="threadsCtrl.compose.subject" ng-keypress="threadsCtrl.onSubjectKeyPress($event)"/>
-    <div id="textareaSpace">
+    <div tabindex="3" id="textareaSpace">
       <textarea id="textareaElement" class="form-control email-main-compose-textarea" placeholder="{{threadsCtrl.compose.validRecipient ? 'typeMessagePlaceholder' : 'invalidRecipientPlaceholder' | translate}}" rows="10" ng-disabled="!threadsCtrl.compose.validRecipient" ng-model="threadsCtrl.compose.message" ng-hide="threadsCtrl.compose.missingRecipient" required="required">
       </textarea>
       <div id="attachmentRepeat">
@@ -67,7 +67,7 @@
     <div class="col-xs-12">
       <button tabindex="4" type="submit" class="col-xs-3 btn btn-primary btn-focus sidebtn">{{'send' | translate}}</button>
       <button tabindex="5" ng-click="threadsCtrl.showCompose(false)" class="btn btn-link btn-focus sidebtn">{{'cancel' | translate}}</button>
-      <img src="assets/img/attach2.png" class="attach-img" as-upload="threadsCtrl.onFileUpload(name, type, contents, size)"/>
+      <img tabindex="6" src="assets/img/attach.png" class="attach-img" as-upload="threadsCtrl.onFileUpload(name, type, contents, size)"/>
     </div>
   </div>
 </form>
