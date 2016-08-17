@@ -26,7 +26,9 @@ goog.provide('e2email.models.mail.Thread');
 
 /**
  * This is the model for the attachments support.
- *
+ * The filename is the attachment's name, size is it's size in Bytes,
+ * encoding is the encoding of the attachment, content is the string
+ * with it's ocntent, type is the atttachment's type.
  * @typedef {{
  * filename: string,
  * type: string,
