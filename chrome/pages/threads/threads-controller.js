@@ -457,12 +457,9 @@ ThreadsCtrl.prototype.isInviteInProgress = function() {
 
 
 /**
-<<<<<<< HEAD
-=======
  * Get the file details and push it as an object,
  * in the attachments array, everytime a new file is
  * uploaded.
->>>>>>> 7e34bcd50f11f2ce152d45417e1809c0b92e7029
  * @param {string} name of the file
  * @param {string} type of the file
  * @param {string} contents of the file in a string format
