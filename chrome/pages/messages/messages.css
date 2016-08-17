@@ -1,11 +1,10 @@
 .email-detail-entry {
   border-bottom: 1px solid rgba(0,0,0,0.04);
   margin-bottom: 1em;
-  text-align: left !important;
 }
 
-.email-detail-from { 
-  text-align: left !important;
+.email-detail-from {
+
 }
 
 .email-detail-from .glyphicon {
@@ -26,7 +25,6 @@
 .email-subject {
   font-family: Roboto;
   color: #505050;
-  text-align: left !important;
 }
 
 .email-mime-entry {
@@ -36,7 +34,6 @@
 
 .email-text-content {
   white-space: pre-line;
-  text-align: left !important;
 }
 
 .email-image-content {
@@ -51,20 +48,4 @@
 .email-error-content {
   border: 1px solid rgba(0,0,0,0.25);
   white-space: pre-line;
-}
-
-.single-attachment-received {
-  background-color: #f5f5f5;
-  border: 1px solid #dcdcdc;
-  font-weight: bold;
-  font-size: 13px;
-  margin: 0 7px 6px;
-  color: #1155CC !important;
-  overflow-y: hidden;
-  text-align: left;
-  padding: 2px 6px;
-  max-width: 448px;
-  width: 80%;
-  height: 23px;
-  margin-bottom: -5px;
 }
