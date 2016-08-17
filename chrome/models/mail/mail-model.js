@@ -18,9 +18,24 @@
  * @fileoverview Typedefs for a user's mailbox.
  */
 
+goog.provide('e2email.models.mail.Attachments');
 goog.provide('e2email.models.mail.Mail');
 goog.provide('e2email.models.mail.Mailbox');
 goog.provide('e2email.models.mail.Thread');
+
+
+/**
+ * This is the model for the attachments support.
+ *
+ * @typedef {{
+ * filename: string,
+ * type: string,
+ * encoding: string,
+ * content: string,
+ * size: number
+ * }}
+ */
+e2email.models.mail.Attachments;
 
 
 /**
@@ -42,6 +57,20 @@ e2email.models.mail.Mail;
 
 
 /**
+ * This is the model for a Safe Mail user's mailbox. The email is the
+ * user's email address, the threads represents all the mail threads
+ * in the user's mailbox, and the status describes any (transient)
+ * operations in the background.
+ * @typedef {{
+ *   email: string,
+ *   threads: !Array.<!e2email.models.mail.Thread>,
+ *   status: ?string
+ * }}
+ */
+e2email.models.mail.Mailbox;
+
+
+/**
  * @typedef {{
  *   id: string,
  *   subject: string,
@@ -59,15 +88,4 @@ e2email.models.mail.Mail;
 e2email.models.mail.Thread;
 
 
-/**
- * This is the model for a Safe Mail user's mailbox. The email is the
- * user's email address, the threads represents all the mail threads
- * in the user's mailbox, and the status describes any (transient)
- * operations in the background.
- * @typedef {{
- *   email: string,
- *   threads: !Array.<!e2email.models.mail.Thread>,
- *   status: ?string
- * }}
- */
-e2email.models.mail.Mailbox;
+

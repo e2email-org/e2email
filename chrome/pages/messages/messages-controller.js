@@ -66,7 +66,7 @@ e2email.pages.messages.MessagesCtrl = function(
   /**
    * Contains the state related to any replies by the user
    * for this thread.
-   * @type {!{baseTitle: string, showText: boolean, content: ?string, attachments: Array<Object>}}
+   * @type {!{baseTitle: string, showText: boolean, content: ?string, attachments: Array<e2email.models.mail.Attachments>}}
    */
   this.reply = {
     'baseTitle': 'reply',
