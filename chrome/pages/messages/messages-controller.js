@@ -101,10 +101,10 @@ MessagesCtrl.prototype.cancelReply = function(opt_event) {
 
 
 /**
- * @param {string} name of the file
- * @param {string} type of the file
- * @param {string} contents of the file in a string format
- * @param {number} size of the file
+ * @param {string} name The name of the file.
+ * @param {string} type The type of the file.
+ * @param {string} contents The contents of the file.
+ * @param {number} size The size of the file.
  * @export
  */
 MessagesCtrl.prototype.onFileUpload = function(name, type, contents, size) {
@@ -120,6 +120,7 @@ MessagesCtrl.prototype.onFileUpload = function(name, type, contents, size) {
 
 
 /**
+ * Removes the attachment object from the list of attachments.
  * @export
  */
 MessagesCtrl.prototype.removeObj = function() {
