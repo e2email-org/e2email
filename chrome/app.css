@@ -152,3 +152,22 @@ div.big-icon > img {
   display: block;
   margin: auto;
 }
+
+.attach-img {
+  height: 23px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.attach-img:hover, .attach-img:focus {
+  outline-color: grey;
+  outline-width: 1px;
+}
+
+.attach-img:active {
+  outline-color: #428bca;
+}
+
+.attach-img:visited {
+  outline: none;
+}
