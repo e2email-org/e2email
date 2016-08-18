@@ -51,8 +51,7 @@ e2email.components.fileuploaddirective.fileuploadDirective = function() {
       upload: '&asUpload'
     },
     template: '<ng-transclude></ng-transclude>' +
-        '<input tabindex="6" id="now" type="file" style="display:none;' +
-        'min-height:23px;" multiple>',
+        '<input type="file" style="display:none;" multiple>',
     transclude: true
   };
 };
