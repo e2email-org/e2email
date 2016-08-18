@@ -159,15 +159,6 @@ div.big-icon > img {
   cursor: pointer;
 }
 
-.attach-img:hover, .attach-img:focus {
-  outline-color: grey;
-  outline-width: 1px;
-}
-
-.attach-img:active {
-  outline-color: #428bca;
-}
-
-.attach-img:visited {
-  outline: none;
+.attach-icon:hover {
+  fill: #66afe9;
 }
