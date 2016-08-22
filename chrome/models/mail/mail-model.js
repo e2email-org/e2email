@@ -18,7 +18,7 @@
  * @fileoverview Typedefs for a user's mailbox.
  */
 
-goog.provide('e2email.models.mail.Attachments');
+goog.provide('e2email.models.mail.Attachment');
 goog.provide('e2email.models.mail.Mail');
 goog.provide('e2email.models.mail.Mailbox');
 goog.provide('e2email.models.mail.Thread');
