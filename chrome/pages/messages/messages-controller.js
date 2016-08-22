@@ -66,12 +66,13 @@ e2email.pages.messages.MessagesCtrl = function(
   /**
    * Contains the state related to any replies by the user
    * for this thread.
-   * @type {!{baseTitle: string, showText: boolean, content: ?string}}
+   * @type {!{baseTitle: string, showText: boolean, content: ?string, attachments: Array<e2email.models.mail.Attachment>}}
    */
   this.reply = {
     'baseTitle': 'reply',
     'content': null,
-    'showText': false
+    'showText': false,
+    'attachments': []
   };
 
   // Run an async task to fetch/decrypt messages in this thread
@@ -95,6 +96,37 @@ MessagesCtrl.prototype.cancelReply = function(opt_event) {
   this.reply['baseTitle'] = 'reply';
   this.reply['content'] = null;
   this.reply['showText'] = false;
+  this.reply['attachments'] = [];
+};
+
+
+/**
+ * @param {string} name The name of the file.
+ * @param {string} type The type of the file.
+ * @param {string} contents The contents of the file.
+ * @param {number} size The size of the file.
+ * @export
+ */
+MessagesCtrl.prototype.onFileUpload = function(name, type, contents, size) {
+  var obj = {
+    'filename': name,
+    'type': type,
+    'encoding': 'base64',
+    'content': contents,
+    'size': size
+  };
+  this.reply.attachments.push(obj);
+};
+
+
+/**
+ * Removes the attachment object from the list of attachments.
+ * @export
+ */
+MessagesCtrl.prototype.removeObj = function() {
+  if (this.reply.attachments != []) {
+    this.reply.attachments.pop();
+  }
 };
 
 
@@ -109,6 +141,7 @@ MessagesCtrl.prototype.onReply = function() {
     this.reply['showText'] = true;
     this.reply['baseTitle'] = 'send';
     this.reply['content'] = null;
+    this.reply['attachments'] = [];
     setTimeout(function() {
       document.querySelector('textarea').focus();
       document.querySelector('#replyButton').scrollIntoView();
@@ -117,7 +150,8 @@ MessagesCtrl.prototype.onReply = function() {
     var messageLength = this.reply['content'].length;
     this.gmailService_.encryptAndSendMail(
         this.thread.to, this.threadId_, this.thread.messageId,
-        this.thread.subject, this.reply['content']).then(goog.bind(function() {
+        this.thread.subject, this.reply['content'], this.reply['attachments']).
+        then(goog.bind(function() {
           return this.gmailService_.refreshThread(this.threadId_);
         }, this)).then(goog.bind(this.cancelReply, this));
   }

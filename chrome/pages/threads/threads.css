@@ -174,8 +174,3 @@ input.email-select[type="checkbox"]:checked + label.email-select > span {
 .email-no-threads {
   margin-top: 1em;
 }
-
-.attach-img {
-    height: 23px;
-    margin-top: 10px;
-}

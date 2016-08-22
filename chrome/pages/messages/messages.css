@@ -3,10 +3,6 @@
   margin-bottom: 1em;
 }
 
-.email-detail-from {
-
-}
-
 .email-detail-from .glyphicon {
   font-size: 10px;
   padding-left: 0.25em;
@@ -48,4 +44,32 @@
 .email-error-content {
   border: 1px solid rgba(0,0,0,0.25);
   white-space: pre-line;
+}
+
+.single-attachment-received {
+  background-color: #f5f5f5;
+  border: 1px solid #dcdcdc;
+  font-weight: bold;
+  font-size: 13px;
+  margin: 0 7px 6px;
+  color: #1155CC !important;
+  overflow-y: hidden;
+  text-align: left;
+  padding: 2px 6px;
+  max-width: 448px;
+  width: 80%;
+  height: 23px;
+  margin-bottom: -5px;
+}
+
+#file-description {
+  margin: 0px;
+  padding:0px;
+  overflow-y: hidden;
+  width:60%;
+}
+
+#file-size {
+  width:30%;
+  overflow-y:hidden;
 }
