@@ -1,8 +1,6 @@
 goog.provide('e2email.components.fileuploaddirective');
 goog.provide('e2email.components.fileuploaddirective.module');
-              
-goog.require('goog.array');
-goog.require('goog.events.KeyCodes');
+
 
 goog.scope(function() {
 
@@ -39,7 +37,9 @@ e2email.components.fileuploaddirective.fileuploadDirective = function() {
           reader.onload = function(fileEvent) {
             scope.$apply(function() {
               scope.upload({'name': file.name, 'type': file.type,
-                'contents': unescape(encodeURIComponent(fileEvent.target.result)), 'size': file.size});
+                'contents': unescape(
+                    encodeURIComponent(fileEvent.target.result)),
+                'size': file.size});
             });
           };
           reader.readAsText(file);
