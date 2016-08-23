@@ -58,10 +58,10 @@
     <input tabindex="2" type="text" class="form-control ac-tabbable email-main-subject-input" placeholder="Subject" required="required" ng-hide="threadsCtrl.compose.missingRecipient" ng-model="threadsCtrl.compose.subject" ng-keypress="threadsCtrl.onSubjectKeyPress($event)"/>
     <div tabindex="3" id="textareaSpace">
       <textarea id="textareaElement" class="form-control email-main-compose-textarea" placeholder="{{threadsCtrl.compose.validRecipient ? 'typeMessagePlaceholder' : 'invalidRecipientPlaceholder' | translate}}" rows="10" ng-disabled="!threadsCtrl.compose.validRecipient" ng-model="threadsCtrl.compose.message" ng-hide="threadsCtrl.compose.missingRecipient" required="required">
-      </textarea>
+      </textarea> </div>
       <div id="attachmentRepeat">
-        <div ng-repeat="x in threadsCtrl.compose.attachments" class="single-attachment">{{x.filename + ' (' + x.size + 'K)'}}</div>
-         </div>
+      <div ng-repeat="x in threadsCtrl.compose.attachments" class="single-attachment"><span style="margin: 0px; padding:0px;overflow-y: hidden; width:60%;">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span style="width:30%; overflow-y:hidden;"> {{'(' + threadsCtrl.round(x.size) + ')'}} </span> <span style="width:10%;">
+        <button ng-click="threadsCtrl.removeObj()" class="removeAttachment"> x </button> </span></div>
       </div>
   <div class="row email-main-compose-form-button-row" ng-hide="threadsCtrl.compose.missingRecipient">
     <div class="col-xs-12">
@@ -70,7 +70,7 @@
       <img tabindex="6" src="assets/img/attach.png" class="attach-img" as-upload="threadsCtrl.onFileUpload(name, type, contents, size)"/>
     </div>
   </div>
-</form>
+  </form>
 
 <ul class="list-unstyled">
   <li class="email-subject-entry btn-focus" ng-repeat="thread in threadsCtrl.threads|orderBy:'-updated'"  ng-click="threadsCtrl.showMessages(thread.id)">

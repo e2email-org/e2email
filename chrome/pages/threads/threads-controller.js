@@ -479,6 +479,17 @@ ThreadsCtrl.prototype.onFileUpload = function(name, type, contents, size) {
 
 
 /**
+ * Removes the attachment object from the list of attachments.
+ * @export
+ */
+ ThreadsCtrl.prototype.removeObj = function () {
+  if(this.compose.attachments != []) {
+    this.compose.attachments.pop();
+  }
+};
+
+
+/**
  * Requests the contents of the compose model to be delivered.
  * @export
  */

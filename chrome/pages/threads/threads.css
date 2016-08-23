@@ -174,3 +174,10 @@ input.email-select[type="checkbox"]:checked + label.email-select > span {
 .email-no-threads {
   margin-top: 1em;
 }
+
+.composebtn {
+  width: 100px;
+  height: 35px;
+  font-size: 15px;
+  padding: 0px;
+}
