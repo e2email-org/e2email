@@ -26,6 +26,7 @@ goog.require('e2email.components.autocomplete.module');
 goog.require('e2email.components.autocompletedirective.module');
 goog.require('e2email.components.blobhrefdirective.module');
 goog.require('e2email.components.contacts.module');
+goog.require('e2email.components.blobhrefdirective.module');
 goog.require('e2email.components.gmail.module');
 goog.require('e2email.components.openpgp.module');
 goog.require('e2email.components.outerclick.module');
