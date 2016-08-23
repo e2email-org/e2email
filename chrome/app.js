@@ -20,7 +20,6 @@
 
 goog.provide('e2email.application.module');
 
-goog.require('e2email.components.blobhrefdirective.module');
 goog.require('e2email.components.appinfo.module');
 goog.require('e2email.components.auth.module');
 goog.require('e2email.components.autocomplete.module');
