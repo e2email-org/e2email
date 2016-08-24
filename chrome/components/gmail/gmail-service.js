@@ -40,6 +40,7 @@ goog.require('goog.i18n.mime.encode');
 goog.require('goog.object');
 goog.require('goog.string');
 goog.require('goog.structs.LinkedMap');
+goog.require('goog.crypt.base64');
 
 goog.scope(function() {
 
@@ -586,8 +587,7 @@ GmailService.prototype.encryptAndSendMail = function(
   goog.array.removeDuplicates(recipients);
 
   // TODO add support for content other than plaintext
-  var mimeWrappedContent = this.plaintextWrap_(content, subject, recipients,
-      opt_attachments);
+  var mimeWrappedContent = this.plaintextWrap_(content, subject, recipients, opt_attachments);
   return this.withMyKey_()
       .then(goog.bind(function(myKey) {
         // Save my private key, and continue to get public keys for
@@ -1639,12 +1639,11 @@ GmailService.prototype.sendRFC2822Message_ = function(threadId, content) {
  * @param {string} content The email content.
  * @param {?string} subject The email subject.
  * @param {Array<string>} recipients An array of email addresses.
- * @param {Array<Object>=} opt_attachments Attachment files.
+ * @param {Array<Object>=} opt_attachments
  * @return {string} The wrapped content suitable for POSTing to the API.
  * @private
  */
-GmailService.prototype.plaintextWrap_ = function(content, subject, recipients,
-    opt_attachments) {
+GmailService.prototype.plaintextWrap_ = function(content, subject, recipients, opt_attachments) {
   var finalSubject = null;
   var finalRecipients = null;
   var finalFrom = null;
@@ -1858,7 +1857,6 @@ GmailService.prototype.extractMimeContent_ = function(mail, message) {
   // Case 4. Note that some or all of the data may be unsupported and thus
   // unpresentable to the user (Case 3).
   mail.mimeContent = mimeContent;
-
 };
 
 
@@ -1889,17 +1887,31 @@ GmailService.prototype.mimeTreeWalker_ = function(rootNode) {
   var ct = ctHeader.value.toLowerCase();
   var enc = encHeader.value.toLowerCase();
 
-  // Case 1: Single plaintext node.
+  // Case 1: Attachment
+
+  // In case of a text file attachment, the value "attachment" can be found in
+  // rootNode.header[constants.Mime.CONTENT_DISPOSITION].value with no need to be 
+  // parsed, but even if parsed, the content of "at" will still be "attachment", 
+  // as in other cases rootNode.header[constants.Mime.CONTENT_DISPOSITION].value
+  // is a string containing "attachment" and filename.
+  if (goog.isDefAndNotNull(rootNode.header[constants.Mime.CONTENT_DISPOSITION]) && 
+    goog.isDefAndNotNull(rootNode.header[constants.Mime.CONTENT_DISPOSITION].value) &&
+    goog.isString(rootNode.body)){
+  var cd=e2e.openpgp.pgpmime.Utils.parseHeaderValueWithParams(
+  rootNode.header[constants.Mime.CONTENT_DISPOSITION].value); //content disposition
+  var at=cd.value; // parsing the first value out of the content disposition
+
+  if (at == "attachment") {
+    var filename = cd.params.filename;
+    return [this.prepareAttachment_(rootNode.body, ct, enc, filename)];
+  }
+}
+
+  // Case 2: Single plaintext node.
   if (ct === constants.Mime.PLAINTEXT && goog.isString(rootNode.body)) {
     // TODO handle non 7bit encodings
     return [this.prepareContentForDisplay_(rootNode.body,
                                              DISPLAY_TYPE_TEXT_)];
-  }
-
-  // Case 2: Single image node.
-  if (goog.object.contains(constants.MimeArray.IMAGE_TYPES, ct) &&
-      goog.isString(rootNode.body)) {
-    return [this.prepareImage_(rootNode.body, ct, enc)];
   }
 
   // Case 3: Multipart node.
@@ -1912,8 +1924,6 @@ GmailService.prototype.mimeTreeWalker_ = function(rootNode) {
   }
 
   // Case 4: Unidentifiable / unsupported MIME content.
-  // TODO present attachments as files.
-  // Currently we are simply displaying an "unsupported" notification.
   var attachmentInfo = '(' + ct + ')';
   var unsupportedMsg = this.translateService_.getMessage(
       MIME_NOT_SUPPORTED_, attachmentInfo);
@@ -1924,47 +1934,19 @@ GmailService.prototype.mimeTreeWalker_ = function(rootNode) {
 
 
 /**
- * Prepares a string representation of an image that can be used as the 'src'
- * value in an HTML <img> element. This representation is stored in an object
- * that will be parsed by AngularJS.
- * If the image is not supported by Chrome, an error notification will be
- * displayed.
- * @param {string} data The data of the image
- * @param {string} type The MIME Content-Type of the image
- * @param {string} encoding The Content-Transfer-Encoding of the image
- * @return {{content: string, type: string}}
+ * Decodes the string to base 64 and prepares a blob with the 
+ * link of the file.
+ * @param {string} data The data of the attachment
+ * @param {string} type The MIME Content-Type of the attachment
+ * @param {string} encoding The Content-Transfer-Encoding of the attachment
+ * @return {url: string, type: string, name: string}
  * @private
  */
-GmailService.prototype.prepareImage_ = function(data, type, encoding) {
-  var unsupportedMsg = '';
-  var failure = '';
-  if (!goog.object.contains(CHROME_SUPPORTED_IMAGE_TYPES_, type)) {
-    // Unsupported data type.
-    failure = 'Image type ' + type + ' not supported';
-    unsupportedMsg = this.translateService_.getMessage(MIME_NOT_SUPPORTED_,
-        failure);
-    return this.prepareContentForDisplay_(unsupportedMsg,
-        DISPLAY_TYPE_UNSUPPORTED_);
-  }
-  if (encoding !== e2e.openpgp.pgpmime.Constants.Mime.BASE64) {
-    // TODO handle other encodings. Right now we only handle "base64"
-    failure = 'Encoding type ' + encoding + ' not supported';
-    unsupportedMsg = this.translateService_.getMessage(MIME_NOT_SUPPORTED_,
-        failure);
-    return this.prepareContentForDisplay_(unsupportedMsg,
-        DISPLAY_TYPE_UNSUPPORTED_);
-  }
-
-  if (!this.isValidBase64_(data)) {
-    failure = 'Invalid base64 encoding';
-    unsupportedMsg = this.translateService_.getMessage(MIME_NOT_SUPPORTED_,
-        failure);
-    return this.prepareContentForDisplay_(unsupportedMsg,
-        DISPLAY_TYPE_UNSUPPORTED_);
-  }
-
-  var uri = 'data:' + type + ';base64,' + data;
-  return this.prepareContentForDisplay_(uri, DISPLAY_TYPE_IMAGE_);
+ GmailService.prototype.prepareAttachment_ = function(data, type, encoding, name) {
+  data=goog.crypt.base64.decodeString(data);
+  var blob = new Blob([data], {type: type}), 
+  url = window.URL.createObjectURL(blob);
+  return this.prepareAttachmentForDisplay_(url, type , name);
 };
 
 
@@ -2031,6 +2013,17 @@ GmailService.prototype.isValidBase64_ = function(encodedString) {
  */
 GmailService.prototype.prepareContentForDisplay_ = function(content, type) {
   return {content: content, type: type};
+};
+
+/**
+ * Inserts attachment into an object that can be displayed within the E2EMail app.
+ * @param {string} url The blob url
+ * @param {string} type The type of the content
+ * @return {{url: string, type: string, filename: string}}
+ * @private
+ */
+GmailService.prototype.prepareAttachmentForDisplay_ = function(url, type, filename) {
+  return {url: url, type: type, filename: filename};
 };
 
 
