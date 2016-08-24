@@ -25,7 +25,6 @@ goog.require('e2email.components.auth.module');
 goog.require('e2email.components.autocomplete.module');
 goog.require('e2email.components.autocompletedirective.module');
 goog.require('e2email.components.contacts.module');
-goog.require('e2email.components.fileuploaddirective.module');
 goog.require('e2email.components.gmail.module');
 goog.require('e2email.components.openpgp.module');
 goog.require('e2email.components.outerclick.module');
@@ -136,7 +135,6 @@ e2email.application.module = angular.module('e2email.application', [
   e2email.components.autocomplete.module.name,
   e2email.components.autocompletedirective.module.name,
   e2email.components.contacts.module.name,
-  e2email.components.fileuploaddirective.module.name,
   e2email.components.gmail.module.name,
   e2email.components.openpgp.module.name,
   e2email.components.outerclick.module.name,
