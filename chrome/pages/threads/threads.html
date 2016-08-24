@@ -56,18 +56,25 @@
     </div>
 
     <input tabindex="2" type="text" class="form-control ac-tabbable email-main-subject-input" placeholder="Subject" required="required" ng-hide="threadsCtrl.compose.missingRecipient" ng-model="threadsCtrl.compose.subject" ng-keypress="threadsCtrl.onSubjectKeyPress($event)"/>
+    <div class="compose-content">
     <div tabindex="3" id="textareaSpace">
       <textarea id="textareaElement" class="form-control email-main-compose-textarea" placeholder="{{threadsCtrl.compose.validRecipient ? 'typeMessagePlaceholder' : 'invalidRecipientPlaceholder' | translate}}" rows="10" ng-disabled="!threadsCtrl.compose.validRecipient" ng-model="threadsCtrl.compose.message" ng-hide="threadsCtrl.compose.missingRecipient" required="required">
       </textarea> </div>
       <div id="attachmentRepeat">
-      <div ng-repeat="x in threadsCtrl.compose.attachments" class="single-attachment"><span style="margin: 0px; padding:0px;overflow-y: hidden; width:60%;">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span style="width:30%; overflow-y:hidden;"> {{'(' + threadsCtrl.round(x.size) + ')'}} </span> <span style="width:10%;">
-        <button ng-click="threadsCtrl.removeObj()" class="removeAttachment"> x </button> </span></div>
+      <div ng-repeat="x in threadsCtrl.compose.attachments" class="single-attachment"><span style="margin: 0px; padding:0px;overflow-y: hidden; width:60%;">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span style="width:30%; overflow-y:hidden;"> {{'(' + x.size + ')'}} </span> <span style="width:10%;">
+        <button ng-click="threadsCtrl.removeObj(x.filename)" class="removeAttachment"> x </button> </span></div>
       </div>
-  <div class="row email-main-compose-form-button-row" ng-hide="threadsCtrl.compose.missingRecipient">
+      </div>
+  <div class="row email-main-compose-form-button-row">
     <div class="col-xs-12">
       <button tabindex="4" type="submit" class="col-xs-3 btn btn-primary btn-focus sidebtn">{{'send' | translate}}</button>
       <button tabindex="5" ng-click="threadsCtrl.showCompose(false)" class="btn btn-link btn-focus sidebtn">{{'cancel' | translate}}</button>
-      <img tabindex="6" src="assets/img/attach.png" class="attach-img" as-upload="threadsCtrl.onFileUpload(name, type, contents, size)"/>
+        <div tabindex="6" class="attach-img" as-upload="threadsCtrl.onFileUpload(name, type, contents, size)">
+          <svg class="attach-icon" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="#757575">
+            <path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+          </svg>
+        </div>
     </div>
   </div>
   </form>

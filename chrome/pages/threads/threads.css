@@ -181,3 +181,8 @@ input.email-select[type="checkbox"]:checked + label.email-select > span {
   font-size: 15px;
   padding: 0px;
 }
+
+.compose-content {
+  max-height: 700px;
+  overflow: auto;
+}
