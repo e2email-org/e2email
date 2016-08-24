@@ -159,20 +159,12 @@ div.big-icon > img {
   cursor: pointer;
 }
 
+.attach-icon {
+  margin-top: 13px;
+}
+
 .attach-icon:hover {
   fill: #66afe9;
-}
-
-.btn {
-  padding: 8px 16px;
-  font-size: 18px;
-}
-
-.btn-primary {
-  width: 240px;
-  height: 55px;
-  font-size: 18px;
-  padding: 10px 30px;
 }
 
 .sidebtn {
