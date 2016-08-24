@@ -183,14 +183,6 @@ div.big-icon > img {
   float: left !important;
 }
 
-.attachbtn {
-  width: 21px;
-  height: inherit;
-  position: absolute;
-  margin-left: -120px;
-  margin-top: 8px;
-}
-
 .single-attachment {
   background-color: #f5f5f5;
   border: 1px solid #dcdcdc;
@@ -204,10 +196,6 @@ div.big-icon > img {
   width: 80%;
   height: 23px;
   display: flex;
-}
-
-.input-attachments {
-  margin-bottom: 10px;
 }
 
 #textareaSpace {
