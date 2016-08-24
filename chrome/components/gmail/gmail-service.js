@@ -37,10 +37,8 @@ goog.require('goog.asserts');
 goog.require('goog.crypt.base64');
 goog.require('goog.format.EmailAddress');
 goog.require('goog.i18n.mime.encode');
-goog.require('goog.object');
 goog.require('goog.string');
 goog.require('goog.structs.LinkedMap');
-goog.require('goog.crypt.base64');
 
 goog.scope(function() {
 
@@ -587,7 +585,8 @@ GmailService.prototype.encryptAndSendMail = function(
   goog.array.removeDuplicates(recipients);
 
   // TODO add support for content other than plaintext
-  var mimeWrappedContent = this.plaintextWrap_(content, subject, recipients, opt_attachments);
+  var mimeWrappedContent = this.plaintextWrap_(
+      content, subject, recipients, opt_attachments);
   return this.withMyKey_()
       .then(goog.bind(function(myKey) {
         // Save my private key, and continue to get public keys for
@@ -1643,7 +1642,8 @@ GmailService.prototype.sendRFC2822Message_ = function(threadId, content) {
  * @return {string} The wrapped content suitable for POSTing to the API.
  * @private
  */
-GmailService.prototype.plaintextWrap_ = function(content, subject, recipients, opt_attachments) {
+GmailService.prototype.plaintextWrap_ = function(
+    content, subject, recipients, opt_attachments) {
   var finalSubject = null;
   var finalRecipients = null;
   var finalFrom = null;
@@ -1865,7 +1865,7 @@ GmailService.prototype.extractMimeContent_ = function(mail, message) {
  * an array of objects that correspond to the MIME nodes of the message.
  * @param {e2e.openpgp.pgpmime.types.Entity} rootNode The object-tree
  *     representation of a MIME message
- * @return {!Array<{content: string, type: string}>}
+ * @return {!Array<{content: string, type: string, url: string, filename: string}>}
  * @private
  */
 GmailService.prototype.mimeTreeWalker_ = function(rootNode) {
@@ -1889,23 +1889,20 @@ GmailService.prototype.mimeTreeWalker_ = function(rootNode) {
 
   // Case 1: Attachment
 
-  // In case of a text file attachment, the value "attachment" can be found in
-  // rootNode.header[constants.Mime.CONTENT_DISPOSITION].value with no need to be 
-  // parsed, but even if parsed, the content of "at" will still be "attachment", 
-  // as in other cases rootNode.header[constants.Mime.CONTENT_DISPOSITION].value
-  // is a string containing "attachment" and filename.
-  if (goog.isDefAndNotNull(rootNode.header[constants.Mime.CONTENT_DISPOSITION]) && 
-    goog.isDefAndNotNull(rootNode.header[constants.Mime.CONTENT_DISPOSITION].value) &&
-    goog.isString(rootNode.body)){
-  var cd=e2e.openpgp.pgpmime.Utils.parseHeaderValueWithParams(
-  rootNode.header[constants.Mime.CONTENT_DISPOSITION].value); //content disposition
-  var at=cd.value; // parsing the first value out of the content disposition
+  if (goog.isDefAndNotNull(rootNode.header[
+      constants.Mime.CONTENT_DISPOSITION]) &&
+      goog.isDefAndNotNull(rootNode.header[
+      constants.Mime.CONTENT_DISPOSITION].value) &&
+      goog.isString(rootNode.body)) {
+    var cd = e2e.openpgp.pgpmime.Utils.parseHeaderValueWithParams(
+        rootNode.header[constants.Mime.CONTENT_DISPOSITION].value);
+    var at = cd.value; // parsing the first value out of the content disposition
 
-  if (at == "attachment") {
-    var filename = cd.params.filename;
-    return [this.prepareAttachment_(rootNode.body, ct, enc, filename)];
+    if (at == 'attachment') {
+      var filename = cd.params.filename;
+      return [this.prepareAttachment_(rootNode.body, ct, enc, filename)];
+    }
   }
-}
 
   // Case 2: Single plaintext node.
   if (ct === constants.Mime.PLAINTEXT && goog.isString(rootNode.body)) {
@@ -1934,19 +1931,21 @@ GmailService.prototype.mimeTreeWalker_ = function(rootNode) {
 
 
 /**
- * Decodes the string to base 64 and prepares a blob with the 
+ * Decodes the string to base 64 and prepares a blob with the
  * link of the file.
  * @param {string} data The data of the attachment
  * @param {string} type The MIME Content-Type of the attachment
  * @param {string} encoding The Content-Transfer-Encoding of the attachment
- * @return {url: string, type: string, name: string}
+ * @param {string} filename The name of the attachment
+ * @return {{url: string, type: string, filename: string}}
  * @private
  */
- GmailService.prototype.prepareAttachment_ = function(data, type, encoding, name) {
-  data=goog.crypt.base64.decodeString(data);
-  var blob = new Blob([data], {type: type}), 
-  url = window.URL.createObjectURL(blob);
-  return this.prepareAttachmentForDisplay_(url, type , name);
+GmailService.prototype.prepareAttachment_ = function(
+    data, type, encoding, filename) {
+  var dt = goog.crypt.base64.decodeString(data);
+  var blob = new Blob([dt], {type: type}),
+      url = window.URL.createObjectURL(blob);
+  return this.prepareAttachmentForDisplay_(url, type, filename);
 };
 
 
@@ -1998,7 +1997,8 @@ GmailService.prototype.isMime_ = function(message) {
  * @return {boolean} Returns true if the string is valid base64, otherwise false
  * @private
  */
-GmailService.prototype.isValidBase64_ = function(encodedString) {
+GmailService.prototype.isValidBase64_ = function(
+    encodedString) {
   var validBase64 = new RegExp('^[A-Za-z0-9+/=\r\n\t ]+$');
   return validBase64.test(encodedString);
 };
@@ -2011,19 +2011,24 @@ GmailService.prototype.isValidBase64_ = function(encodedString) {
  * @return {{content: string, type: string}}
  * @private
  */
-GmailService.prototype.prepareContentForDisplay_ = function(content, type) {
+GmailService.prototype.prepareContentForDisplay_ = function(
+    content, type) {
   return {content: content, type: type};
 };
 
+
 /**
- * Inserts attachment into an object that can be displayed within the E2EMail app.
+ * Inserts attachment into an object that can be
+ * displayed within the E2EMail app.
  * @param {string} url The blob url
- * @param {string} type The type of the content
+ * @param {string} type The type of the attachment
+ * @param {string} name The name of the attachment
  * @return {{url: string, type: string, filename: string}}
  * @private
  */
-GmailService.prototype.prepareAttachmentForDisplay_ = function(url, type, filename) {
-  return {url: url, type: type, filename: filename};
+GmailService.prototype.prepareAttachmentForDisplay_ = function(
+    url, type, name) {
+  return {url: url, type: type, filename: name};
 };
 
 
