@@ -480,19 +480,11 @@ ThreadsCtrl.prototype.onFileUpload = function(name, type, contents, size) {
 
 /**
  * Removes the attachment object from the list of attachments.
- * @param {string} name of the file
+ * @param {number} index The index of the file.
  * @export
  */
-ThreadsCtrl.prototype.removeObj = function(name) {
-  var at = this.compose.attachments;
-
-  if (at != []) {
-    var i;
-    for (i = at.length - 1; i >= 0; i--) {
-      if (at[i].filename == name)
-        at.splice(i, 1);
-    }
-  }
+ThreadsCtrl.prototype.removeObj = function(index) {
+  this.compose.attachments.splice(index, 1);
 };
 
 

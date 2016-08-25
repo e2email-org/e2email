@@ -171,16 +171,6 @@ div.big-icon > img {
   width: 70px;
   height: 30px;
   font-size: 12px;
-  padding: 0;
-  float: left !important;
-}
-
-.sidebtnlarge {
-  width: 100px;
-  height: 35px;
-  font-size: 15px;
-  padding: 0px;
-  float: left !important;
 }
 
 .single-attachment {
