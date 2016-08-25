@@ -50,7 +50,7 @@
       <textarea id="textareaElement" class="form-control fade-show" placeholder="{{'typeReplyPlaceholder' | translate}}" ng-model="messagesCtrl.reply.content" rows="10"></textarea>
       <div id="attachmentRepeat">
         <div ng-repeat="x in messagesCtrl.reply.attachments" class="single-attachment"><span id="file-description">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span id="file-size"> {{' (' + x.size/1000 + ' K)'}}</span> <span style="width:10%;">
-        <button ng-click="messagesCtrl.removeObj($index)" class="removeAttachment"> {{$index}} </button> </span></div>
+        <button ng-click="messagesCtrl.removeObj($index)" class="removeAttachment"> x </button> </span></div>
       </div>
     </div>
     <div class="row email-detail-reply-form-button-row">

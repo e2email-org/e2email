@@ -125,8 +125,7 @@ MessagesCtrl.prototype.onFileUpload = function(name, type, contents, size) {
   * @export
   */
 MessagesCtrl.prototype.removeObj = function(index) {
-  var at = this.reply.attachments;
-  at.splice(index, 1);
+  this.reply.attachments.splice(index, 1);
 };
 
 
