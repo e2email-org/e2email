@@ -186,3 +186,15 @@ input.email-select[type="checkbox"]:checked + label.email-select > span {
   max-height: 700px;
   overflow: auto;
 }
+
+#attachName {
+  margin: 0px;
+  padding:0px;
+  overflow-y: hidden;
+  width: 60%;
+}
+
+#attachSize {
+  width:30%;
+  overflow-y: hidden;
+}
