@@ -121,19 +121,12 @@ MessagesCtrl.prototype.onFileUpload = function(name, type, contents, size) {
 
 /**
   * Removes the attachment object from the list of attachments.
-  * @param {string} name of the file
+  * @param {number} index Index of the file.
   * @export
   */
-MessagesCtrl.prototype.removeObj = function(name) {
+MessagesCtrl.prototype.removeObj = function(index) {
   var at = this.reply.attachments;
-
-  if (at != []) {
-    var i;
-    for (i = at.length - 1; i >= 0; i--) {
-      if (at[i].filename == name)
-        at.splice(i, 1);
-    }
-  }
+  at.splice(index, 1);
 };
 
 
