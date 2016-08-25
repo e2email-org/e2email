@@ -62,7 +62,7 @@
       </textarea> </div>
       <div id="attachmentRepeat">
       <div ng-repeat="x in threadsCtrl.compose.attachments" class="single-attachment"><span id="attachName">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span id="attachSize"> {{'(' + x.size + ')'}} </span> <span style="width:10%;">
-        <button ng-click="threadsCtrl.removeObj($index" class="removeAttachment"> x </button> </span></div>
+        <button ng-click="threadsCtrl.removeObj($index)" class="removeAttachment"> x </button> </span></div>
       </div>
       </div>
   <div class="row email-main-compose-form-button-row">
