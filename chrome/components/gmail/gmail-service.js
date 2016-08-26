@@ -1937,7 +1937,7 @@ GmailService.prototype.mimeTreeWalker_ = function(rootNode) {
  * @param {string} type The MIME Content-Type of the attachment
  * @param {string} encoding The Content-Transfer-Encoding of the attachment
  * @param {string} filename The name of the attachment
- * @return {{url: string, type: string, filename: string}}
+ * @return {{url: string, type: string, filename: string, filesize: number}}
  * @private
  */
 GmailService.prototype.prepareAttachment_ = function(
@@ -1945,7 +1945,8 @@ GmailService.prototype.prepareAttachment_ = function(
   var dt = goog.crypt.base64.decodeString(data);
   var blob = new Blob([dt], {type: type}),
       url = window.URL.createObjectURL(blob);
-  return this.prepareAttachmentForDisplay_(url, type, filename);
+  var filesize = blob.size;
+  return this.prepareAttachmentForDisplay_(url, type, filename, filesize);
 };
 
 
@@ -2023,12 +2024,13 @@ GmailService.prototype.prepareContentForDisplay_ = function(
  * @param {string} url The blob url
  * @param {string} type The type of the attachment
  * @param {string} name The name of the attachment
- * @return {{url: string, type: string, filename: string}}
+ * @param {number} filesize The size of the file
+ * @return {{url: string, type: string, filename: string, filesize: number}}
  * @private
  */
 GmailService.prototype.prepareAttachmentForDisplay_ = function(
-    url, type, name) {
-  return {url: url, type: type, filename: name};
+    url, type, name, filesize) {
+  return {url: url, type: type, filename: name, filesize: filesize};
 };
 
 

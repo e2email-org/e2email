@@ -52,7 +52,7 @@ e2email.models.mail.Attachment;
  *   unread: boolean,
  *   status: ?string,
  *   hasErrors: ?string,
- *   mimeContent: ?Array.<{content: string, type: string, url: string, filename: string}>
+ *   mimeContent: ?Array.<{content: string, type: string, url: string, filename: string, filesize: number}>
  * }}
  */
 e2email.models.mail.Mail;
