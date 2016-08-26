@@ -39,7 +39,7 @@
       <div class="row email-mime-entry" ng-repeat="mime in mail.mimeContent" ng-show="mail.mimeContent">
         <img class="fade-show email-image-content" ng-src="{{mime.content}}" ng-if="mime.type=='image'">
         <div class="email-text-content col-xs-12" ng-if="mime.type=='text'">{{mime.content}}</div>
-        <div class="col-xs-12 single-attachment-received" ng-if="mime.url"> <a href="{{mime.url}}" download="{{mime.filename}}">{{mime.filename}}</div>
+        <div class="col-xs-12 single-attachment-received" ng-if="mime.url"> <a href="{{mime.url}}" download="{{mime.filename}}">{{mime.filename}} <span> {{'(' + mime.filesize + ')'}} </span> <span style="width:10%;"></div>
         <div class="email-error-content text-danger col-xs-12" ng-if="mime.type=='error'">{{mime.content}}</div>
       </div>
     </li>
