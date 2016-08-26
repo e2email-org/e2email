@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <button ng-click="messagesCtrl.showThreads()" class="btn btn-primary btn-focus col-xs-3 sidebtnlarge">
+        <button ng-click="messagesCtrl.showThreads()" class="btn btn-primary btn-focus col-xs-3">
           <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
           {{'inbox' | translate}}
         </button>
@@ -39,7 +39,7 @@
       <div class="row email-mime-entry" ng-repeat="mime in mail.mimeContent" ng-show="mail.mimeContent">
         <img class="fade-show email-image-content" ng-src="{{mime.content}}" ng-if="mime.type=='image'">
         <div class="email-text-content col-xs-12" ng-if="mime.type=='text'">{{mime.content}}</div>
-        <div class="col-xs-12 single-attachment-received" ng-if="mime.url"> <a href="{{mime.url}}" download="{{mime.filename}}">{{mime.filename}}</div>
+        <div class="col-xs-12 single-attachment-received" ng-if="mime.url"> <a href="{{mime.url}}" download="{{mime.filename}}">{{mime.filename}}</a></div>
         <div class="email-error-content text-danger col-xs-12" ng-if="mime.type=='error'">{{mime.content}}</div>
       </div>
     </li>
@@ -50,19 +50,19 @@
       <textarea id="textareaElement" class="form-control fade-show" placeholder="{{'typeReplyPlaceholder' | translate}}" ng-model="messagesCtrl.reply.content" rows="10"></textarea>
       <div id="attachmentRepeat">
         <div ng-repeat="x in messagesCtrl.reply.attachments" class="single-attachment"><span id="file-description">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span id="file-size"> {{' (' + x.size/1000 + ' K)'}}</span> <span style="width:10%;">
-        <button ng-click="threadsCtrl.removeObj()" class="removeAttachment"> x </button> </span></div>
+        <button ng-click="messagesCtrl.removeObj($index)" class="removeAttachment"> x </button> </span></div>
       </div>
     </div>
     <div class="row email-detail-reply-form-button-row">
       <div class="col-xs-12">
-        <button id="replyButton" type="submit" class="col-xs-3 btn btn-primary btn-focus pull-right sidebtn">{{messagesCtrl.reply.baseTitle | translate}}</button>
-        <button style="margin-top: 1em;" ng-click="messagesCtrl.cancelReply($event)" ng-show="messagesCtrl.reply.showText" class="btn btn-link btn-focus pull-right fade-show sidebtn">{{'cancel' | translate}}</button>
-        <div class="attach-img" ng-show="messagesCtrl.reply.showText" as-upload="messagesCtrl.onFileUpload(name, type, contents, size)">
+        <button id="replyButton" type="submit" class="col-xs-3 btn btn-primary btn-focus pull-left sidebtn">{{messagesCtrl.reply.baseTitle | translate}}</button>
+        <button style="margin-top: 1em;" ng-click="messagesCtrl.cancelReply($event)" ng-show="messagesCtrl.reply.showText" class="btn btn-link btn-focus pull-left fade-show sidebtn">{{'cancel' | translate}}</button>
+        <span class="attach-img" ng-show="messagesCtrl.reply.showText" as-upload="messagesCtrl.onFileUpload(name, type, contents, size)">
           <svg class="attach-icon" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="#757575">
             <path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/>
             <path d="M0 0h24v24H0z" fill="none"/>
           </svg>
-        </div>
+        </span>
       </div>
     </div>
   </form>
