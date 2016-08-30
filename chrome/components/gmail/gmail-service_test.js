@@ -710,16 +710,6 @@ describe('GmailService', function() {
   });
 
 
-  it('should construct valid image urls', function() {
-    var data = 'abc';
-    var content = 'image/jpg';
-    var encoding = 'base64';
-    var result = 'data:image/jpg;base64,abc';
-    expect(service.prepareImage_(data, content, encoding).content).toEqual(
-        result);
-  });
-
-
   it('should determine MIME types correctly from filename', function() {
     var filetype = 'abc.txt';
     var result = 'text/plain';
@@ -823,3 +813,4 @@ describe('GmailService', function() {
 });
 
 });  // goog.scope
+git 

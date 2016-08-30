@@ -1942,8 +1942,10 @@ GmailService.prototype.mimeTreeWalker_ = function(rootNode) {
  */
 GmailService.prototype.prepareAttachment_ = function(
     data, type, encoding, filename) {
-  var dt = goog.crypt.base64.decodeString(data);
-  var blob = new Blob([dt], {type: type}),
+  var noNewLines = data.replace(/[\r\n]/g, '');
+  var byteArray = Uint8Array.from(
+      goog.crypt.base64.decodeStringToByteArray(noNewLines));
+  var blob = new Blob([byteArray], {type: type}),
       url = window.URL.createObjectURL(blob);
   var filesize = blob.size;
   return this.prepareAttachmentForDisplay_(url, type, filename, filesize);
