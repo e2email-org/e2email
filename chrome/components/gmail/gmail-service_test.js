@@ -654,19 +654,14 @@ describe('GmailService', function() {
       'To: ystoller@google.com', '', 'pictures and text',
       '--===============5213375533884816044==', 'Content-Type: image/jpeg',
       'MIME-Version: 1.0', 'Content-Transfer-Encoding: base64', '',
-      '/9j/4AAQSkZJRgA', '--===============5213375533884816044==',
+      '/9j/4AAQSkZJRgA',
+      '--===============5213375533884816044==',
       'Content-Type: application/octet-stream',
       'Content-Disposition: attachment; filename="pic.jpg"',
       'MIME-Version: 1.0', 'Content-Transfer-Encoding: base64', '',
       '/9j/4QBCRXhpZgAASUkqAAgAAAABAJiCAgAeAAAAGgAAAAAAAABFZHdpbiBHaWVzYmVycy' +
           'AvIG5h', 'dHVyZXBsLmNvbQAAAP/sABFEdWNiT1retcHPyf/2Q==',
       '--===============5213375533884816044==',
-      'Content-Type: application/octet-stream',
-      'Content-Disposition: attachment; filename="words.txt"',
-      'Content-Transfer-Encoding: 7bit', '', 'random text, part 1',
-      '--===============5213375533884816044==', 'Content-Type: image/png',
-      'MIME-Version: 1.0', 'Content-Transfer-Encoding: base64', '',
-      'iVBORw0KGgoAAAA', '--===============5213375533884816044==',
       'Content-Type: text/plain', 'Content-Transfer-Encoding: 7bit', '',
       'random text, part 2',
       '--===============5213375533884816044==--'].join('\r\n');
@@ -674,21 +669,15 @@ describe('GmailService', function() {
     service.extractMimeContent_(mockMailObject, message);
     // extractMimeContent_ should detect a total of five image/text MIME nodes.
     // The nodes should be identified correctly, and formatted for display.
-    expect(mockMailObject.mimeContent.length).toBe(5);
-    expect(mockMailObject.mimeContent[0].type).toBe('image');
-    expect(mockMailObject.mimeContent[1].type).toBe('unsupported');
-    expect(mockMailObject.mimeContent[2].type).toBe('unsupported');
-    expect(mockMailObject.mimeContent[3].type).toBe('image');
-    expect(mockMailObject.mimeContent[4].type).toBe('text');
-    expect(mockMailObject.mimeContent[0].content).toEqual('data:image/jpeg;' +
-        'base64,/9j/4AAQSkZJRgA\r\n');
-    expect(mockMailObject.mimeContent[1].content).toEqual(
+    expect(mockMailObject.mimeContent.length).toBe(3);
+    expect(mockMailObject.mimeContent[0].type).toBe('unsupported');
+    expect(mockMailObject.mimeContent[1].type).toBe('application/octet-stream');
+    expect(mockMailObject.mimeContent[2].type).toBe('text');
+    expect(mockMailObject.mimeContent[0].content).toEqual(
         'unsupportedMimeContent');
+    expect(mockMailObject.mimeContent[1].url.substring(0, 5)).toEqual(
+        'blob:');
     expect(mockMailObject.mimeContent[2].content).toEqual(
-        'unsupportedMimeContent');
-    expect(mockMailObject.mimeContent[3].content).toEqual(
-        'data:image/png;base64,iVBORw0KGgoAAAA\r\n');
-    expect(mockMailObject.mimeContent[4].content).toEqual(
         'random text, part 2');
   });
 
@@ -802,15 +791,21 @@ describe('GmailService', function() {
          'Content-Disposition: attachment; filename="foo.txt"',
          '', 'aGVsbG8gd29ybGQK', '--simple boundary--'].join('\r\n');
        var mockMimeContent = {};
-       var expectedObject = [{content: 'lorem ipsum dolor.\r\n', type: 'text'},
-         {content: 'data:image/gif;base64,aGVsbG8gd29ybGQK', type: 'image'}];
+       var expectedObject = [{content: 'lorem ipsum dolor.\r\n', type: 'text'}];
+       var expectedFilename = 'foo.txt';
+       var expectedType = 'image/gif';
+       var expectedURL = 'blob:';
+       var expectedFilesize = 12;
        service.extractMimeContent_(mockMimeContent, message);
        expect(mockMimeContent.mimeContent.length).toBe(2);
        expect(mockMimeContent.mimeContent[0]).toEqual(expectedObject[0]);
-       expect(mockMimeContent.mimeContent[1]).toEqual(expectedObject[1]);
+       expect(mockMimeContent.mimeContent[1].filename).
+       toEqual(expectedFilename);
+       expect(mockMimeContent.mimeContent[1].type).toEqual(expectedType);
+       expect(mockMimeContent.mimeContent[1].url.substring(0, 5)).
+       toEqual(expectedURL);
      });
 
 });
 
 });  // goog.scope
-git 

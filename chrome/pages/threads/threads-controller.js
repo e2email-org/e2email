@@ -176,7 +176,7 @@ e2email.pages.threads.ThreadsCtrl = function(
  *   invalidRecipient: ?string,
  *   subject: ?string,
  *   message: ?string,
- *   attachments: Array<Object>
+ *   attachments: Array<e2email.models.mail.Attachment>
 * }}
  */
 e2email.pages.threads.ThreadsCtrl.Compose;
@@ -462,7 +462,7 @@ ThreadsCtrl.prototype.isInviteInProgress = function() {
  * uploaded.
  * @param {string} name of the file
  * @param {string} type of the file
- * @param {string} contents of the file in a string format
+ * @param {Uint8Array} contents of the file in a string format
  * @param {number} size of the file
  * @export
  */
@@ -475,6 +475,16 @@ ThreadsCtrl.prototype.onFileUpload = function(name, type, contents, size) {
     'size': size
   };
   this.compose.attachments.push(obj);
+};
+
+
+/**
+ * Removes the attachment object from the list of attachments.
+ * @param {number} index The index of the file.
+ * @export
+ */
+ThreadsCtrl.prototype.removeObj = function(index) {
+  this.compose.attachments.splice(index, 1);
 };
 
 

@@ -159,6 +159,67 @@ div.big-icon > img {
   cursor: pointer;
 }
 
+.attach-icon {
+  margin-top: 13px;
+}
+
 .attach-icon:hover {
   fill: #66afe9;
+}
+
+.sidebtn {
+  width: 70px;
+  height: 30px;
+  font-size: 12px;
+}
+
+.single-attachment {
+  background-color: #f5f5f5;
+  border: 1px solid #dcdcdc;
+  font-weight: bold;
+  font-size: 13px;
+  margin: 0 7px 6px;
+  color: #1155CC !important;
+  text-align: left;
+  padding: 2px 6px;
+  max-width: 448px;
+  width: 80%;
+  height: 23px;
+  display: flex;
+}
+
+#textareaSpace {
+  min-height: 250px;
+  max-height: 500px;
+  overflow: auto;
+  background-color: white;
+}
+
+#textareaElement {
+  flex;flex-direction: column;
+  min-height: 250px;
+  text-align: left;
+  border: none;
+  background-color: white;
+  outline: none;
+  resize: none;
+  margin-bottom: 0px;
+}
+
+#attachmentRepeat {
+  background-color: white;
+  min-height: 20px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.removeAttachment {
+  border: none;
+  font-size: 13px;
+  color: gray;
+  background-color: inherit;
+  margin: 0 !important;
+  padding: 0;
+  float: right;
 }

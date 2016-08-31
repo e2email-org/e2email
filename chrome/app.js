@@ -19,12 +19,13 @@
  */
 
 goog.provide('e2email.application.module');
-
 goog.require('e2email.components.appinfo.module');
 goog.require('e2email.components.auth.module');
 goog.require('e2email.components.autocomplete.module');
 goog.require('e2email.components.autocompletedirective.module');
+goog.require('e2email.components.blobhrefdirective.module');
 goog.require('e2email.components.contacts.module');
+goog.require('e2email.components.fileuploaddirective.module');
 goog.require('e2email.components.gmail.module');
 goog.require('e2email.components.openpgp.module');
 goog.require('e2email.components.outerclick.module');
@@ -135,6 +136,7 @@ e2email.application.module = angular.module('e2email.application', [
   e2email.components.autocomplete.module.name,
   e2email.components.autocompletedirective.module.name,
   e2email.components.contacts.module.name,
+  e2email.components.fileuploaddirective.module.name,
   e2email.components.gmail.module.name,
   e2email.components.openpgp.module.name,
   e2email.components.outerclick.module.name,
@@ -144,6 +146,7 @@ e2email.application.module = angular.module('e2email.application', [
   e2email.components.translatefilter.module.name,
   e2email.components.userinfo.module.name,
   e2email.components.userlist.module.name,
+  e2email.components.blobhrefdirective.module.name,
   'ngAnimate',
   'ngAria',
   'ngRoute'
