@@ -52,7 +52,7 @@
   font-weight: bold;
   font-size: 13px;
   margin: 0 7px 6px;
-  color: #1155CC !important;
+  color: #428bca !important;
   overflow-y: hidden;
   text-align: left;
   padding: 2px 6px;
@@ -62,14 +62,15 @@
   margin-bottom: -5px;
 }
 
-#file-description {
+.file-description {
+  color: #1155CC !important;
   margin: 0px;
   padding:0px;
   overflow-y: hidden;
   width:60%;
 }
 
-#file-size {
+.file-size {
   width:30%;
   overflow-y:hidden;
 }

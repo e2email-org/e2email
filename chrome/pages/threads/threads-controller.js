@@ -462,7 +462,7 @@ ThreadsCtrl.prototype.isInviteInProgress = function() {
  * uploaded.
  * @param {string} name of the file
  * @param {string} type of the file
- * @param {string} contents of the file in a string format
+ * @param {Uint8Array} contents of the file in a string format
  * @param {number} size of the file
  * @export
  */
