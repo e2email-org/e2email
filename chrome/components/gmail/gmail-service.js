@@ -1889,13 +1889,15 @@ GmailService.prototype.mimeTreeWalker_ = function(rootNode) {
 
   // Case 1: Attachment
 
-  if (goog.isDefAndNotNull(rootNode.header[
-      constants.Mime.CONTENT_DISPOSITION]) &&
-      goog.isDefAndNotNull(rootNode.header[
-      constants.Mime.CONTENT_DISPOSITION].value) &&
+  var conDisposition = constants.Mime.CONTENT_DISPOSITION;
+
+  if (goog.isDefAndNotNull(rootNode.header[conDisposition]) &&
+      goog.isDefAndNotNull(rootNode.header[conDisposition].value) &&
       goog.isString(rootNode.body)) {
+
     var cd = e2e.openpgp.pgpmime.Utils.parseHeaderValueWithParams(
-        rootNode.header[constants.Mime.CONTENT_DISPOSITION].value);
+        rootNode.header[conDisposition].value);
+
     var at = cd.value; // parsing the first value out of the content disposition
 
     if (at == 'attachment') {
@@ -2000,8 +2002,7 @@ GmailService.prototype.isMime_ = function(message) {
  * @return {boolean} Returns true if the string is valid base64, otherwise false
  * @private
  */
-GmailService.prototype.isValidBase64_ = function(
-    encodedString) {
+GmailService.prototype.isValidBase64_ = function(encodedString) {
   var validBase64 = new RegExp('^[A-Za-z0-9+/=\r\n\t ]+$');
   return validBase64.test(encodedString);
 };
@@ -2014,15 +2015,14 @@ GmailService.prototype.isValidBase64_ = function(
  * @return {{content: string, type: string}}
  * @private
  */
-GmailService.prototype.prepareContentForDisplay_ = function(
-    content, type) {
+GmailService.prototype.prepareContentForDisplay_ = function(content, type) {
   return {content: content, type: type};
 };
 
 
 /**
- * Inserts attachment into an object that can be
- * displayed within the E2EMail app.
+ * Inserts attachment into an object that can be displayed
+ * within the E2EMail app.
  * @param {string} url The blob url
  * @param {string} type The type of the attachment
  * @param {string} name The name of the attachment
