@@ -761,6 +761,7 @@ describe('GmailService', function() {
     // The following message is supported.
     mockMimeContent = {};
     message = 'Content-Type: text/plain\r\n\r\nhello world';
+    
     expect(service.isMime_(message)).toBe(true);
     service.extractMimeContent_(mockMimeContent, message);
     expect(mockMimeContent.mimeContent[0]).toEqual({content: 'hello world',
