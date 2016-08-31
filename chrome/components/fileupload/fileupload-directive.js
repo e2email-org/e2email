@@ -37,12 +37,11 @@ e2email.components.fileuploaddirective.fileuploadDirective = function() {
           reader.onload = function(fileEvent) {
             scope.$apply(function() {
               scope.upload({'name': file.name, 'type': file.type,
-                'contents': unescape(
-                    encodeURIComponent(fileEvent.target.result)),
+                'contents': new Uint8Array(fileEvent.target.result),
                 'size': file.size});
             });
           };
-          reader.readAsText(file);
+          reader.readAsArrayBuffer(file);
         });
       });
     },
