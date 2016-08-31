@@ -20,6 +20,8 @@
 goog.provide('e2email.pages.messages.MessagesCtrl');
 
 goog.require('e2email.constants.Location');
+goog.require('goog.format');
+
 
 
 goog.scope(function() {
@@ -97,6 +99,17 @@ MessagesCtrl.prototype.cancelReply = function(opt_event) {
   this.reply['content'] = null;
   this.reply['showText'] = false;
   this.reply['attachments'] = [];
+};
+
+
+/**
+ * Returns the right conversion of Bytes
+ * @param {number} sizeInBytes The size of the attachment
+ * @return {string}
+ * @export
+ */
+MessagesCtrl.prototype.convertBytes = function(sizeInBytes) {
+  return goog.format.fileSize(sizeInBytes);
 };
 
 

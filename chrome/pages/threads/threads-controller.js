@@ -25,6 +25,7 @@ goog.provide('e2email.pages.threads.ThreadsCtrl.Compose');
 goog.require('e2email.constants.Location');
 goog.require('e2email.util.Email');
 goog.require('goog.array');
+goog.require('goog.format');
 
 
 goog.scope(function() {
@@ -231,6 +232,17 @@ ThreadsCtrl.prototype.showFAQ = function() {
  */
 ThreadsCtrl.prototype.isRefreshing = function() {
   return this.inRefresh;
+};
+
+
+/**
+ * Returns the right conversion of Bytes
+ * @param {number} sizeInBytes The size of the attachment
+ * @return {string}
+ * @export
+ */
+ThreadsCtrl.prototype.convertBytes = function(sizeInBytes) {
+  return goog.format.fileSize(sizeInBytes);
 };
 
 
