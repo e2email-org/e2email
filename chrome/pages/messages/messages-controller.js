@@ -79,7 +79,7 @@ e2email.pages.messages.MessagesCtrl = function(
     'maxSizeExceeded': false
   };
 
-  /** @type {number} Max size of the attachments array*/
+  /** @type {number} Maximum allowed size in bytes of the attachments.*/
   this.attachmentsMaxSize = 25000000;
 
   // Run an async task to fetch/decrypt messages in this thread

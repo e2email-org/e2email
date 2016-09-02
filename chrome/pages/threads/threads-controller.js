@@ -109,7 +109,7 @@ e2email.pages.threads.ThreadsCtrl = function(
   this.status = null;
 
 
-  /** @type {number} Max size of the attachments array*/
+  /** @type {number} Maximum allowed size in bytes of the attachments.*/
   this.attachmentsMaxSize = 25000000;
 
 
