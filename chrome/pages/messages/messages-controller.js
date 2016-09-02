@@ -74,8 +74,13 @@ e2email.pages.messages.MessagesCtrl = function(
     'baseTitle': 'reply',
     'content': null,
     'showText': false,
-    'attachments': []
+    'attachments': [],
+    'attachmentsSize': 0,
+    'maxSizeExceeded': false
   };
+
+  /** @type {number} Max size of the attachments array*/
+  this.attachmentsMaxSize = 25000000;
 
   // Run an async task to fetch/decrypt messages in this thread
   // once the view has loaded.
@@ -99,6 +104,8 @@ MessagesCtrl.prototype.cancelReply = function(opt_event) {
   this.reply['content'] = null;
   this.reply['showText'] = false;
   this.reply['attachments'] = [];
+  this.reply['maxSizeExceeded'] = false;
+  this.reply['attachmentsSize'] = 0;
 };
 
 
@@ -121,6 +128,9 @@ MessagesCtrl.prototype.convertBytes = function(sizeInBytes) {
  * @export
  */
 MessagesCtrl.prototype.onFileUpload = function(name, type, contents, size) {
+  // marking it as false in case the max size is exceeded before
+  // but this time the user inserts an attachment within max size limit.
+  this.reply.maxSizeExceeded = false;
   var obj = {
     'filename': name,
     'type': type,
@@ -128,7 +138,13 @@ MessagesCtrl.prototype.onFileUpload = function(name, type, contents, size) {
     'content': contents,
     'size': size
   };
-  this.reply.attachments.push(obj);
+  // Only allow attachments size up to attachmentsMaxSize
+  if (this.reply.attachmentsSize + size < this.attachmentsMaxSize) {
+    this.reply.attachments.push(obj);
+    this.reply.attachmentsSize += size;
+  } else {
+    this.reply.maxSizeExceeded = true;
+  }
 };
 
 

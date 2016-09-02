@@ -225,5 +225,6 @@ div.big-icon > img {
 }
 
 .centerBtn {
-  margin-left: 135px;
+  margin-right: 40% !important;
+  margin-left: 40% !important;
 }

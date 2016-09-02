@@ -109,6 +109,10 @@ e2email.pages.threads.ThreadsCtrl = function(
   this.status = null;
 
 
+  /** @type {number} Max size of the attachments array*/
+  this.attachmentsMaxSize = 25000000;
+
+
   /** @type {!e2email.pages.threads.ThreadsCtrl.Compose} */
   this.compose = {
     'recipient': null,
@@ -119,6 +123,7 @@ e2email.pages.threads.ThreadsCtrl = function(
     'subject': null,
     'message': null,
     'attachments': [],
+    'attachmentsSize': 0,
     'maxSizeExceeded': false
   };
 
@@ -319,6 +324,7 @@ ThreadsCtrl.prototype.showCompose = function(show) {
     this.compose['message'] = null;
     this.compose['attachments'] = [];
     this.compose['maxSizeExceeded'] = false;
+    this.compose['attachmentsSize'] = 0;
   } else {
     this.window_.document.querySelector('div.maincontent').scrollIntoView(true);
   }
@@ -481,6 +487,10 @@ ThreadsCtrl.prototype.isInviteInProgress = function() {
  * @export
  */
 ThreadsCtrl.prototype.onFileUpload = function(name, type, contents, size) {
+  // marking it as false in case the max size is exceeded before
+  // but this time the user inserts an attachment within max size limit.
+  this.compose.maxSizeExceeded = false;
+
   var obj = {
     'filename': name,
     'type': type,
@@ -488,8 +498,11 @@ ThreadsCtrl.prototype.onFileUpload = function(name, type, contents, size) {
     'content': contents,
     'size': size
   };
-  if (this.compose.attachments.size() + size < 25000000) {
+
+  // Only allow attachments size up to attachmentsMaxSize
+  if (this.compose.attachmentsSize + size < this.attachmentsMaxSize) {
     this.compose.attachments.push(obj);
+    this.compose.attachmentsSize += size;
   } else {
     this.compose.maxSizeExceeded = true;
   }
@@ -502,6 +515,8 @@ ThreadsCtrl.prototype.onFileUpload = function(name, type, contents, size) {
  * @export
  */
 ThreadsCtrl.prototype.removeObj = function(index) {
+
+  this.compose.attachmentsSize -= this.compose.attachments[index].size;
   this.compose.attachments.splice(index, 1);
 };
 
