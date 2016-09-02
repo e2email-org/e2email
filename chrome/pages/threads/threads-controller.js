@@ -118,7 +118,8 @@ e2email.pages.threads.ThreadsCtrl = function(
     'invalidRecipient': null,
     'subject': null,
     'message': null,
-    'attachments': []
+    'attachments': [],
+    'maxSizeExceeded': false
   };
 
 
@@ -317,6 +318,7 @@ ThreadsCtrl.prototype.showCompose = function(show) {
     this.compose['subject'] = null;
     this.compose['message'] = null;
     this.compose['attachments'] = [];
+    this.compose['maxSizeExceeded'] = false;
   } else {
     this.window_.document.querySelector('div.maincontent').scrollIntoView(true);
   }
@@ -486,7 +488,11 @@ ThreadsCtrl.prototype.onFileUpload = function(name, type, contents, size) {
     'content': contents,
     'size': size
   };
-  this.compose.attachments.push(obj);
+  if (this.compose.attachments.size() + size < 25000000) {
+    this.compose.attachments.push(obj);
+  } else {
+    this.compose.maxSizeExceeded = true;
+  }
 };
 
 
