@@ -61,7 +61,7 @@
       <textarea id="textareaElement" class="form-control email-main-compose-textarea" placeholder="{{threadsCtrl.compose.validRecipient ? 'typeMessagePlaceholder' : 'invalidRecipientPlaceholder' | translate}}" rows="10" ng-disabled="!threadsCtrl.compose.validRecipient" ng-model="threadsCtrl.compose.message" ng-hide="threadsCtrl.compose.missingRecipient" required="required">
       </textarea> </div>
       <div id="attachmentRepeat">
-      <div ng-repeat="x in threadsCtrl.compose.attachments" class="single-attachment"><span id="attachName">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span id="attachSize" ng-bind="threadsCtrl.convertBytes(x.size)"> {{}} </span> <span style="width:10%;">
+      <div ng-repeat="x in threadsCtrl.compose.attachments" class="single-attachment"><span id="attachName">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span id="attachSize" ng-bind="threadsCtrl.convertBytes(x.size)"></span> <span style="width:10%;">
         <button ng-click="threadsCtrl.removeObj($index)" class="removeAttachment"> x </button> </span></div>
       </div>
       </div>
@@ -76,7 +76,7 @@
           </svg>
         </span>
     </div>
-    <div class="text-warning" ng-if="threadsCtrl.compose.maxSizeExceeded" style="margin-left: 25px"> Maximum size limits of attachments is exceeded. </div> 
+    <div class="text-warning" ng-if="threadsCtrl.compose.maxSizeExceeded" style="margin-left: 25px"> {{'attachmentsSize' | translate}} </div> 
   </div>
   </form>
 

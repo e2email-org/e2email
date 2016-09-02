@@ -39,7 +39,7 @@
       <div class="row email-mime-entry" ng-repeat="mime in mail.mimeContent" ng-show="mail.mimeContent">
         <img class="fade-show email-image-content" ng-src="{{mime.content}}" ng-if="mime.type=='image'">
         <div class="email-text-content col-xs-12" ng-if="mime.type=='text'">{{mime.content}}</div>
-        <div class="col-xs-12 single-attachment-received single-attachment" ng-if="mime.url"><span class="file-description"><a blob-href="{{mime.url}}" download="{{mime.filename}}">{{ mime.filename | limitTo: 28 }}{{mime.filename.length > 28 ? '...' : ''}}</a></span><span class="file-size" ng-bind="messagesCtrl.convertBytes(mime.filesize)"> {{}} </span></div>
+        <div class="col-xs-12 single-attachment-received single-attachment" ng-if="mime.url"><span class="file-description"><a blob-href="{{mime.url}}" download="{{mime.filename}}">{{ mime.filename | limitTo: 28 }}{{mime.filename.length > 28 ? '...' : ''}}</a></span><span class="file-size" ng-bind="messagesCtrl.convertBytes(mime.filesize)"></span></div>
         <div class="email-error-content text-danger col-xs-12" ng-if="mime.type=='error'">{{mime.content}}</div>
       </div>
     </li>
@@ -63,7 +63,7 @@
             <path d="M0 0h24v24H0z" fill="none"/>
           </svg>
         </span>
-        <div class="text-warning" ng-if="messagesCtrl.reply.maxSizeExceeded" style="margin-left: 25px"> Maximum size limits of attachments is exceeded. </div> 
+        <div class="text-warning" ng-if="messagesCtrl.reply.maxSizeExceeded" style="margin-left: 25px">{{'attachmentsSize' | translate}} </div> 
       </div>
     </div>
   </form>
