@@ -15,10 +15,6 @@
     "message": "Sign in",
     "description": "Title for a screen that's shown to a not logged in user of E2EMail."
   },
-  "placeHolderLatin": {
-    "message": "This allows E2Email to lorem ipsum lorem ipsum lorem ipsum",
-    "description": "to be changed once we get the text."
-  },
   "signInAndPermissions": {
     "message": "Sign in & permissions",
     "description": "Title for a screen that's shown to a not logged in user of E2EMail."
@@ -39,9 +35,17 @@
     "message": "2. Give E2Email access to your email",
     "description": "Title for a giving access to Gmail permission."
   },
+  "emailAccessWhy": {
+    "message": "This lets E2Email send and receive protected emails using your Gmail account.",
+    "description": "Reason for asking email access permission."
+  },
   "logInDeleteAccess": {
     "message": "3. Give E2Email access to delete mail your Gmail inbox",
     "description": "Title for giving access to delete mail in your Gmail inbox permission."
+  },
+  "deleteAccessWhy": {
+    "message": "This lets E2Email remove protected emails from your Gmail account if you delete them within the app.",
+    "description": "Reason for asking email delete permission."
   },
   "signInChrome": {
     "message": "1. Sign in to Chrome",
