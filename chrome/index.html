@@ -6,8 +6,8 @@
 <link rel="stylesheet" media="all" href="assets/css/bootstrap.css">
 <link rel="stylesheet" media="all" href="assets/css/styles-bundle.css">
 </head>
-<body class="container">
-  <div ng-app="e2email.application" ng-csp class="row maincontent">
+<body ng-app="e2email.application" ng-csp ng-class="['container', $root.bodyClass]">
+  <div class="row maincontent">
 
     <div ng-view class="viewcontent col-xs-12">
 

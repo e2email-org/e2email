@@ -66,7 +66,8 @@ e2email.application.routeProvider = function($routeProvider) {
         pageTitle: 'E2EMail - Setup',
         templateUrl: 'pages/setup/setup.html',
         controller: 'SetupCtrl',
-        controllerAs: 'setupCtrl'
+        controllerAs: 'setupCtrl',
+        bodyClass: 'onboard'
       }).when(e2email.constants.Location.SETTINGS, {
         pageTitle: 'E2EMail - Account',
         templateUrl: 'pages/settings/settings.html',
@@ -76,22 +77,26 @@ e2email.application.routeProvider = function($routeProvider) {
         pageTitle: 'E2EMail - Welcome',
         templateUrl: 'pages/welcome/welcome.html',
         controller: 'WelcomeCtrl',
-        controllerAs: 'welcomeCtrl'
+        controllerAs: 'welcomeCtrl',
+        bodyClass: 'onboard'
       }).when(e2email.constants.Location.AUTHORIZATION, {
         pageTitle: 'E2EMail - Authorization',
         templateUrl: 'pages/authorization/authorization.html',
         controller: 'AuthorizationCtrl',
-        controllerAs: 'authorizationCtrl'
+        controllerAs: 'authorizationCtrl',
+        bodyClass: 'onboard'
       }).when(e2email.constants.Location.RESET, {
         pageTitle: 'E2EMail - Reset',
         templateUrl: 'pages/reset/reset.html',
         controller: 'ResetCtrl',
-        controllerAs: 'resetCtrl'
+        controllerAs: 'resetCtrl',
+        bodyClass: 'onboard'
       }).when(e2email.constants.Location.RECOVER, {
         pageTitle: 'E2EMail - Recover',
         templateUrl: 'pages/recover/recover.html',
         controller: 'RecoverCtrl',
-        controllerAs: 'recoverCtrl'
+        controllerAs: 'recoverCtrl',
+        bodyClass: 'onboard'
       }).when(e2email.constants.Location.SHOWSECRET, {
         pageTitle: 'E2EMail - Recovery code',
         templateUrl: 'pages/showsecret/showsecret.html',
@@ -101,12 +106,14 @@ e2email.application.routeProvider = function($routeProvider) {
         pageTitle: 'E2EMail - Introduction',
         templateUrl: 'pages/introduction/introduction.html',
         controller: 'IntroductionCtrl',
-        controllerAs: 'introductionCtrl'
+        controllerAs: 'introductionCtrl',
+        bodyClass: 'onboard'
       }).when(e2email.constants.Location.GETSTARTED, {
         pageTitle: 'E2EMail - Get Started',
         templateUrl: 'pages/getstarted/getstarted.html',
         controller: 'GetStartedCtrl',
-        controllerAs: 'getStartedCtrl'
+        controllerAs: 'getStartedCtrl',
+        bodyClass: 'onboard'
       }).when(e2email.constants.Location.THREADS, {
         pageTitle: 'E2EMail',
         templateUrl: 'pages/threads/threads.html',
@@ -186,6 +193,11 @@ e2email.application.module.run(
       $rootScope.$on('$routeChangeSuccess', function() {
         if (goog.isDefAndNotNull($route.current.pageTitle)) {
           document.title = $route.current.pageTitle;
+        }
+        if (goog.isDefAndNotNull($route.current.bodyClass)) {
+          $rootScope.bodyClass = $route.current.bodyClass;
+        } else {
+          $rootScope.bodyClass = '';
         }
       });
     }]);

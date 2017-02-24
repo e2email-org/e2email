@@ -57,14 +57,16 @@
 
     <input tabindex="2" type="text" class="form-control ac-tabbable email-main-subject-input" placeholder="Subject" required="required" ng-hide="threadsCtrl.compose.missingRecipient" ng-model="threadsCtrl.compose.subject" ng-keypress="threadsCtrl.onSubjectKeyPress($event)"/>
     <div class="compose-content">
-    <div tabindex="3" id="textareaSpace">
-      <textarea id="textareaElement" class="form-control email-main-compose-textarea" placeholder="{{threadsCtrl.compose.validRecipient ? 'typeMessagePlaceholder' : 'invalidRecipientPlaceholder' | translate}}" rows="10" ng-disabled="!threadsCtrl.compose.validRecipient" ng-model="threadsCtrl.compose.message" ng-hide="threadsCtrl.compose.missingRecipient" required="required">
-      </textarea> </div>
-      <div id="attachmentRepeat">
-      <div ng-repeat="x in threadsCtrl.compose.attachments" class="single-attachment"><span id="attachName">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span id="attachSize"> {{'(' + x.size + ')'}} </span> <span style="width:10%;">
-        <button ng-click="threadsCtrl.removeObj($index)" class="removeAttachment"> x </button> </span></div>
+      <div id="textareaSpace">
+        <textarea tabindex="3" id="textareaElement" class="form-control email-main-compose-textarea" placeholder="{{threadsCtrl.compose.validRecipient ? 'typeMessagePlaceholder' : 'invalidRecipientPlaceholder' | translate}}" rows="10" ng-disabled="!threadsCtrl.compose.validRecipient" ng-model="threadsCtrl.compose.message" ng-hide="threadsCtrl.compose.missingRecipient" required="required">
+        </textarea>
+        <div id="attachmentRepeat">
+          <div ng-repeat="x in threadsCtrl.compose.attachments" class="single-attachment"><span id="attachName">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span id="attachSize"> {{'(' + x.size + ')'}} </span> <span style="width:10%;">
+            <button ng-click="threadsCtrl.removeObj($index)" class="removeAttachment"> x </button> </span>
+          </div>
+        </div>
       </div>
-      </div>
+    </div>
   <div class="row email-main-compose-form-button-row">
     <div class="col-xs-12">
       <button tabindex="4" type="submit" class="col-xs-3 btn btn-primary btn-focus sidebtn">{{'send' | translate}}</button>
