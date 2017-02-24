@@ -223,3 +223,8 @@ div.big-icon > img {
   padding: 0;
   float: right;
 }
+
+.centerBtn {
+  margin-right: 40% !important;
+  margin-left: 40% !important;
+}

@@ -27,6 +27,10 @@
     "message": "1. Access your email",
     "description": "Title for a screen that's shown to a not logged in user of E2EMail."
   },
+  "attachmentsSize": {
+    "message": "Maximum size limits of attachments is exceeded.",
+    "description": "The size of the attachments has been exceeded."
+  },
   "deleteEmail": {
     "message": "2. Delete email in your Gmail inbox",
     "description": "Title for giving access to delete mail in your Gmail inbox permission."

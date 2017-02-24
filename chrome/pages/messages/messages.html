@@ -39,7 +39,7 @@
       <div class="row email-mime-entry" ng-repeat="mime in mail.mimeContent" ng-show="mail.mimeContent">
         <img class="fade-show email-image-content" ng-src="{{mime.content}}" ng-if="mime.type=='image'">
         <div class="email-text-content col-xs-12" ng-if="mime.type=='text'">{{mime.content}}</div>
-        <div class="col-xs-12 single-attachment-received single-attachment" ng-if="mime.url"><span class="file-description"><a blob-href="{{mime.url}}" download="{{mime.filename}}">{{ mime.filename | limitTo: 28 }}{{mime.filename.length > 28 ? '...' : ''}}</a></span><span class="file-size">{{'(' + mime.filesize + ')'}}</span></div>
+        <div class="col-xs-12 single-attachment-received single-attachment" ng-if="mime.url"><span class="file-description"><a blob-href="{{mime.url}}" download="{{mime.filename}}">{{ mime.filename | limitTo: 28 }}{{mime.filename.length > 28 ? '...' : ''}}</a></span><span class="file-size" ng-bind="messagesCtrl.convertBytes(mime.filesize)"></span></div>
         <div class="email-error-content text-danger col-xs-12" ng-if="mime.type=='error'">{{mime.content}}</div>
       </div>
     </li>
@@ -49,7 +49,7 @@
     <div id="textareaSpace"  ng-show="messagesCtrl.reply.showText">
       <textarea id="textareaElement" class="form-control fade-show" placeholder="{{'typeReplyPlaceholder' | translate}}" ng-model="messagesCtrl.reply.content" rows="10"></textarea>
       <div id="attachmentRepeat">
-        <div ng-repeat="x in messagesCtrl.reply.attachments" class="single-attachment"><span class="file-description">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span class="file-size"> {{' (' + x.size/1000 + ' K)'}}</span> <span style="width:10%;">
+        <div ng-repeat="x in messagesCtrl.reply.attachments" class="single-attachment"><span class="file-description">{{ x.filename | limitTo: 20 }}{{x.filename.length > 20 ? '...' : ''}} </span> <span class="file-size" ng-bind="messagesCtrl.convertBytes(x.size)"> {{}} </span> <span style="width:10%;">
         <button ng-click="messagesCtrl.removeObj($index)" class="removeAttachment"> x </button> </span></div>
       </div>
     </div>
@@ -63,6 +63,7 @@
             <path d="M0 0h24v24H0z" fill="none"/>
           </svg>
         </span>
+        <div class="text-warning" ng-if="messagesCtrl.reply.maxSizeExceeded" style="margin-left: 25px">{{'attachmentsSize' | translate}} </div> 
       </div>
     </div>
   </form>

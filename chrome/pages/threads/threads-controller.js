@@ -25,6 +25,7 @@ goog.provide('e2email.pages.threads.ThreadsCtrl.Compose');
 goog.require('e2email.constants.Location');
 goog.require('e2email.util.Email');
 goog.require('goog.array');
+goog.require('goog.format');
 
 
 goog.scope(function() {
@@ -108,6 +109,10 @@ e2email.pages.threads.ThreadsCtrl = function(
   this.status = null;
 
 
+  /** @type {number} Maximum allowed size in bytes of the attachments.*/
+  this.attachmentsMaxSize = 25000000;
+
+
   /** @type {!e2email.pages.threads.ThreadsCtrl.Compose} */
   this.compose = {
     'recipient': null,
@@ -117,7 +122,9 @@ e2email.pages.threads.ThreadsCtrl = function(
     'invalidRecipient': null,
     'subject': null,
     'message': null,
-    'attachments': []
+    'attachments': [],
+    'attachmentsSize': 0,
+    'maxSizeExceeded': false
   };
 
 
@@ -235,6 +242,17 @@ ThreadsCtrl.prototype.isRefreshing = function() {
 
 
 /**
+ * Returns the right conversion of Bytes
+ * @param {number} sizeInBytes The size of the attachment
+ * @return {string}
+ * @export
+ */
+ThreadsCtrl.prototype.convertBytes = function(sizeInBytes) {
+  return goog.format.fileSize(sizeInBytes);
+};
+
+
+/**
  * Launches a new browser window with an issues form for the application.
  * @export
  */
@@ -305,6 +323,8 @@ ThreadsCtrl.prototype.showCompose = function(show) {
     this.compose['subject'] = null;
     this.compose['message'] = null;
     this.compose['attachments'] = [];
+    this.compose['maxSizeExceeded'] = false;
+    this.compose['attachmentsSize'] = 0;
   } else {
     this.window_.document.querySelector('div.maincontent').scrollIntoView(true);
   }
@@ -467,6 +487,10 @@ ThreadsCtrl.prototype.isInviteInProgress = function() {
  * @export
  */
 ThreadsCtrl.prototype.onFileUpload = function(name, type, contents, size) {
+  // marking it as false in case the max size is exceeded before
+  // but this time the user inserts an attachment within max size limit.
+  this.compose.maxSizeExceeded = false;
+
   var obj = {
     'filename': name,
     'type': type,
@@ -474,7 +498,14 @@ ThreadsCtrl.prototype.onFileUpload = function(name, type, contents, size) {
     'content': contents,
     'size': size
   };
-  this.compose.attachments.push(obj);
+
+  // Only allow attachments size up to attachmentsMaxSize
+  if (this.compose.attachmentsSize + size < this.attachmentsMaxSize) {
+    this.compose.attachments.push(obj);
+    this.compose.attachmentsSize += size;
+  } else {
+    this.compose.maxSizeExceeded = true;
+  }
 };
 
 
@@ -484,6 +515,8 @@ ThreadsCtrl.prototype.onFileUpload = function(name, type, contents, size) {
  * @export
  */
 ThreadsCtrl.prototype.removeObj = function(index) {
+
+  this.compose.attachmentsSize -= this.compose.attachments[index].size;
   this.compose.attachments.splice(index, 1);
 };
 
