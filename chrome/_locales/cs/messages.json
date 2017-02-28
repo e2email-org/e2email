@@ -1,0 +1,570 @@
+{
+  "appName": {
+    "message": "E2EMail",
+    "description": "Name of the app."
+  },
+  "appDescription": {
+    "message": "Poskytuje end-to-end ochranu pro váš email pomocí OpenPGP.",
+    "description": "Description of the app."
+  },
+  "usageDescription": {
+    "message": "E2EMail umožňuje posílat chráněné emaili pomocí vašeho účtu G-mail.",
+    "description": "Description of what the app does."
+  },
+  "welcomeTitle": {
+    "message": "Přihlásit se",
+    "description": "Title for a screen that's shown to a not logged in user of E2EMail."
+  },
+  "signInAndPermissions": {
+    "message": "Přihlášení & oprávnění",
+    "description": "Title for a screen that's shown to a not logged in user of E2EMail."
+  },
+  "permissions": {
+    "message": "Oprávnění Gmail",
+    "description": "Title for a screen that's shown to a logged in user of E2EMail who has not authorized the app."
+  },
+  "accessEmail": {
+    "message": "1. Přístup k emailu",
+    "description": "Title for a screen that's shown to a not logged in user of E2EMail."
+  },
+  "deleteEmail": {
+    "message": "2. Mazání emailu ve schránce G-mailu",
+    "description": "Title for giving access to delete mail in your Gmail inbox permission."
+  },
+  "logInEmailAccess": {
+    "message": "2. Udělí E2Email přístup k vašemu emailu",
+    "description": "Title for a giving access to Gmail permission."
+  },
+  "emailAccessWhy": {
+    "message": "Tohle umožní E2Email posílat a příjmat chráněné emaili pomocí vašeho G-mailu.",
+    "description": "Reason for asking email access permission."
+  },
+  "logInDeleteAccess": {
+    "message": "3. Udělí E2Email práva mazat emaili ve vašem G-mailu",
+    "description": "Title for giving access to delete mail in your Gmail inbox permission."
+  },
+  "deleteAccessWhy": {
+    "message": "Tohle umožní E2Email mazat chráněné emaili z vašeho G-mailu pokud je smažete v aplikaci.",
+    "description": "Reason for asking email delete permission."
+  },
+  "signInChrome": {
+    "message": "1. Přihlásit do Chrome",
+    "description": "Title for a screen that's shown to a not logged in user of E2EMail."
+  },
+  "openGmailSettings": {
+    "message": "Otevřít nastavení G-mail",
+    "description": "Title for a button that's shown to a not authorized user of E2EMail."
+  },
+  "appinfoTitle": {
+    "message": "Více o E2EMail",
+    "description": "Title for information about the app itself."
+  },
+  "inviteTitle": {
+    "message": "Pozvat",
+    "description": "Title for a button that's shown to invite a friend of the user to install E2EMail."
+  },
+  "requestApprovalStatus": {
+    "message": "Požaduji přístup, během několika sekund by se měl objevit potvrzovaíc dialog...",
+    "description": "Status shown when the app wants to request OAuth approvals."
+  },
+  "approvalUnavailableStatus": {
+    "message": "Nelze získat oprávnění k přístupu na váš účet G-mail.",
+    "description": "Status shown when the app is unable to obtain OAuth approvals."
+  },
+  "inviteInProgressStatus": {
+    "message": "Posílám pozvánku...",
+    "description": "Status message while an unencrypted mail is being sent to a friend to invite them to install E2EMail."
+  },
+  "welcomeHelp": {
+    "message": "Aby mohl E2Email šifrovat zprávy na G-mailu potřebuje aby jste:",
+    "description": "Informational text for a user giving them a reason to use E2EMail."
+  },
+  "authorizationHelp": {
+    "message": "Aby mohl E2Email šifrovat zprávy na G-mailu potřebuje práva k:",
+    "description": "Informational text for a user giving them a reason to use E2EMail."
+  },
+  "signIn": {
+    "message": "Přihlásit do Chrome",
+    "description": "Button text to let the user know they are about to logged into Chrome."
+  },
+  "setupInfo": {
+    "message": "Inicializuji bezpečné prostředí pro $EMAIL$.",
+    "description": "Help text describing what's going on when the user's account is being checked or set up.",
+    "placeholders": {
+      "email": {
+        "content": "$1",
+        "example": "email@example.com"
+      }
+    }
+  },
+  "me": {
+    "message": "Já",
+    "description": "Noun to describe myself."
+  },
+  "settings": {
+    "message": "Účet",
+    "description": "Noun to describe a screen that lets the user check and alter application settings."
+  },
+  "faq": {
+    "message": "FAQ...",
+    "description": "Noun to describe a screen that shows frequently asked questions."
+  },
+  "issues": {
+    "message": "Problémy...",
+    "description": "Noun to describe a screen that shows an issues form."
+  },
+  "recover": {
+    "message": "Obnovit",
+    "description": "Verb to describe how to recover access to the account."
+  },
+  "recoverScreenTitle": {
+    "message": "Obnovit přístup",
+    "description": "Title for a screen where the user can recover access to their account."
+  },
+  "recoveryCodeInput": {
+    "message": "Obnovovací kód:",
+    "description": "Title for the instruction prior to the recovery code input box."
+  },
+  "recoverHelp": {
+    "message": "E2EMail byl již v minulosti nainstalován. Vložte prosím váš obnovovací kód pro přístup k vašim šifrovaným zprávám..",
+    "description": "Help text to help the user understand why they need to recover their account, and what they need to do to recover it."
+  },
+  "refresh": {
+    "message": "Obnovit",
+    "description": "Verb to describe how to refresh the mailbox."
+  },
+  "more": {
+    "message": "Více",
+    "description": "Verb to describe additional information."
+  },
+  "recoveryCode": {
+    "message": "Obnovovací kód",
+    "description": "Noun to describe the private key backup code."
+  },
+  "resetLink": {
+    "message": "Zapoměl jsem svůj kód, resetovat E2EMail.",
+    "description": "Short link text to give the user an option to reset their account."
+  },
+  "initializeStatus": {
+    "message": "Připravuji E2EMail...",
+    "description": "Status message when the app is being initialized."
+  },
+  "checkAuthorizedStatus": {
+    "message": "Kontroluji autorizaci...",
+    "description": "Status message when the app checks for Gmail API authorizations."
+  },
+  "checkPrivateKeyStatus": {
+    "message": "Kontroluji místní nastavení...",
+    "description": "Status message when the app checks for a local private key."
+  },
+  "checkRegisteredKeyStatus": {
+    "message": "Kontrolují E2EMail účet...",
+    "description": "Status message when the app checks for a remote public key."
+  },
+  "createKeyStatus": {
+    "message": "Nastavuji váš E2EMail účet...",
+    "description": "Status message when the app is creating a keypair."
+  },
+  "updateKeyStatus": {
+    "message": "Aktualizují váš E2EMail účet...",
+    "description": "Status message when the app is registering a public key."
+  },
+  "sendWelcomeMailStatus": {
+    "message": "Připravuji vaši schránku...",
+    "description": "Status message when the app is sending a welcome email."
+  },
+  "incorrectCodeStatus": {
+    "message": "Tento kód není správný, zkontrolujte prosím překlepy.",
+    "description": "Status displayed when characters not corresponding to a recovery code is entered."
+  },
+  "resetTitle": {
+    "message": "Resetovat E2EMail",
+    "description": "Title for a view that is shown when the user is about to reset their private key."
+  },
+  "resetHelp": {
+    "message": "Jste tady protože chcete resetovat vaše datar E2EMail.",
+    "description": "Help text shown to confirm to the user why they are in this view."
+  },
+  "resetAnywayLink": {
+    "message": "Rozumím, přesto resetovat",
+    "description": "Link text the user must press to create a new private key."
+  },
+  "resetWarning": {
+    "message": "Pokut resetujete váš E2Mail, jakíkoli email odeslaný nabo přijatý pomocí předchozího obnovovacího kódu E2EMail nebude dále čitelný.",
+    "description": "Help text that warns the user about the consequences of creating a new private key for their account."
+  },
+  "resetKeyStatus": {
+    "message": "Resetuji váš účet...",
+    "description": "Status message when a new private key is being generated because the user requested it."
+  },
+  "sendMailStatus": {
+    "message": "Odesílám mail...",
+    "description": "Status message when a new mail is being sent."
+  },
+  "resetMailSubject": {
+    "message": "Váš E2EMail účet byl resetován",
+    "description": "(Unencrypted) subject line in an email sent when a new private key was generated by the user resetting their account."
+  },
+  "resetMailContent": {
+    "message": "Váš E2EMail byl resetován zařízením připojenýmk vašemu účtu.",
+    "description": "(Encrypted) content in an email sent when a new private key was generated by the user resetting their account."
+  },
+  "welcomeMailSubject": {
+    "message": "Vítejte v E2EMail!",
+    "description": "(Unencrypted) subject line in an email sent to a user who has installed E2EMail for the first time."
+  },
+  "welcomeMailContent": {
+    "message": "Nyní můžete příjma t a odesílat šifrované zprávy. Klepněte na odpovědět, pro odpověď na existující vlákno emailů nebo na Nové pro založení nového.\n\nTým E2E.",
+    "description": "(Encrypted) content mailed to a user who has installed E2EMail for the first time."
+  },
+  "inviteMailSubject": {
+    "message": "Pozvánka do E2EMail",
+    "description": "(Unencrypted) subject line in an email sent to a user who is being invited to install E2EMail."
+  },
+  "inviteMailContent": {
+    "message": "Tady je pozvánka k prohlídce Chrome aplikace která nám umožní výměnu soukromých (OpenPGP šifrovaných) emailů pomocí G-mailu.\n\nAplikaci E2EMail je tady, pokud si ho nainstaluješ pošli my soukromou zprávu.\n$LOCATION$\n",
+    "description": "(Unencrypted) content mailed to a user who is being invited to install E2EMail.",
+    "placeholders": {
+      "location": {
+        "content": "$1",
+        "example": "https://example.com/path/to/location"
+      }
+    }
+  },
+  "newDeviceMailSubject": {
+    "message": "K E2EMail bylo přídáno nové zařízení",
+    "description": "(Unencrypted) subject line in an email sent to a user who has installed E2EMail in a new device."
+  },
+  "newDeviceMailContent": {
+    "message": "K vašemu účtu E2EMail bylo přidáno nové zařízení zadáním vašeho obnovovacího kódu.",
+    "description": "(Encrypted) content mailed to a user who has installed E2EMail in a new device."
+  },
+  "missingCodeStatus": {
+    "message": "Prosím vložte kód.",
+    "description": "Text when a user has not entered a recovery code."
+  },
+  "checkingCodeStatus": {
+    "message": "Kontroluji kód...",
+    "description": "Text while the application verifies a recovery code."
+  },
+  "sendNotificationStatus": {
+    "message": "Odesílám oznámení...",
+    "description": "Text while the application sends a notification email."
+  },
+  "showsecretTitle": {
+    "message": "Váš obnovovací kód",
+    "description": "Title for a screen that shows the user's recovery code."
+  },
+  "showsecretHelpIntro": {
+    "message": "Bez tohoto kódu, bude každý zpráva v E2EMail ztracena pokud ztratíte vaše zařízení.",
+    "description": "Introductory message for a screen that shows the user's recovery code."
+  },
+  "showsecretHelpSteps": {
+    "message": "Zapiště si váš kód na kousek papíru a uložte ho na bezpečné místo:",
+    "description": "Steps in securing recovery code within a screen that shows the user's recovery code."
+  },
+  "settingsSecretHelp": {
+    "message": "Tohle je tajný kód který může odemčít váš účet E2EMail na jiném zařízeníce, nebo při ztrátě zařízení. Bez tohoto kódu, každá zpráva E2EMail bude navždy ztracena, zapište si prosím tento kód na papír a bezpečně ho uchovejte.",
+    "description": "Help for a settings screen that shows the user's recovery code."
+  },
+  "continue": {
+    "message": "Pokračovat",
+    "description": "Verb to use on a button to indicate the next thing."
+  },
+   "getStarted": {
+    "message": "Začít",
+    "description": "Verb to use on a button to get started with the app."
+  },
+   "setupAccount": {
+    "message": "Nastavit účet",
+    "description": "Verb to use on a button to indicate the start setting up a new account."
+  },
+  "endtoendProtection": {
+    "message": "Ochrana end-to-endn",
+    "description": "Describes the type of protection for the email service."
+  },
+   "recipientInfo": {
+    "message": "Jen příjemce bude moci přečíst váš email.",
+    "description": "Describes who will be able to read the encrypted emails user sends."
+  },
+  "completeSetup": {
+    "message": "Úplné nastavení",
+    "description": "Verb to use on a button to complete the Setup of the account."
+  },
+  "generateCodeStatus": {
+    "message": "Vytvářím kód...",
+    "description": "Status when generating a recovery code from a key."
+  },
+  "noSubjectTitle": {
+    "message": "(bez předmětu)",
+    "description": "Title to use when the message has no subject."
+  },
+
+  "fetchMessageStatus": {
+    "message": "Stahuji zprávy...",
+    "description": "Status when fetching a message via the Gmail API"
+  },
+  "decryptMessageStatus": {
+    "message": "Dešyfruji zprávy...",
+    "description": "Status when decrypting a message"
+  },
+  "emptyFieldsError": {
+    "message": "VyplNte prosím všechny povinná pole.",
+    "description": "Message to display when there are missing entries in a form."
+  },
+  "noKeysForMessageError": {
+    "message": "Tato zpráva byla chráněna jiným obnovovacím kódem a již ji nelze přečíst.",
+    "description": "Message to display when the private key for a message is missing."
+  },
+  "recoveryCodeTooShortError": {
+    "message": "Tento obnovovací kód je příliš krátký.",
+    "description": "Message to display when the recovery code is too short."
+  },
+  "invalidSignatureError": {
+    "message": "Nemůžu ověřit odeslání $EMAIL$ této zprávy.",
+    "description": "Error when signature verification fails for a message",
+    "placeholders": {
+      "email": {
+        "content": "$1",
+        "example": "email@example.com"
+      }
+    }
+  },
+  "noThreadsMessage": {
+    "message": "Žádné soukromé zprávy va vaší schránce.",
+    "description": "Status shown when the user has no threads in their inbox"
+  },
+  "noThreadsTitle": {
+    "message": "E2EMail - prázdná schránka.",
+    "description": "Title shown when the user has no threads in their inbox"
+  },
+  "inboxCountTitle": {
+    "message": "E2EMail - Schránka ($UNREAD$/$TOTAL$)",
+    "description": "Title showing count of unread and total threads in inbox",
+    "placeholders": {
+      "unread": {
+        "content": "$1",
+        "example": "0"
+      },
+      "total": {
+        "content": "$2",
+        "example": "10"
+      }
+    }
+  },
+  "invalidDecryptionContentError": {
+    "message": "Neplatný obsah zprávy.",
+    "description": "Error when the contents of a message have something wrong with it."
+  },
+  "fingerprintChangedStatus": {
+    "message": "$EMAIL$ nedávno změnil svůj E2EMail identifikační kód.",
+    "description": "Status text shown when the code detects a recipients public key has changed.",
+    "placeholders": {
+      "email": {
+        "content": "$1",
+        "example": "email@example.com"
+      }
+    }
+  },
+  "fingerprintSettingsHelp": {
+    "message": "Tato serie písmen a čísel může být použita pro identifikaci když posílkáte emaili. Pro ověření toho že obdrželi zprávu opravdu od vás, mohou vám zavola a ověřit vaše ID, které se musí schodovat s ID které vydí když klknou na vaše jméno v emailu který jste jim poslali. E2Email je upozorní pokud se vaše ID v emailech od vás změní.",
+    "description": "Help text to display within the settings screen underneath the user's fingerprint"
+  },
+  "fingerprintHelp1": {
+    "message": "Tato serie čísel a písmen může být použita k ověření $EMAIL$.",
+    "description": "First paragraph of help text to help user understand what a fingerprint is, and how to use it.",
+    "placeholders": {
+      "email": {
+        "content": "$1",
+        "example": "email@example.com"
+      }
+    }
+  },
+  "fingerprintChangedHelp1": {
+    "message": "Avšak, E2EMail zaznamena že tento kód se od prvnho kontaktu s $EMAIL$ změnil. Nejčstěji, se to stáva pokud byl tento účet resetován, ale měli by jste to ověřit osobně a ověřit současný kód tohoto účtu.",
+    "description": "Help text shown when the code detects a recipients public key has changed.",
+    "placeholders": {
+      "email": {
+        "content": "$1",
+        "example": "email@example.com"
+      }
+    }
+  },
+  "fingerprintHelp2": {
+    "message": "Pro ověření toho že dostáváte emaili skutečně z této adresy, zavolejte jejímu vlastníkovy a ověřte jeho ID, které může najít v aplikaci E2EMail v menu Účet.",
+    "description": "Second paragraph of help text to help user understand what a fingerprint is, and how to use it."
+  },
+  "whatsThis": {
+    "message": "Co je tohle?",
+    "description": "Informal phrase for a link that provides more explanation about a topic."
+  },
+  "gotIt": {
+    "message": "Mám to!",
+    "description": "Informal phrase for a link that acknowledges the user has understood some information."
+  },
+  "idCheck": {
+    "message": "Ověření ID",
+    "description": "Title to describe an identity check code (fingerprint.)"
+  },
+  "fetchMessageMissingError": {
+    "message": "E2EMail nebyl schopen najít šifrovaný obsah této zprávy. To se může stát pokud byla odeslána jinou aplikací. (dogfood debug: $ID$)",
+    "description": "Error with missing data when fetching a message via the Gmail API",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "messageMissingThreadError": {
+    "message": "Neočekávaně chybý vlákno pro zprávu $ID$.",
+    "description": "An application error that is unable to find the thread for a message.",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "fetchMessageError": {
+    "message": "Nelze získat zprávu $ID$.",
+    "description": "Error when Gmail API rejects fetching information about a particular message",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "serverKeyNotAvailableError": {
+    "message": "Nelze nalézt informace E2EMail pro $EMAIL.",
+    "description": "Error when the email is sent from someone without a key on the key server.",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "messageEncodingError": {
+    "message": "Neplatný obsah přílohy pro zprávu $ID$.",
+    "description": "Error when the attachment doesn't contain a valid encoding.",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "missingRecipientAlert": {
+    "message": "$EMAIL$ nemá nainstalovaný E2EMail, takže mu nelze poslat šifrovanou zprávu. Chete adresátovy poslat pozvánku k instalaci E2EMail?",
+    "description": "Alert message when the user selects a recipient who hasn't installed E2EMail.",
+    "placeholders": {
+      "email": {
+        "content": "$1"
+      }
+    }
+  },
+  "verifyRecipientStatus": {
+    "message": "Ověřuji příjemce...",
+    "description": "Status message when E2EMail is checking the public key for a recipient."
+  },
+  "invalidRecipientAlert": {
+    "message": "$EMAIL$ není platná adresa. Vložte prosím platnou adresu (například: jan.novak@gmail.com)",
+    "description": "Alert message when the user enters an invalid email address.",
+    "placeholders": {
+      "email": {
+        "content": "$1"
+      }
+    }
+  },
+  "fetchBatchStatus": {
+    "message": "Stahuji zprávy...",
+    "description": "Status when fetching a batch of messages from Gmail"
+  },
+  "fetchContactsStatus": {
+    "message": "Stahuji kontakty ($COUNT$)...",
+    "description": "Status when fetching a batch of contacts from Gmail",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "typeReplyPlaceholder": {
+    "message": "Napište vaši odpověď...",
+    "description": "Placeholder text for a textbox where the user types in a reply to a message."
+  },
+  "typeMessagePlaceholder": {
+    "message": "Cokoli napsané níže je posíláno soukromě.",
+    "description": "Placeholder text for a textbox where the user types in a new message."
+  },
+  "invalidRecipientPlaceholder": {
+    "message": "Nejdřív prosím zadejte platnou adresu Pro.",
+    "description": "Placeholder text for a textbox where the user hasn't yet typed in an email address."
+  },
+  "reply": {
+    "message": "Odpovědět",
+    "description": "Verb to use on a button to reply to a message."
+  },
+  "cancel": {
+    "message": "Zrušit",
+    "description": "Verb to use on a button to cancel an action."
+  },
+  "send": {
+    "message": "Odeslat",
+    "description": "Verb to use on a button to send a message."
+  },
+  "compose": {
+    "message": "Nová",
+    "description": "Verb to use on a button to compose a new message."
+  },
+  "inbox": {
+    "message": "Schránka",
+    "description": "Noun to describe the primary user inbox."
+  },
+  "trashHelp": {
+    "message": " smazat vybraná vlákna ",
+    "description": "Text to display when hovering over the trash icon."
+  },
+  "primaryEmailTitle": {
+    "message": "Emailové adresy",
+    "description": "Title for a settings screen to describe the user's email address."
+  },
+  "selectThreadTitle": {
+    "message": "Vybrat vlákno",
+    "description": "Title for a checkbox to select an email thread."
+  },
+  "messagesTitle": {
+    "message": "E2EMail - Zprávy",
+    "description": "Title for a screen that shows the messages within a thread."
+  },
+  "setupTitle": {
+    "message": "E2EMail - Nastavení",
+    "description": "Title for a setup screen."
+  },
+  "settingsTitle": {
+    "message": "E2EMail - Účet",
+    "description": "Title for a settings screen."
+  },
+  "recoverTitle": {
+    "message": "E2EMail - Obnovit přístup",
+    "description": "Title for a recovery screen."
+  },
+  "showsecretDocumentTitle": {
+    "message": "E2EMail - Obnovovací kód",
+    "description": "Document title for the user's secret code."
+  },
+  "unsupportedMimeContent": {
+    "message": "Nelze zobrazit tuto přílohu\n$DATA$",
+    "description": "Message shown for mime content that cannot be displayed.",
+    "placeholders": {
+      "data": {
+        "content": "$1"
+      }
+    }
+  },
+  "mimePreamble": {
+    "message": "Tohle je zpráva šifrovaná OpenPGP/MIME. Otevřete ji prosím pomocí aplikace E2EMail.",
+    "description": "A notification appearing before the actual MIME content. MIME compliant parsers will not display this message to the user."
+  },
+  "errorInParsingMime": {
+    "message": "Syntaktická chybar: Tato zpráva nebyla správně formátovaná a nemůže být řádně zobrazena.",
+    "description": "A notification that is displayed when an email contains MIME content that has not been formatted correctly"
+  }
+}
